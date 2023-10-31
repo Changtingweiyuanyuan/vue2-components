@@ -19,4 +19,12 @@ module.exports = defineConfig({
       .set("utility", resolve("src/utility"))
       .set("pages", resolve("src/pages"));
   },
+  css: {
+    extract: true,
+    loaderOptions: {
+      sass: {
+        additionalData: '@import "@/scss/base";',
+      },
+    },
+  },
 });

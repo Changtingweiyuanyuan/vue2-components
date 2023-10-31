@@ -1,3 +1,3 @@
-import Title from "@/components/newspaper/Title.vue";
+import Headline from "@/components/utility/Headline.vue";
 
-export { Title };
+export { Headline };
