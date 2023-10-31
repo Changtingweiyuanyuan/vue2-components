@@ -87,6 +87,9 @@ h6,
 .text-lowercase {
     text-transform: lowercase;
 }
+.cursor-pointer {
+  cursor: pointer;
+}
 
 :export {
   @each $color, $value in $theme-colors {
