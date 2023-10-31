@@ -1,5 +1,5 @@
 <template>
-  <div class="intro">intro page.</div>
+  <div class="intro p-3">intro page.</div>
 </template>
 
 <script>
