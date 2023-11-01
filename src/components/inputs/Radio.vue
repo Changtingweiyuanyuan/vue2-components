@@ -7,8 +7,8 @@
       <input
         type="radio"
         class="form-radio__input position-absolute"
-        :disabled="disabled"
         :checked="$attrs.localValue ? $attrs.localValue === value : checked"
+        :disabled="disabled"
         v-bind="$attrs"
         @change="handleChange"
       />
@@ -57,7 +57,7 @@ export default {
     &:checked {
       + div {
         background-color: $white;
-        border-color: $primary;
+        border-color: $black;
         border-radius: 4px;
         box-shadow: 2px 2px 1px black;
 
@@ -85,7 +85,7 @@ export default {
         right: 4px;
         width: 4px;
         height: 4px;
-        color: $black;
+        color: $primary;
       }
     }
 

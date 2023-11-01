@@ -6,6 +6,39 @@
     <FormRadio v-model="inputs.radioValue" :value="3"> 3 </FormRadio>
     <FormRadio v-model="inputs.radioValue" :value="4"> 4 </FormRadio>
 
+    <h2>checkbox</h2>
+    <FormCheckbox
+      :local-value="inputs.checkboxValue"
+      value="1"
+      @change="checkboxChange"
+    >
+      1
+    </FormCheckbox>
+    <FormCheckbox
+      :local-value="inputs.checkboxValue"
+      :disabled="true"
+      :checked="true"
+      value="2"
+      @change="checkboxChange"
+    >
+      2
+    </FormCheckbox>
+    <FormCheckbox
+      :local-value="inputs.checkboxValue"
+      :disabled="true"
+      :value="3"
+      @change="checkboxChange"
+    >
+      3
+    </FormCheckbox>
+    <FormCheckbox
+      :local-value="inputs.checkboxValue"
+      :value="4"
+      @change="checkboxChange"
+    >
+      4
+    </FormCheckbox>
+
     <h2>headline</h2>
     <headline
       :text="'Gaza Ministry of Health report describes crumbling health system'"
@@ -65,6 +98,7 @@ import Container from '@/components/utility/Container.vue'
 import AffixBar from '@/components/utility/AffixBar.vue'
 import OrderedList from '@/components/utility/OrderedList.vue'
 import FormRadio from '../../components/inputs/Radio.vue'
+import FormCheckbox from '../../components/inputs/Checkbox.vue'
 
 export default {
   name: 'DemoPage',
@@ -75,6 +109,7 @@ export default {
     AffixBar,
     OrderedList,
     FormRadio,
+    FormCheckbox,
   },
   data() {
     return {
@@ -109,8 +144,14 @@ export default {
       ],
       inputs: {
         radioValue: '1',
+        checkboxValue: ['2'],
       },
     }
+  },
+  methods: {
+    checkboxChange(checkedValue) {
+      console.log('checked', checkedValue)
+    },
   },
 }
 </script>
