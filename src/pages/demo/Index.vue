@@ -1,87 +1,121 @@
 <template>
   <div class="demo p-3">
-    <h2>radio</h2>
-    <FormRadio v-model="inputs.radioValue" value="1"> 1 </FormRadio>
-    <FormRadio v-model="inputs.radioValue" value="2"> 2 </FormRadio>
-    <FormRadio v-model="inputs.radioValue" :value="3"> 3 </FormRadio>
-    <FormRadio v-model="inputs.radioValue" :value="4"> 4 </FormRadio>
-
-    <h2>checkbox</h2>
-    <FormCheckbox
-      :local-value="inputs.checkboxValue"
-      value="1"
-      @change="checkboxChange"
-    >
-      1
-    </FormCheckbox>
-    <FormCheckbox
-      :local-value="inputs.checkboxValue"
-      :disabled="true"
-      :checked="true"
-      value="2"
-      @change="checkboxChange"
-    >
-      2
-    </FormCheckbox>
-    <FormCheckbox
-      :local-value="inputs.checkboxValue"
-      :disabled="true"
-      :value="3"
-      @change="checkboxChange"
-    >
-      3
-    </FormCheckbox>
-    <FormCheckbox
-      :local-value="inputs.checkboxValue"
-      :value="4"
-      @change="checkboxChange"
-    >
-      4
-    </FormCheckbox>
-
-    <h2>headline</h2>
-    <headline
-      :text="'Gaza Ministry of Health report describes crumbling health system'"
-      :superscript="'headline'"
-      :superscript-background-color="'bg-primary'"
-    />
-    <br />
-    <headline
-      :text="'Gaza Ministry of Health report describes crumbling health system'"
-      :superscript="'headline'"
-    />
+    <div class="p-2">
+      <h2>radio</h2>
+      <FormRadio v-model="inputs.radioValue" value="1"> 1 </FormRadio>
+      <FormRadio v-model="inputs.radioValue" value="2"> 2 </FormRadio>
+      <FormRadio v-model="inputs.radioValue" :value="3"> 3 </FormRadio>
+      <FormRadio v-model="inputs.radioValue" :value="4"> 4 </FormRadio>
+    </div>
     <br />
 
-    <h2>paragraph</h2>
-    <paragraph :text="text" />
-    <paragraph :text="text" :first-letter-shadow-color="'#91AD70'" />
+    <div class="p-2">
+      <h2>checkbox</h2>
+      <FormCheckbox
+        :local-value="inputs.checkboxValue"
+        value="1"
+        @change="checkboxChange"
+      >
+        1
+      </FormCheckbox>
+      <FormCheckbox
+        :local-value="inputs.checkboxValue"
+        :disabled="true"
+        :checked="true"
+        value="2"
+        @change="checkboxChange"
+      >
+        2
+      </FormCheckbox>
+      <FormCheckbox
+        :local-value="inputs.checkboxValue"
+        :disabled="true"
+        :value="3"
+        @change="checkboxChange"
+      >
+        3
+      </FormCheckbox>
+      <FormCheckbox
+        :local-value="inputs.checkboxValue"
+        :value="4"
+        @change="checkboxChange"
+      >
+        4
+      </FormCheckbox>
+    </div>
     <br />
 
-    <h2>affix bar</h2>
-    affix bar status:
-    <button
-      type="button"
-      class="btn btn-secondary"
-      @click="uiState.affixBarDisplay = !uiState.affixBarDisplay"
-    >
-      {{ uiState.affixBarDisplay }}
-    </button>
-    <affix-bar
-      :affix-bar-display="uiState.affixBarDisplay"
-      :offset-top="100"
-      :padding-x="28"
-      :transition="false"
-      :container-class-name="'container'"
-    >
-      <div>affix bar slot</div>
-    </affix-bar>
+    <div class="w-100 p-2">
+      <h2>input</h2>
+      <FormInput
+        v-model="inputs.inputValue"
+        placeholder="placeholder"
+        @input="inputChange"
+      />
+      <br />
+      <FormInput
+        v-model="inputs.inputValue"
+        placeholder="placeholder"
+        :invalid="true"
+        :background-transparent="true"
+        @input="inputChange"
+      >
+        <template #invalid>invalid feedback</template>
+      </FormInput>
+    </div>
+    <br />
+
+    <div class="w-100 p-2">
+      <h2>headline</h2>
+      <headline
+        :text="'Gaza Ministry of Health report describes crumbling health system'"
+        :superscript="'headline'"
+        :superscript-background-color="'bg-primary'"
+      />
+      <br />
+      <headline
+        :text="'Gaza Ministry of Health report describes crumbling health system'"
+        :superscript="'headline'"
+      />
+    </div>
+    <br />
+
+    <div class="w-100 p-2">
+      <h2>paragraph</h2>
+      <paragraph :text="text" />
+      <paragraph :text="text" :first-letter-shadow-color="'#91AD70'" />
+    </div>
+    <br />
+
+    <div class="p-2">
+      <h2>affix bar</h2>
+      affix bar status:
+      <button
+        type="button"
+        class="btn btn-secondary"
+        @click="uiState.affixBarDisplay = !uiState.affixBarDisplay"
+      >
+        {{ uiState.affixBarDisplay }}
+      </button>
+      <affix-bar
+        :affix-bar-display="uiState.affixBarDisplay"
+        :offset-top="100"
+        :padding-x="28"
+        :transition="false"
+        :container-class-name="'container'"
+      >
+        <div>affix bar slot</div>
+      </affix-bar>
+    </div>
     <br /><br />
 
-    <h2>ordered list</h2>
-    <ordered-list :contents="options" />
+    <div class="p-2">
+      <h2>ordered list</h2>
+      <ordered-list :contents="options" />
+    </div>
     <br />
 
-    <div class="p-6">
+    <div class="w-100 p-2">
       <h2>container</h2>
       <container :title="'container'">
         <template #content>{{ text }}</template>
@@ -99,6 +133,7 @@ import AffixBar from '@/components/utility/AffixBar.vue'
 import OrderedList from '@/components/utility/OrderedList.vue'
 import FormRadio from '../../components/inputs/Radio.vue'
 import FormCheckbox from '../../components/inputs/Checkbox.vue'
+import FormInput from '../../components/inputs/Input.vue'
 
 export default {
   name: 'DemoPage',
@@ -110,6 +145,7 @@ export default {
     OrderedList,
     FormRadio,
     FormCheckbox,
+    FormInput,
   },
   data() {
     return {
@@ -145,12 +181,16 @@ export default {
       inputs: {
         radioValue: '1',
         checkboxValue: ['2'],
+        inputValue: '',
       },
     }
   },
   methods: {
     checkboxChange(checkedValue) {
       console.log('checked', checkedValue)
+    },
+    inputChange(inputValue) {
+      console.log('onInput', inputValue)
     },
   },
 }

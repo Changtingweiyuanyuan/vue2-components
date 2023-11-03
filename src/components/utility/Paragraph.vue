@@ -2,7 +2,7 @@
   <div class="paragraph d-flex flex-wrap">
     <p
       :style="{
-        '--text-shadow-color': firstLetterShadowColor,
+        '--text-shadow-color': ensureHexColorFormat,
       }"
     >
       {{ text }}
@@ -16,7 +16,20 @@ export default {
   name: "UtilityParagraph",
   props: {
     text: VueTypes.string.def(""),
-    firstLetterShadowColor: VueTypes.string.def(""), // hex color code
+    firstLetterShadowColor: VueTypes.oneOfType([VueTypes.number, VueTypes.string]).def(""),
+  },
+  data() {
+    return {
+      hasBeenInput: false,
+      HexColorStartCharacter: "#"
+    }
+  },
+  computed: {
+    ensureHexColorFormat() {
+      const hexColorRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+      const color = String(this.firstLetterShadowColor).charAt(0) === this.HexColorStartCharacter ? this.firstLetterShadowColor : `#${this.firstLetterShadowColor}`;
+      return hexColorRegex.test(color) ? color : '';
+    }
   },
 };
 </script>
