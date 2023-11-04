@@ -1,6 +1,17 @@
 <template>
   <div class="demo p-3">
     <div class="p-2">
+      <h2>button</h2>
+      <div class="d-flex gap-2">
+        <button class="btn btn-primary">button</button>
+        <button class="btn btn-danger">button</button>
+        <button class="btn btn-success">button</button>
+        <button class="btn btn-link">button</button>
+      </div>
+      
+    </div>
+    <br />
+    <div class="p-2">
       <h2>radio</h2>
       <FormRadio v-model="inputs.radioValue" value="1"> 1 </FormRadio>
       <FormRadio v-model="inputs.radioValue" value="2"> 2 </FormRadio>
@@ -92,6 +103,7 @@
       affix bar status:
       <button
         type="button"
+        focus
         class="btn btn-secondary"
         @click="uiState.affixBarDisplay = !uiState.affixBarDisplay"
       >

@@ -1,0 +1,57 @@
+.cursor {
+  &-auto {
+    cursor: auto;
+  }
+
+  &-pointer {
+    cursor: pointer;
+  }
+
+  &-not-allowed {
+    cursor: not-allowed;
+  }
+
+  &-move {
+    cursor: move;
+  }
+
+  &-grab {
+    cursor: grab;
+  }
+
+  &-grabbing {
+    cursor: grabbing;
+  }
+}
+
+.user-select {
+  &-none {
+    user-select: none;
+  }
+
+  &-auto {
+    user-select: auto;
+  }
+
+  &-text {
+    user-select: text;
+  }
+
+  &-contain {
+    user-select: contain;
+  }
+
+  &-all {
+    user-select: all;
+  }
+}
+
+.event {
+  &-none {
+    pointer-events: none;
+  }
+
+  &-auto {
+    pointer-events: auto;
+  }
+}

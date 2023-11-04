@@ -1,0 +1,9 @@
+// customize variables
+
+// scss-docs-start btn-variables
+$btn-hover-box-shadow:        inset 1px 1px 2px $black, inset -1px -1px 2px $white;
+// $btn-hover-box-shadow:        inset 1px 1px 2px $black, inset -1px -1px 2px $white, 2px 2px 0 #0C0C0C;
+$link-default-color:          $black !default;
+$link-default-bg-color:       $white !default;
+$btn-link-transparency-100:   #ffffff00;
+// scss-docs-end btn-variables

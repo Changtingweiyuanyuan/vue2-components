@@ -6,7 +6,11 @@
 
 // include bootstrap覆蓋檔案 - type
 @import "./bootstrap/type";
+@import "./bootstrap/buttons";
 
+// include customize scss file
+@import "./utility/cursor";
+@import "./utility/buttons";
 
 // include bootstrap-icons
 @import "./bootstrapIcons/icons";
