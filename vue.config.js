@@ -23,7 +23,7 @@ module.exports = defineConfig({
     extract: true,
     loaderOptions: {
       sass: {
-        additionalData: '@import "@/scss/base";',
+        additionalData: `@import "./src/scss/global.import";`,
       },
     },
   },
