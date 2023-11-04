@@ -7,10 +7,12 @@
 // include bootstrap覆蓋檔案 - type
 @import "./bootstrap/type";
 @import "./bootstrap/buttons";
+@import "./bootstrap/forms/form-check";
 
 // include customize scss file
 @import "./utility/cursor";
 @import "./utility/buttons";
+@import "./utility/forms/form-check";
 
 // include bootstrap-icons
 @import "./bootstrapIcons/icons";

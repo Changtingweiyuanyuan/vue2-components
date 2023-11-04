@@ -1,16 +1,31 @@
 <template>
   <div class="demo p-3">
     <div class="p-2">
-      <h2>button</h2>
+      <h2>bootstrap button</h2>
       <div class="d-flex gap-2">
         <button class="btn btn-primary">button</button>
-        <button class="btn btn-danger">button</button>
+        <button class="btn btn-secondary">button</button>
         <button class="btn btn-success">button</button>
+        <button class="btn btn-info">button</button>
+        <button class="btn btn-warning">button</button>
+        <button class="btn btn-danger">button</button>
+        <button class="btn btn-dark">button</button>
         <button class="btn btn-link">button</button>
       </div>
-      
     </div>
     <br />
+    <div class="p-2">
+      <h2>bootstrap radio/checkbox</h2>
+      <div class="d-flex gap-2">
+        <input class="form-check-input" type="checkbox" value="1" />
+        <input class="form-check-input check-success" type="checkbox" value="2" checked />
+        <input class="form-check-input check-danger" type="checkbox" value="2" checked />
+        <input class="form-check-input" name="radioDefault" type="radio" value="1" disabled />
+        <input class="form-check-input" name="radioDefault" type="radio" value="2" disabled checked />
+      </div>
+    </div>
+    <br />
+
     <div class="p-2">
       <h2>radio</h2>
       <FormRadio v-model="inputs.radioValue" value="1"> 1 </FormRadio>
