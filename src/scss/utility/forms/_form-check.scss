@@ -79,13 +79,18 @@
 }
 
 @mixin form-check-customize-variant($color) {
-  color: $color !important;
+  color: $color;
 }
 
 @each $color, $value in $theme-colors {
   .check-#{$color} {
     &::after {
       @include form-check-customize-variant($value);
+    }
+    &:checked {
+      &::after {
+        @include form-check-customize-variant($value);
+      }
     }
   }
 }
