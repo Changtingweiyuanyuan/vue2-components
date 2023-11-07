@@ -33,7 +33,7 @@
           v-on="{
             ...$listeners,
             input: e => {
-              $emit('input', e.target.value.trim())
+              $emit('inputValue', e.target.value.trim())
               $emit('inputEvent', e)
             },
           }"
@@ -43,7 +43,7 @@
           class="icons position-absolute cursor-pointer text-danger t3"
           @click="
             () => {
-              $emit('input', '')
+              $emit('inputValue', '')
               $emit('clear')
             }
           "
@@ -77,6 +77,10 @@ import VueTypes from 'vue-types'
 import { INPUT_DEFAULT_TEXT } from '../constants/inputsConstants'
 export default {
   name: 'FormInput',
+  model: {
+    prop: 'value',
+    event: 'inputValue',
+  },
   props: {
     value: VueTypes.oneOfType([VueTypes.number, VueTypes.string]).def(''),
     placeholder: VueTypes.string.def(''),

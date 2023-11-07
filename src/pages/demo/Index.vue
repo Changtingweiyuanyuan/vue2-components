@@ -113,6 +113,8 @@
         v-model="inputs.inputValue"
         :placeholder="'default input'"
         :clearable="true"
+        @inputValue="inputChange"
+        @inputEvent="inputEventHandler"
       />
       <FormInput
         v-model="inputs.inputValueReadonly"
@@ -125,8 +127,6 @@
         :invalid="true"
         :invalid-text="text"
         :background-transparent="true"
-        @input="inputChange"
-        @inputEvent="inputEventHandler"
       >
       </FormInput>
     </div>
@@ -266,7 +266,7 @@ export default {
       console.log('checked', checkedValue)
     },
     inputChange(inputValue) {
-      console.log('onInput', inputValue)
+      console.log('onInput value', inputValue)
     },
     inputEventHandler(inputEvent) {
       console.log('onInput event', inputEvent)
