@@ -1,11 +1,12 @@
 <template>
   <div
-    class="form-input px-2 pl-4 position-relative w-100"
+    class="form-input mb-8 px-2 position-relative w-100"
     :class="{
       'form-input--has-been-input': hasBeenInput || value !== '',
       'form-input--invalid': invalid,
       'form-input--readonly': readonly,
       'form-input--disabled': disabled,
+      'form-input--clearable': clearable,
     }"
     :style="{
       '--input-background-transparent': backgroundTransparent
@@ -20,34 +21,60 @@
     </div>
 
     <div class="form-input__input">
-      <input
-        v-if="!readonly && !disabled"
-        type="text"
-        ref="input"
-        class="w-100 p-0 border-0 t4"
-        :value="value"
-        v-bind="$attrs"
-        @input="onInput"
-        @blur="hasBeenInput = false"
-        @mousedown.stop
-      />
+      <div v-if="!readonly && !disabled" class="position-relative">
+        <input
+          ref="input"
+          type="text"
+          class="w-100 p-0 border-0 t4"
+          v-bind="$attrs"
+          :value="value"
+          @blur="hasBeenInput = false"
+          @mousedown.stop
+          v-on="{
+            ...$listeners,
+            input: e => {
+              $emit('input', e.target.value.trim())
+              $emit('inputEvent', e)
+            },
+          }"
+        />
+        <div
+          v-if="clearable && value.length > 0"
+          class="icons position-absolute cursor-pointer text-danger t3"
+          @click="
+            () => {
+              $emit('input', '')
+              $emit('clear')
+            }
+          "
+        >
+          ✘
+        </div>
+      </div>
       <template v-else>
         <slot :value="value">
-          <div class="t4 text-truncate">
+          <div
+            class="t4 text-truncate"
+            :class="{ 'cursor-not-allowed': readonly || disabled }"
+          >
             {{ value }}
           </div>
         </slot>
       </template>
     </div>
-    <div v-if="invalid" class="form-input__invalid t6 text-danger">
+    <div
+      v-if="invalid"
+      class="form-input__invalid t6 text-danger w-100 text-truncate pe-3"
+    >
       <i class="bi bi-exclamation-triangle-fill me-1"></i>
-      <slot name="invalid" />
+      {{ invalidText }}
     </div>
   </div>
 </template>
 
 <script>
 import VueTypes from 'vue-types'
+import { INPUT_DEFAULT_TEXT } from '../constants/inputsConstants'
 export default {
   name: 'FormInput',
   props: {
@@ -58,6 +85,7 @@ export default {
     disabled: VueTypes.bool.def(false),
     readonly: VueTypes.bool.def(false),
     invalid: VueTypes.bool.def(false),
+    invalidText: VueTypes.string.def(INPUT_DEFAULT_TEXT.INVALID),
     backgroundTransparent: VueTypes.bool.def(false),
   },
   data() {
@@ -73,11 +101,6 @@ export default {
       this.$nextTick(() => {
         this.$refs.input.focus()
       })
-    },
-    onInput(e) {
-      let value = e.target.value.trim()
-
-      this.$emit('input', value)
     },
   },
 }
@@ -147,17 +170,26 @@ export default {
     }
   }
 
+  &--disabled,
   &--readonly {
-    height: auto;
-    min-height: 52px;
-
-    input {
-      display: none;
+    .form-input__input {
+      color: $gray-600;
+    }
+    .form-input__placeholder {
+      color: $gray-800;
     }
   }
 
-  &--disabled {
-    background: $gray-400;
+  &--clearable {
+    .icons {
+      top: 2px;
+      right: 0px;
+      transition: filter ease 0.1s;
+
+      &:hover {
+        filter: drop-shadow(1px 1px 0px $black);
+      }
+    }
   }
 
   &__placeholder {
@@ -178,8 +210,8 @@ export default {
   &__invalid {
     display: none;
     position: absolute;
+    top: 60px;
     left: 8px;
-    bottom: -28px;
   }
 }
 </style>

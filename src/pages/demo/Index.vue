@@ -18,12 +18,46 @@
       <h2>bootstrap radio/checkbox</h2>
       <div class="d-flex gap-2">
         <input class="form-check-input" type="checkbox" value="1" />
-        <input class="form-check-input check-success" type="checkbox" value="2" checked />
-        <input class="form-check-input check-info" type="checkbox" value="2" checked />
-        <input class="form-check-input check-danger" type="checkbox" value="2" checked />
-        <input class="form-check-input check-danger" type="checkbox" value="2" disabled checked />
-        <input class="form-check-input" name="radioDefault" type="radio" value="1" disabled />
-        <input class="form-check-input" name="radioDefault" type="radio" value="2" disabled checked />
+        <input
+          class="form-check-input check-success"
+          type="checkbox"
+          value="2"
+          checked
+        />
+        <input
+          class="form-check-input check-info"
+          type="checkbox"
+          value="2"
+          checked
+        />
+        <input
+          class="form-check-input check-danger"
+          type="checkbox"
+          value="2"
+          checked
+        />
+        <input
+          class="form-check-input check-danger"
+          type="checkbox"
+          value="2"
+          disabled
+          checked
+        />
+        <input
+          class="form-check-input"
+          name="radioDefault"
+          type="radio"
+          value="1"
+          disabled
+        />
+        <input
+          class="form-check-input"
+          name="radioDefault"
+          type="radio"
+          value="2"
+          disabled
+          checked
+        />
       </div>
     </div>
     <br />
@@ -77,18 +111,23 @@
       <h2>input</h2>
       <FormInput
         v-model="inputs.inputValue"
-        placeholder="placeholder"
-        @input="inputChange"
+        :placeholder="'default input'"
+        :clearable="true"
       />
-      <br />
       <FormInput
-        v-model="inputs.inputValue"
-        placeholder="placeholder"
+        v-model="inputs.inputValueReadonly"
+        :placeholder="'readonly input'"
+        disabled
+      />
+      <FormInput
+        v-model="inputs.inputValueInvalid"
+        :placeholder="'invalid input'"
         :invalid="true"
+        :invalid-text="text"
         :background-transparent="true"
         @input="inputChange"
+        @inputEvent="inputEventHandler"
       >
-        <template #invalid>invalid feedback</template>
       </FormInput>
     </div>
     <br />
@@ -210,9 +249,17 @@ export default {
       inputs: {
         radioValue: '1',
         checkboxValue: ['2'],
-        inputValue: '',
+        inputValue: 'default input value',
+        inputValueReadonly: 'readonly input value',
+        inputValueInvalid: 'invalid input value',
       },
     }
+  },
+  watch: {
+    test(nv, ov) {
+      console.log('new value', nv)
+      console.log('old value', ov)
+    },
   },
   methods: {
     checkboxChange(checkedValue) {
@@ -220,6 +267,9 @@ export default {
     },
     inputChange(inputValue) {
       console.log('onInput', inputValue)
+    },
+    inputEventHandler(inputEvent) {
+      console.log('onInput event', inputEvent)
     },
   },
 }
