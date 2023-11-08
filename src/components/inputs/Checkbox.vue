@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { oneOfType, bool, number, string, array } from 'vue-types'
+import { oneOfType, bool, number, string, array, object } from 'vue-types'
 export default {
   name: 'FormCheckbox',
   model: {
@@ -29,15 +29,18 @@ export default {
     event: 'change',
   },
   props: {
+    // localValue: oneOfType([bool(), number(), string(), array()]).def(false),
     localValue: array().def([]),
-    value: oneOfType([number(), string()]).def(''),
-    trueValue: bool().def(true),
-    falseValue: bool().def(false),
+    value: oneOfType([bool(), number(), string(), array(), object()]).def(''),
+    trueValue: oneOfType([number(), string()]).def(''),
+    falseValue: oneOfType([number(), string()]).def(''),
     disabled: bool().def(false),
   },
   computed: {
     checked() {
-      if (this.localValue instanceof Array) {
+      // checked時，若localValue(v-model傳入值)為陣列型態 把value加入localValue中
+      // localValue不是陣列型態 將trueValue賦值給localValue
+      if (this.localValue instanceof Array && this.value) {
         return this.localValue.includes(this.value)
       } else {
         return this.localValue === this.trueValue
@@ -49,7 +52,12 @@ export default {
       const value = checked
         ? [...this.localValue, this.value]
         : this.localValue.filter(item => item !== this.value)
-      this.$emit('change', value)
+      this.$emit('changeValue', value)
+    },
+    defaultHandler(checked) {
+      // 若有自定義 true/false value，則使用自定義的值
+      const value = (checked ? this.trueValue : this.falseValue) || checked;
+      this.$emit('changeValue', value)
     },
     handleChange(event) {
       const { checked } = event.target
@@ -57,8 +65,10 @@ export default {
       if (this.localValue instanceof Array) {
         this.arrayHandler(checked)
       } else {
-        this.$emit('change', checked ? this.trueValue : this.falseValue)
+        this.defaultHandler(checked)
       }
+
+      this.$emit('changeEvent', event);
     },
   },
 }

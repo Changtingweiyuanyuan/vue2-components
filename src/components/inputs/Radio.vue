@@ -62,7 +62,13 @@ export default {
         box-shadow: 2px 2px 1px black;
 
         &::after {
+          content: '✔';
           display: block;
+          top: -8px;
+          right: 4px;
+          width: 4px;
+          height: 4px;
+          color: $primary;
         }
       }
     }
@@ -77,26 +83,50 @@ export default {
       border: 1.5px $black solid;
       transition: background-color ease 0.2s, border-color ease 0.2s;
 
+      &::before,
       &::after {
-        content: '✔';
         display: none;
         position: absolute;
-        top: -8px;
-        right: 4px;
-        width: 4px;
-        height: 4px;
-        color: $primary;
       }
     }
 
     &:disabled {
       + div {
-        border-color: $gray-600;
+        border-color: $black;
+
+        &::before,
+        &::after {
+          content: '┊';
+          display: block;
+          top: -8px;
+          right: 0px;
+          width: 6px;
+          height: 6px;
+          color: $gray-800;
+          transform: rotate(45deg);
+        }
+        &::after {
+          top: 0px;
+          left: -8px;
+          right: 0px;
+          transform: rotate(315deg);
+        }
       }
 
       &:checked {
         + div {
-          background-color: $gray-600;
+          &::before {
+            display: none;
+          }
+          &::after {
+            content: '✔';
+            display: block;
+            left: unset;
+            top: -8px;
+            right: 2px;
+            color: $gray-800;
+            transform: none;
+          }
         }
       }
     }

@@ -42,7 +42,7 @@ export const STORYBOOK_CONSTANTS = Object.freeze({
       INVALID_TEXT: {
         NAME: 'invalidText',
         TYPE: 'string',
-        DESCRIPTION: '錯誤提示文字',
+        DESCRIPTION: '錯誤提示文字，數字超過100字 以 ... 替代',
         DEFAULT: INPUT_DEFAULT_TEXT.INVALID,
       },
       BACKGROUND_TRANSPARENT: {
@@ -53,14 +53,14 @@ export const STORYBOOK_CONSTANTS = Object.freeze({
       },
     },
     EMITS: {
-        INPUT_VALUE: {
-            NAME: 'inputValue',
-            DESCRIPTION: '輸入框發生改變時，此方法可接收輸入框的值',
-        },
-        INPUT_EVENT: {
-            NAME: 'inputEvent',
-            DESCRIPTION: '輸入框發生改變時，此方法可接收輸入框的事件',
-        },
+      INPUT_VALUE: {
+        NAME: 'inputValue',
+        DESCRIPTION: '輸入框發生改變時觸發，此方法可接收輸入框的值',
+      },
+      INPUT_EVENT: {
+        NAME: 'inputEvent',
+        DESCRIPTION: '輸入框發生改變時觸發，此方法可接收輸入框的事件',
+      },
     },
     PREFORMATTED_CODE: `
             import FormInput from "@/components/inputs/Input.vue";
@@ -77,5 +77,140 @@ export const STORYBOOK_CONSTANTS = Object.freeze({
                 @inputValue="inputChange" 
                 @inputEvent="inputEventHandler" 
             />`,
+  },
+  FORM_RADIO: {
+    PROPERTIES: {
+      VALUE: {
+        NAME: 'value',
+        TYPE: 'number/string',
+        DESCRIPTION: '預設值',
+        DEFAULT: '""',
+      },
+      //   LOCAL_VALUE: {
+      //     NAME: 'localValue',
+      //     TYPE: 'string',
+      //     DESCRIPTION: 'v-model的值',
+      //     DEFAULT: 'false',
+      //   },
+      CHECKED: {
+        NAME: 'checked',
+        TYPE: 'boolean',
+        DESCRIPTION: '是否checked',
+        DEFAULT: 'false',
+      },
+      DISABLED: {
+        NAME: 'disabled',
+        TYPE: 'boolean',
+        DESCRIPTION: '是否disabled',
+        DEFAULT: 'false',
+      },
+    },
+    EMITS: {
+      CHANGE: {
+        NAME: 'change',
+        DESCRIPTION:
+          'radio發生改變時觸發，此方法可接收checkbox的值(回傳值型態依照傳入value的型態)',
+      },
+    },
+    PREFORMATTED_CODE: `
+            import FormRadio from '@/components/inputs/Radio.vue'
+
+            <FormRadio 
+                v-model="radio"
+                value="1"
+                :checked="false"
+                :disabled="false"
+                @change="radioChange"
+            >
+                1 
+            </FormRadio>
+    `,
+  },
+  FORM_CHECKBOX: {
+    PROPERTIES: {
+      VALUE: {
+        NAME: 'value',
+        TYPE: 'boolean/number/string/array/object',
+        DESCRIPTION: '預設值',
+        DEFAULT: '""',
+      },
+      LOCAL_VALUE: {
+        NAME: 'localValue',
+        TYPE: 'array',
+        DESCRIPTION: 'v-model的值',
+        DEFAULT: 'false',
+      },
+      TRUE_VALUE: {
+        NAME: 'trueValue',
+        TYPE: 'number/string',
+        DESCRIPTION: '自定義回傳的true值',
+        DEFAULT: '""',
+      },
+      FALSE_VALUE: {
+        NAME: 'falseValue',
+        TYPE: 'number/string',
+        DESCRIPTION: '自定義回傳的false值',
+        DEFAULT: '""',
+      },
+      DISABLED: {
+        NAME: 'disabled',
+        TYPE: 'boolean',
+        DESCRIPTION: '是否disabled',
+        DEFAULT: 'false',
+      },
+    },
+    EMITS: {
+      CHANGE_VALUE: {
+        NAME: 'changeValue',
+        DESCRIPTION: 'checkbox發生改變時觸發，此方法可接收checkbox的值',
+      },
+      CHANGE_EVENT: {
+        NAME: 'changeEvent',
+        DESCRIPTION: 'checkbox發生改變時觸發，此方法可接收checkbox的事件',
+      },
+    },
+    PREFORMATTED_CODE: `
+            import FormCheckbox from '@/components/inputs/Checkbox.vue';
+            
+        ➊
+            <FormCheckbox
+                v-model="checkboxList"
+                value="1"
+                :disabled="false"
+                @changeValue="checkboxChange"
+                @changeEvent="checkboxChangeEvent"
+            >
+                1
+            </FormCheckbox>
+
+            data() {
+                return {
+                    checkboxList: [],
+                }
+            }
+
+        ➋
+            <FormCheckbox
+                v-for="(card, index) in checkboxCardList"
+                v-model="checkboxValueList"
+                :key="index"
+                :value="card"
+                @changeValue="checkboxChange"
+                @changeEvent="checkboxChangeEvent"
+            >
+                {{ card.name }}
+            </FormCheckbox>
+
+            data() {
+                return {
+                    checkboxValueList: [],
+                    checkboxCardList: [
+                        { name: "credit card", value: "50" },
+                        { name: "easy card", value: "100" },
+                        { name: "traffic card", value: "200" },
+                    ],
+                }
+            }
+    `,
   },
 })

@@ -10,6 +10,26 @@
           },
         }"
         >Form-Input</router-link
+      >｜
+      <router-link
+        :to="{
+          name: 'StorybookComponents',
+          params: {
+            componentsCategory: 'form',
+            components: 'radio',
+          },
+        }"
+        >Form-Radio</router-link
+      >｜
+      <router-link
+        :to="{
+          name: 'StorybookComponents',
+          params: {
+            componentsCategory: 'form',
+            components: 'checkbox',
+          },
+        }"
+        >Form-Checkbox</router-link
       >
     </div>
     <br />

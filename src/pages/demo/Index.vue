@@ -64,45 +64,53 @@
 
     <div class="p-2">
       <h2>radio</h2>
-      <FormRadio v-model="inputs.radioValue" value="1"> 1 </FormRadio>
-      <FormRadio v-model="inputs.radioValue" value="2"> 2 </FormRadio>
-      <FormRadio v-model="inputs.radioValue" :value="3"> 3 </FormRadio>
-      <FormRadio v-model="inputs.radioValue" :value="4"> 4 </FormRadio>
+      <FormRadio v-model="inputs.radioValue" value="1" @change="radioChange"> 1 </FormRadio>
+      <FormRadio v-model="inputs.radioValue" value="2" @change="radioChange"> 2 </FormRadio>
+      <FormRadio v-model="inputs.radioValue" :value="3" :checked="true" @change="radioChange"> 3 </FormRadio>
+      <FormRadio v-model="inputs.radioValue" :value="4" :disabled="true" @change="radioChange"> 4 </FormRadio>
     </div>
     <br />
 
     <div class="p-2">
       <h2>checkbox</h2>
       <FormCheckbox
-        :local-value="inputs.checkboxValue"
+        v-model="inputs.checkboxValueList"
         value="1"
-        @change="checkboxChange"
+        :true-value="'correct 1'"
+        :false-value="'incorrect 1'"
+        @changeValue="checkboxChange"
       >
         1
       </FormCheckbox>
       <FormCheckbox
-        :local-value="inputs.checkboxValue"
-        :disabled="true"
-        :checked="true"
+        v-model="inputs.checkboxValueList"
         value="2"
-        @change="checkboxChange"
-      >
+        :true-value="'correct 2'"
+        :false-value="'incorrect 2'"
+        @changeValue="checkboxChange"
+        >
         2
       </FormCheckbox>
       <FormCheckbox
-        :local-value="inputs.checkboxValue"
+        v-model="inputs.checkboxValueList"
+        value="3"
+        :true-value="'correct 3'"
+        :false-value="'incorrect 3'"
         :disabled="true"
-        :value="3"
-        @change="checkboxChange"
-      >
+        @changeValue="checkboxChange"
+        >
         3
       </FormCheckbox>
+
       <FormCheckbox
-        :local-value="inputs.checkboxValue"
-        :value="4"
-        @change="checkboxChange"
+        v-for="(card, index) in inputs.checkboxCardList"
+        v-model="inputs.checkboxCardValueList"
+        :key="index"
+        :value="card"
+        @changeValue="checkboxCardChange"
+        @changeEvent="checkboxChangeEvent"
       >
-        4
+        {{ card.name }}
       </FormCheckbox>
     </div>
     <br />
@@ -247,23 +255,32 @@ export default {
         },
       ],
       inputs: {
-        radioValue: '1',
-        checkboxValue: ['2'],
+        radioValue: '',
+        checkboxValueList: [],
+        checkboxCardValueList: [],
+        checkboxCardList: [
+          { name: "credit card", value: "50" },
+          { name: "easy card", value: "100" },
+          { name: "traffic card", value: "200" },
+        ],
         inputValue: 'default input value',
         inputValueReadonly: 'readonly input value',
         inputValueInvalid: 'invalid input value',
       },
     }
   },
-  watch: {
-    test(nv, ov) {
-      console.log('new value', nv)
-      console.log('old value', ov)
-    },
-  },
   methods: {
+    radioChange(changeValue) {
+      console.log('radio onChange value', changeValue)
+    },
     checkboxChange(checkedValue) {
-      console.log('checked', checkedValue)
+      console.log('checked value', checkedValue) // = this.inputs.checkboxValueList
+    },
+    checkboxCardChange(checkedValue) {
+      console.log('checked value', checkedValue)
+    },
+    checkboxChangeEvent(checkedEvent) {
+      console.log('checked event', checkedEvent)
     },
     inputChange(inputValue) {
       console.log('onInput value', inputValue)
