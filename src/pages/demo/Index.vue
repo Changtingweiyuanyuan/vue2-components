@@ -2,7 +2,7 @@
   <div class="demo p-3">
     <div class="p-2">
       <h2>bootstrap button</h2>
-      <div class="d-flex gap-2">
+      <div class="d-flex flex-wrap gap-2">
         <button class="btn btn-primary">button</button>
         <button class="btn btn-secondary">button</button>
         <button class="btn btn-success">button</button>
