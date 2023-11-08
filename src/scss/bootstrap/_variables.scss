@@ -38,18 +38,18 @@ $grays: (
 // fusv-enable
 
 // scss-docs-start color-variables
-$blue:          #7DB9DE;        // $primary
+$blue:          #7DB9DE;
 $indigo:        #211E55;
 $purple:        #592C63;
-$light-pink:    #DC9FB4 !default;
-$pink:          #D05A6E;
-$red:           #bc002c;        // $danger
+$light-pink:    #DC9FB4 !default; // $secondary
+$pink:          #D05A6E;          // $primary
+$red:           #bc002c;          // $danger
 $orange:        #CA7A2C;
-$yellow:        #FFB11B;        // $warning
+$yellow:        #FFB11B;          // $warning
 $morandi-green: #91AD70 !default;
-$green:         #36563C;        // $success
+$green:         #36563C;          // $success
 $teal:          #00AA90;
-$cyan:          #1E88A8;        // $info
+$cyan:          #1E88A8;          // $info
 // scss-docs-end color-variables
 
 // scss-docs-start colors-map
@@ -344,14 +344,14 @@ $theme-colors: (
 // scss-docs-end theme-text-variables
 
 // scss-docs-start theme-bg-subtle-variables
-// $primary-bg-subtle:       tint-color($primary, 80%) !default;
-// $secondary-bg-subtle:     tint-color($secondary, 80%) !default;
-// $success-bg-subtle:       tint-color($success, 80%) !default;
-// $info-bg-subtle:          tint-color($info, 80%) !default;
-// $warning-bg-subtle:       tint-color($warning, 80%) !default;
-// $danger-bg-subtle:        tint-color($danger, 80%) !default;
-// $light-bg-subtle:         mix($gray-100, $white) !default;
-// $dark-bg-subtle:          $gray-400 !default;
+$primary-bg-subtle:       tint-color($primary, 80%);
+$secondary-bg-subtle:     tint-color($secondary, 80%);
+$success-bg-subtle:       tint-color($success, 80%);
+$info-bg-subtle:          tint-color($info, 80%);
+$warning-bg-subtle:       tint-color($warning, 80%);
+$danger-bg-subtle:        tint-color($danger, 80%);
+$light-bg-subtle:         mix($gray-100, $white);
+$dark-bg-subtle:          $gray-400;
 // scss-docs-end theme-bg-subtle-variables
 
 // scss-docs-start theme-border-subtle-variables

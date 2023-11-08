@@ -2,6 +2,7 @@
   <div id="app">
     <router-link class="router-link" to="/">Intro</router-link>
     <router-link class="router-link" to="/demo">Demo</router-link>
+    <router-link class="router-link" to="/storybook">Storybook</router-link>
     <router-view />
   </div>
 </template>

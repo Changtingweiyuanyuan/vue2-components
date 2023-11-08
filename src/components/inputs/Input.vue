@@ -82,9 +82,8 @@ export default {
     event: 'inputValue',
   },
   props: {
-    value: VueTypes.oneOfType([VueTypes.number, VueTypes.string]).def(''),
+    value: VueTypes.string.def(''),
     placeholder: VueTypes.string.def(''),
-    error: VueTypes.bool.def(false),
     clearable: VueTypes.bool.def(false),
     disabled: VueTypes.bool.def(false),
     readonly: VueTypes.bool.def(false),
