@@ -213,4 +213,73 @@ export const STORYBOOK_CONSTANTS = Object.freeze({
             }
     `,
   },
+  UTILITY_TAG: {
+    PROPERTIES: {
+      VALUE: {
+        NAME: 'value',
+        TYPE: 'bool/number/string/array/object',
+        DESCRIPTION: 'tag資料',
+        DEFAULT: '""',
+      },
+      CLICKED: {
+        NAME: 'clicked',
+        TYPE: 'bool',
+        DESCRIPTION: '是否要傳送點擊事件',
+        DEFAULT: 'false',
+      },
+      DISABLED: {
+        NAME: 'disabled',
+        TYPE: 'bool',
+        DESCRIPTION: '是否disabled',
+        DEFAULT: 'false',
+      },
+      DELETE_TN: {
+        NAME: 'deleteBtn',
+        TYPE: 'bool',
+        DESCRIPTION: '是否出現刪除按鈕(點擊傳送事件)',
+        DEFAULT: 'false',
+      },
+      COLOR: {
+        NAME: 'color',
+        TYPE: 'string',
+        DESCRIPTION: '標籤顏色，可選擇primary、secondary、success、info、warning、danger、light、dark、gray-dark',
+        DEFAULT: '"warning"',
+      }
+      //   TYPE: {
+      //     NAME: 'type',
+      //     TYPE: 'string',
+      //     DESCRIPTION: '標籤類型',
+      //     DEFAULT: '""',
+      //   },
+      //   SIZE: {
+      //     NAME: 'size',
+      //     TYPE: 'string',
+      //     DESCRIPTION: '標籤大小',
+      //     DEFAULT: '""',
+      //   },
+    },
+    EMITS: {
+      CLICK: {
+        NAME: 'click',
+        DESCRIPTION: '點擊tag時觸發，此方法可接收tag的值',
+      },
+      DELETE_TAG: {
+        NAME: 'deleteTag',
+        DESCRIPTION: '點擊刪除按鈕時觸發，此方法可接收tag的值',
+      },
+    },
+    PREFORMATTED_CODE: `
+            import Tag from '@/components/utility/Tag.vue';
+            
+            <Tag 
+                value="1"
+                :theme="success" 
+                @click="oClick" 
+                @deleteTag="onClickDeleteBtn" 
+                :delete-btn="true"
+            >
+                tag
+            </Tag>
+    `,
+  },
 })

@@ -63,11 +63,53 @@
     <br />
 
     <div class="p-2">
+      <h2>tag</h2>
+      <Tag
+        value="1"
+        @click="tagOnClick"
+        @deleteTag="deleteTag"
+        :delete-btn="true"
+      >
+        tag
+      </Tag>
+      <Tag value="1" :color="'primary'" :delete-btn="true"> tag </Tag>
+      <Tag value="1" :color="'secondary'" :delete-btn="true"> tag </Tag>
+      <Tag value="1" :color="'success'" :delete-btn="true"> tag </Tag>
+      <Tag value="1" :color="'info'" :delete-btn="true"> tag </Tag>
+      <Tag value="1" :color="'danger'" :delete-btn="true"> tag </Tag>
+      <Tag value="1" :color="'white'" :delete-btn="true"> tag </Tag>
+      <Tag value="1" :color="'dark'" :delete-btn="true"> tag </Tag>
+      <Tag value="1" :color="'gray-dark'" :delete-btn="true"> tag </Tag>
+      <br>
+      <Tag value="2" @click="tagOnClick" disabled> disabled tag </Tag>
+      <Tag value="3" @click="tagOnClick" clicked> default tag </Tag>
+    </div>
+    <br />
+
+    <div class="p-2">
       <h2>radio</h2>
-      <FormRadio v-model="inputs.radioValue" value="1" @change="radioChange"> 1 </FormRadio>
-      <FormRadio v-model="inputs.radioValue" value="2" @change="radioChange"> 2 </FormRadio>
-      <FormRadio v-model="inputs.radioValue" :value="3" :checked="true" @change="radioChange"> 3 </FormRadio>
-      <FormRadio v-model="inputs.radioValue" :value="4" :disabled="true" @change="radioChange"> 4 </FormRadio>
+      <FormRadio v-model="inputs.radioValue" value="1" @change="radioChange">
+        1
+      </FormRadio>
+      <FormRadio v-model="inputs.radioValue" value="2" @change="radioChange">
+        2
+      </FormRadio>
+      <FormRadio
+        v-model="inputs.radioValue"
+        :value="3"
+        :checked="true"
+        @change="radioChange"
+      >
+        3
+      </FormRadio>
+      <FormRadio
+        v-model="inputs.radioValue"
+        :value="4"
+        :disabled="true"
+        @change="radioChange"
+      >
+        4
+      </FormRadio>
     </div>
     <br />
 
@@ -88,7 +130,7 @@
         :true-value="'correct 2'"
         :false-value="'incorrect 2'"
         @changeValue="checkboxChange"
-        >
+      >
         2
       </FormCheckbox>
       <FormCheckbox
@@ -98,7 +140,7 @@
         :false-value="'incorrect 3'"
         :disabled="true"
         @changeValue="checkboxChange"
-        >
+      >
         3
       </FormCheckbox>
 
@@ -210,6 +252,7 @@ import OrderedList from '@/components/utility/OrderedList.vue'
 import FormRadio from '@/components/inputs/Radio.vue'
 import FormCheckbox from '@/components/inputs/Checkbox.vue'
 import FormInput from '@/components/inputs/Input.vue'
+import Tag from '@/components/utility/Tag.vue'
 
 export default {
   name: 'DemoPage',
@@ -222,6 +265,7 @@ export default {
     FormRadio,
     FormCheckbox,
     FormInput,
+    Tag,
   },
   data() {
     return {
@@ -259,9 +303,9 @@ export default {
         checkboxValueList: [],
         checkboxCardValueList: [],
         checkboxCardList: [
-          { name: "credit card", value: "50" },
-          { name: "easy card", value: "100" },
-          { name: "traffic card", value: "200" },
+          { name: 'credit card', value: '50' },
+          { name: 'easy card', value: '100' },
+          { name: 'traffic card', value: '200' },
         ],
         inputValue: 'default input value',
         inputValueReadonly: 'readonly input value',
@@ -287,6 +331,12 @@ export default {
     },
     inputEventHandler(inputEvent) {
       console.log('onInput event', inputEvent)
+    },
+    tagOnClick(tagValue) {
+      console.log('tag on click', tagValue)
+    },
+    deleteTag(tagValue) {
+      console.log('tag on click delete btn', tagValue)
     },
   },
 }

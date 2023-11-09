@@ -39,7 +39,7 @@ $grays: (
 
 // scss-docs-start color-variables
 $blue:          #7DB9DE;
-$indigo:        #211E55;
+$indigo:        #211E55;          // $info
 $purple:        #592C63;
 $light-pink:    #DC9FB4 !default; // $secondary
 $pink:          #D05A6E;          // $primary
@@ -305,7 +305,7 @@ $color-contrast-light:     $white;
 $primary:       $pink;
 $secondary:     $light-pink;
 $success:       $green;
-$info:          $cyan;
+$info:          $indigo;
 $warning:       $yellow;
 $danger:        $red;
 $light:         $white;
@@ -793,7 +793,7 @@ $font-sizes: (
 // $table-variants: (
 //   "primary":    shift-color($primary, $table-bg-scale),
 //   "secondary":  shift-color($secondary, $table-bg-scale),
-//   "success":    shift-color($success, $table-bg-scale),
+  // "success":    shift-color($success, $table-bg-scale),
 //   "info":       shift-color($info, $table-bg-scale),
 //   "warning":    shift-color($warning, $table-bg-scale),
 //   "danger":     shift-color($danger, $table-bg-scale),

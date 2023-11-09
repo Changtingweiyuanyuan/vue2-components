@@ -126,6 +126,9 @@ export default {
       .default {
         width: 20%;
       }
+      .description {
+        width: 40%;
+      }
     }
   }
 }

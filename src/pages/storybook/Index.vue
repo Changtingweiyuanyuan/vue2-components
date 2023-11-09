@@ -30,6 +30,16 @@
           },
         }"
         >Form-Checkbox</router-link
+      >｜
+      <router-link
+        :to="{
+          name: 'StorybookComponents',
+          params: {
+            componentsCategory: 'utility',
+            components: 'tag',
+          },
+        }"
+        >Utility-Tag</router-link
       >
     </div>
     <br />
