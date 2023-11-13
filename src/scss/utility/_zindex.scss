@@ -1,0 +1,6 @@
+
+@each $name, $zindex in $theme-zindex {
+    .#{$name} {
+      z-index: #{$zindex};
+    }
+  }

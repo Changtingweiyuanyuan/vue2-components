@@ -7,3 +7,18 @@ $link-default-color:          $black !default;
 $link-default-bg-color:       $white !default;
 $btn-link-transparency-100:   #ffffff00;
 // scss-docs-end btn-variables
+
+// scss-docs-start theme-zindex-map
+$theme-zindex: (
+  "zindex-dropdown":            $zindex-dropdown,
+  "zindex-sticky":              $zindex-sticky,
+  "zindex-fixed":               $zindex-fixed,
+  "zindex-offcanvas-backdrop":  $zindex-offcanvas-backdrop,
+  "zindex-offcanvas":           $zindex-offcanvas,
+  "zindex-modal-backdrop":      $zindex-modal-backdrop,
+  "zindex-modal":               $zindex-modal,
+  "zindex-popover":             $zindex-popover,
+  "zindex-tooltip":             $zindex-tooltip,
+  "zindex-toast":               $zindex-toast,
+);
+// scss-docs-end theme-zindex-map
