@@ -1,17 +1,7 @@
-import Headline from "./components";
-import Paragraph from './components/utility/Paragraph.vue'
-import Container from './components/utility/Container.vue'
-import AffixBar from './components/utility/AffixBar.vue'
-import OrderedList from './components/utility/OrderedList.vue'
 import FormRadio from './components/inputs/Radio.vue'
 import FormCheckbox from './components/inputs/Checkbox.vue'
 import FormInput from './components/inputs/Input.vue'
+import FormDropdown from './components/inputs/Dropdown.vue'
+import UtilityTag from './components/utility/Tag.vue'
 
-export { Headline,
-    Paragraph,
-    Container,
-    AffixBar,
-    OrderedList,
-    FormRadio,
-    FormCheckbox,
-    FormInput };
+export { FormRadio, FormCheckbox, FormInput, FormDropdown, UtilityTag }
