@@ -9,6 +9,7 @@
             components: 'input',
           },
         }"
+        :class="{ 'storybook--active': changeFocusComponent('input') }"
         >Form-Input</router-link
       >｜
       <router-link
@@ -19,6 +20,7 @@
             components: 'radio',
           },
         }"
+        :class="{ 'storybook--active': changeFocusComponent('radio') }"
         >Form-Radio</router-link
       >｜
       <router-link
@@ -29,6 +31,7 @@
             components: 'checkbox',
           },
         }"
+        :class="{ 'storybook--active': changeFocusComponent('checkbox') }"
         >Form-Checkbox</router-link
       >｜
       <router-link
@@ -39,6 +42,7 @@
             components: 'dropdown',
           },
         }"
+        :class="{ 'storybook--active': changeFocusComponent('dropdown') }"
         >Form-Dropdown</router-link
       >｜
       <router-link
@@ -49,6 +53,7 @@
             components: 'tag',
           },
         }"
+        :class="{ 'storybook--active': changeFocusComponent('tag') }"
         >Utility-Tag</router-link
       >
     </div>
@@ -60,7 +65,23 @@
 <script>
 export default {
   name: 'StorybookName',
+  data() {
+    return {
+      focusComponent: 'input',
+    }
+  },
+  methods: {
+    changeFocusComponent(component) {
+      return component === this.$route.params.components
+    },
+  },
 }
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.storybook {
+  &--active {
+    color: $primary;
+  }
+}
+</style>
