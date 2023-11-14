@@ -1,18 +1,53 @@
 <template>
   <div
+    ref="dropdown"
     class="form-dropdown w-100 position-relative rounded my-2"
     :class="{ 'form-dropdown--menu-open my-1': isMenuOpen }"
     @click="onDropdownClick"
   >
-    <!-- @focus="onFocus" -->
     <!-- @keydown="onKeyup" 搜尋功能 -->
     <div
       ref="input"
-      class="form-dropdown__control border rounded px-2 py-1"
-      :class="[{ 'form-dropdown__control--disabled': disabled }]"
+      class="form-dropdown__control border rounded"
+      :class="[
+        {
+          'bg-white': !disabled,
+          'form-dropdown__control--disabled cursor-not-allowed': disabled,
+          'px-2 py-1': selectType === 'single',
+          'px-1': selectType === 'multiple',
+        },
+      ]"
       @mousedown.prevent
     >
-      <span class="h4">
+      <div v-if="selectType === 'multiple'" class="d-flex">
+        <div v-if="multiValue.length > 0">
+          <Tag
+            v-for="(option, i) in multiValue"
+            :key="i"
+            :value="option"
+            :color="color"
+            :delete-btn="deleteBtn"
+            :disabled="disabled"
+            @delete="
+              onOptionClick(
+                multiValue.filter(item => item.value !== option.value)
+              )
+            "
+          >
+            {{ option.text }}
+          </Tag>
+        </div>
+        <div v-else>{{ placeholder }}</div>
+      </div>
+
+      <span
+        v-else
+        class="t5"
+        :class="{
+          'text-danger': selectType === 'single' && !disabled,
+          'text-gray-darker': disabled,
+        }"
+      >
         {{ controlFieldText }}
       </span>
     </div>
@@ -20,21 +55,35 @@
     <transition name="fade" :duration="100">
       <div
         v-show="isMenuOpen && selectOptions.length > 0"
-        class="form-dropdown__menu w-100 position-absolute border rounded zindex-dropdown bg-white"
+        class="form-dropdown__menu w-100 position-absolute border rounded zindex-dropdown bg-white overflow-scroll"
+        :style="{ maxHeight: menuHeight }"
       >
         <div
           v-for="(option, i) in selectOptions"
           :key="i"
-          class="form-dropdown__option px-3 py-1"
+          class="form-dropdown__option px-3 py-1 cursor-pointer"
           :class="{
             'bg-success-subtle': hoveredOptionIndex == i,
             'form-dropdown__option__text--hover':
               hoveredOptionIndex == i && i != selectOptions.length - 1,
           }"
           @mouseover="onHover(i)"
-          @click="onOptionClick(option)"
         >
-          <span class="form-dropdown__option__text">{{ option.text }}</span>
+          <FormCheckbox
+            v-if="selectType === 'multiple'"
+            :local-value="multiValue"
+            :value="option"
+            @changeValue="onOptionClick"
+          >
+            {{ option.text }}
+          </FormCheckbox>
+          <div
+            v-else
+            class="form-dropdown__option__text"
+            @click="onOptionClick([option])"
+          >
+            {{ option.text }}
+          </div>
         </div>
       </div>
     </transition>
@@ -42,24 +91,38 @@
 </template>
 
 <script>
-import { bool, string, array, any, arrayOf, shape } from 'vue-types'
+import {
+  oneOfType,
+  bool,
+  number,
+  string,
+  array,
+  any,
+  arrayOf,
+  shape,
+} from 'vue-types'
+import FormCheckbox from './Checkbox.vue'
+import Tag from '../utility/Tag.vue'
 export default {
   name: 'UtilityTag',
+  components: {
+    FormCheckbox,
+    Tag,
+  },
   props: {
-    placeholder: string().def('placeholder'),
+    placeholder: string().def(''),
     selectOptions: array().def([]),
-    selectType: string().def('single'),
+    selectType: string().def('single'), //single, multiple
     multiValue: arrayOf(
       shape({
         text: string().def(''),
         value: any().def(0),
       })
     ).def([]),
-    listShow: bool().def(true),
     disabled: bool().def(false),
-    //   highLight: bool().def(false),
-    //   deleteBtn: bool().def(false),
-    //   color: string().def('warning'),
+    deleteBtn: bool().def(true),
+    color: string().def('white'),
+    menuMaxHeight: oneOfType([number(), string()]).def(200),
   },
   data() {
     return {
@@ -69,10 +132,18 @@ export default {
   },
   computed: {
     controlFieldText() {
-      console.log('multiValue', this.multiValue)
-      return this.multiValue.length > 0
-        ? this.multiValue[0].text
-        : this.placeholder
+      if (this.selectType === 'single') {
+        return this.multiValue.length > 0
+          ? this.multiValue[0].text
+          : this.placeholder
+      }
+      return false
+    },
+    menuHeight() {
+      const maxHeightString = String(this.menuMaxHeight)
+      return maxHeightString.includes('px')
+        ? maxHeightString
+        : `${maxHeightString}px`
     },
   },
   watch: {
@@ -94,9 +165,7 @@ export default {
   },
   methods: {
     clickHandler(e) {
-      let isFormDropdown = document
-        .querySelector('.form-dropdown')
-        .contains(e.target)
+      let isFormDropdown = this.$refs['dropdown'].contains(e.target)
 
       if (!isFormDropdown) {
         this.isMenuOpen = false
@@ -108,7 +177,7 @@ export default {
       }
     },
     onOptionClick(option) {
-      this.$emit('change', [option])
+      this.$emit('change', option)
     },
     onFocus() {
       console.log('on focus')
@@ -167,6 +236,7 @@ export default {
   &--menu-open {
     border-top: 1px $black solid !important;
     border-bottom: 1px $black solid !important;
+    box-shadow: 2px 2px 1px $black;
 
     &::before {
       content: '';
@@ -176,6 +246,12 @@ export default {
       position: absolute;
       left: 0px;
       top: -4px;
+    }
+  }
+
+  &__control {
+    &--disabled {
+      background: $gray-200;
     }
   }
 

@@ -109,7 +109,7 @@ export const STORYBOOK_CONSTANTS = Object.freeze({
       CHANGE: {
         NAME: 'change',
         DESCRIPTION:
-          'radio發生改變時觸發，此方法可接收checkbox的值(回傳值型態依照傳入value的型態)',
+          'radio發生改變時觸發，此方法可接收radio的值(回傳值型態依照傳入value的型態)',
       },
     },
     PREFORMATTED_CODE: `
@@ -131,13 +131,13 @@ export const STORYBOOK_CONSTANTS = Object.freeze({
       VALUE: {
         NAME: 'value',
         TYPE: 'boolean/number/string/array/object',
-        DESCRIPTION: '預設值',
+        DESCRIPTION: '預設值，若帶object 需指定「value」key',
         DEFAULT: '""',
       },
       LOCAL_VALUE: {
         NAME: 'localValue',
         TYPE: 'array',
-        DESCRIPTION: 'v-model的值',
+        DESCRIPTION: 'v-model的值，若帶object 需指定「value」key',
         DEFAULT: 'false',
       },
       TRUE_VALUE: {
@@ -213,12 +213,129 @@ export const STORYBOOK_CONSTANTS = Object.freeze({
             }
     `,
   },
+  FORM_DROPDOWN: {
+    PROPERTIES: {
+      SELECT_OPTIONS: {
+        NAME: 'selectOptions',
+        TYPE: 'array',
+        DESCRIPTION: '下拉選單的選項，組成為[{value: "", text: ""}]',
+        DEFAULT: '[]',
+      },
+      MULTI_VALUE: {
+        NAME: 'multiValue',
+        TYPE: 'array',
+        DESCRIPTION: '下拉選單中 已被選取的值，組成為[{value: "", text: ""}]',
+        DEFAULT: '[]',
+      },
+      SELECT_TYPE: {
+        NAME: 'selectType',
+        TYPE: 'string',
+        DESCRIPTION: '下拉選單的類型，可選擇single、multiple',
+        DEFAULT: '"single"',
+      },
+      PLACEHOLDER: {
+        NAME: 'placeholder',
+        TYPE: 'string',
+        DESCRIPTION: '下拉選單尚未被勾選的預設文字',
+        DEFAULT: '""',
+      },
+      DISABLED: {
+        NAME: 'disabled',
+        TYPE: 'boolean',
+        DESCRIPTION: '是否disabled',
+        DEFAULT: 'false',
+      },
+      DELETE_BTN: {
+        NAME: 'deleteBtn',
+        TYPE: 'boolean',
+        DESCRIPTION: 'selectType為multiple時，標籤是否出現刪除按鈕',
+        DEFAULT: 'true',
+      },
+      COLOR: {
+        NAME: 'color',
+        TYPE: 'string',
+        DESCRIPTION:
+          '標籤顏色，可選擇primary、secondary、success、info、warning、danger、light、dark、gray-dark',
+        DEFAULT: '"white"',
+      },
+      MENU_MAX_HEIGHT: {
+        NAME: 'menuMaxHeight',
+        TYPE: 'number/string',
+        DESCRIPTION: '下拉選單menu高度',
+        DEFAULT: '"200"',
+      },
+    },
+    EMITS: {
+      CHANGE_VALUE: {
+        NAME: 'change',
+        DESCRIPTION: '下拉選單發生改變時，此方法可接收下拉選單被選取的值',
+      },
+    },
+    PREFORMATTED_CODE: `
+            import FormDropdown from '@/components/inputs/Dropdown.vue';
+            
+        ➊
+            <FormDropdown
+                :select-options="singleDropdownOptions"
+                :placeholder="'單選'"
+                :multi-value="singleDropdownValue"
+                disabled
+                @change="singleDropdownChange"
+            />
+
+            data() {
+                return {
+                    singleDropdownValue: [],
+                    singleDropdownOptions: [
+                        { text: 'text1', value: 'value1' },
+                        { text: 'text2', value: 'value2' },
+                        { text: 'text3', value: 'value3' },
+                    ]
+                }
+            }
+            methods: {
+                singleDropdownChange(value) {
+                    this.singleDropdownValue = value;
+                }
+            }
+
+        ➋
+            <FormDropdown
+                :select-options="multipleDropdownOptions"
+                :placeholder="'多選'"
+                :select-type="'multiple'"
+                disabled
+                :multi-value="multipleDropdownValues"
+                @change="multipleDropdownChange"
+            />
+
+            data() {
+                return {
+                    multipleDropdownValues: [],
+                    multipleDropdownOptions: [
+                        { text: 'text1', value: 'value1' },
+                        { text: 'text2', value: 'value2' },
+                        { text: 'text3', value: 'value3' },
+                        { text: 'text4', value: 'value4' },
+                        { text: 'text5', value: 'value5' },
+                        { text: 'text6', value: 'value6' },
+                        { text: 'text7', value: 'value7' },
+                    ],
+                }
+            }
+            methods: {
+                multipleDropdownChange(value) {
+                    this.multipleDropdownValues = value;
+                }
+            }
+    `,
+  },
   UTILITY_TAG: {
     PROPERTIES: {
       VALUE: {
         NAME: 'value',
         TYPE: 'bool/number/string/array/object',
-        DESCRIPTION: 'tag資料',
+        DESCRIPTION: 'tag資料，若帶object 需指定「value」key',
         DEFAULT: '""',
       },
       CLICKED: {
@@ -242,9 +359,10 @@ export const STORYBOOK_CONSTANTS = Object.freeze({
       COLOR: {
         NAME: 'color',
         TYPE: 'string',
-        DESCRIPTION: '標籤顏色，可選擇primary、secondary、success、info、warning、danger、light、dark、gray-dark',
+        DESCRIPTION:
+          '標籤顏色，可選擇primary、secondary、success、info、warning、danger、light、dark、gray-dark',
         DEFAULT: '"warning"',
-      }
+      },
       //   TYPE: {
       //     NAME: 'type',
       //     TYPE: 'string',

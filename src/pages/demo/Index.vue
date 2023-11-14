@@ -1,5 +1,5 @@
 <template>
-  <div class="demo p-3">
+  <div class="demo p-3 bg-success-subtle">
     <div class="p-2">
       <h2>bootstrap button</h2>
       <div class="d-flex flex-wrap gap-2">
@@ -14,6 +14,7 @@
       </div>
     </div>
     <br />
+
     <div class="p-2">
       <h2>bootstrap radio/checkbox</h2>
       <div class="d-flex gap-2">
@@ -62,14 +63,11 @@
     </div>
     <br />
 
+    <hr />
+
     <div class="p-2">
       <h2>tag</h2>
-      <Tag
-        value="1"
-        @click="tagOnClick"
-        @deleteTag="deleteTag"
-        :delete-btn="true"
-      >
+      <Tag value="1" @click="tagOnClick" @delete="deleteTag" :delete-btn="true">
         tag
       </Tag>
       <Tag value="1" :color="'primary'" :delete-btn="true"> tag </Tag>
@@ -80,9 +78,28 @@
       <Tag value="1" :color="'white'" :delete-btn="true"> tag </Tag>
       <Tag value="1" :color="'dark'" :delete-btn="true"> tag </Tag>
       <Tag value="1" :color="'gray-dark'" :delete-btn="true"> tag </Tag>
-      <br>
+      <br />
       <Tag value="2" @click="tagOnClick" disabled> disabled tag </Tag>
       <Tag value="3" @click="tagOnClick" clicked> default tag </Tag>
+    </div>
+    <br />
+
+    <div class="p-2">
+      <h2>dropdown</h2>
+
+      <FormDropdown
+        :select-options="singleDropdownOptions"
+        :placeholder="'單選測試'"
+        :multi-value="singleDropdownValue"
+        @change="singleDropdownChange"
+      />
+      <FormDropdown
+        :select-options="multipleDropdownOptions"
+        :placeholder="'多選測試'"
+        :select-type="'multiple'"
+        :multi-value="multipleDropdownValues"
+        @change="multipleDropdownChange"
+      />
     </div>
     <br />
 
@@ -182,6 +199,8 @@
     </div>
     <br />
 
+    <hr />
+
     <div class="w-100 p-2">
       <h2>headline</h2>
       <headline
@@ -235,7 +254,7 @@
 
     <div class="w-100 p-2">
       <h2>container</h2>
-      <container :title="'container'">
+      <container :title="'container'" :background-color="'#d7ddd8'">
         <template #content>{{ text }}</template>
       </container>
     </div>
@@ -253,6 +272,7 @@ import FormRadio from '@/components/inputs/Radio.vue'
 import FormCheckbox from '@/components/inputs/Checkbox.vue'
 import FormInput from '@/components/inputs/Input.vue'
 import Tag from '@/components/utility/Tag.vue'
+import FormDropdown from '@/components/inputs/Dropdown.vue'
 
 export default {
   name: 'DemoPage',
@@ -266,6 +286,7 @@ export default {
     FormCheckbox,
     FormInput,
     Tag,
+    FormDropdown,
   },
   data() {
     return {
@@ -300,6 +321,7 @@ export default {
       ],
       inputs: {
         radioValue: '',
+        FormDropdownValue: [],
         checkboxValueList: [],
         checkboxCardValueList: [],
         checkboxCardList: [
@@ -311,6 +333,25 @@ export default {
         inputValueReadonly: 'readonly input value',
         inputValueInvalid: 'invalid input value',
       },
+      singleDropdownValue: [{ text: 'text1', value: 'value1' }],
+      singleDropdownOptions: [
+        { text: 'text1', value: 'value1' },
+        { text: 'text2', value: 'value2' },
+        { text: 'text3', value: 'value3' },
+      ],
+      multipleDropdownValues: [
+        { text: 'text1', value: 'value1' },
+        { text: 'text2', value: 'value2' },
+      ],
+      multipleDropdownOptions: [
+        { text: 'text1', value: 'value1' },
+        { text: 'text2', value: 'value2' },
+        { text: 'text3', value: 'value3' },
+        { text: 'text4', value: 'value4' },
+        { text: 'text5', value: 'value5' },
+        { text: 'text6', value: 'value6' },
+        { text: 'text7', value: 'value7' },
+      ],
     }
   },
   methods: {
@@ -337,6 +378,14 @@ export default {
     },
     deleteTag(tagValue) {
       console.log('tag on click delete btn', tagValue)
+    },
+    singleDropdownChange(option) {
+      if (!option) return
+      this.singleDropdownValue = option
+    },
+    multipleDropdownChange(option) {
+      if (!option) return
+      this.multipleDropdownValues = option
     },
   },
 }

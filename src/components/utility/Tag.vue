@@ -2,7 +2,7 @@
   <div class="utility-tag btn t6 m-1 py-0" :class="tagClasses" @click="onClick">
     <slot></slot>
     <span
-      v-if="deleteBtn && value.length > 0"
+      v-if="deleteBtn && value !== ''"
       class="utility-tag__icons cursor-pointer t6 ms-1"
       @click.stop="onClickDeleteBtn"
     >
@@ -58,7 +58,7 @@ export default {
     },
     onClickDeleteBtn() {
       if (this.disabled) return
-      this.$emit('deleteTag', this.value)
+      this.$emit('delete', this.value)
     },
   },
 }
@@ -66,6 +66,12 @@ export default {
 
 <style lang="scss" scoped>
 .utility-tag {
+  &.btn {
+    &:hover {
+      box-shadow: inset 1px 1px 2px $white, inset -1px -1px 2px $black;
+    }
+  }
+
   &__icons {
     top: 2px;
     right: 0px;

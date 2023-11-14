@@ -41,6 +41,10 @@ export default {
       // checked時，若localValue(v-model傳入值)為陣列型態 把value加入localValue中
       // localValue不是陣列型態 將trueValue賦值給localValue
       if (this.localValue instanceof Array && this.value) {
+        // localValue:[{text:'text', value: value}], value:{text:'text', value: value}
+        if (this.value?.value) {
+          return this.localValue.map(e => e.value).includes(this.value.value)
+        }
         return this.localValue.includes(this.value)
       } else {
         return this.localValue === this.trueValue
@@ -51,12 +55,14 @@ export default {
     arrayHandler(checked) {
       const value = checked
         ? [...this.localValue, this.value]
+        : this.value?.value
+        ? this.localValue.filter(item => item.value !== this.value.value)
         : this.localValue.filter(item => item !== this.value)
       this.$emit('changeValue', value)
     },
     defaultHandler(checked) {
       // 若有自定義 true/false value，則使用自定義的值
-      const value = (checked ? this.trueValue : this.falseValue) || checked;
+      const value = (checked ? this.trueValue : this.falseValue) || checked
       this.$emit('changeValue', value)
     },
     handleChange(event) {
@@ -68,7 +74,7 @@ export default {
         this.defaultHandler(checked)
       }
 
-      this.$emit('changeEvent', event);
+      this.$emit('changeEvent', event)
     },
   },
 }
