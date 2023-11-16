@@ -9,12 +9,13 @@
 
 <script>
 export default {
-  name: "App",
+  name: 'App',
   components: {},
-};
+}
 </script>
 
 <style lang="scss">
+@import '@/scss/global.import.scss';
 #app {
   position: relative;
   font-family: Avenir, Helvetica, Arial, sans-serif;

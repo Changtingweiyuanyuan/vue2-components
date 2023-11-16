@@ -2,8 +2,6 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './route/router'
 
-import './scss/global.import.scss'
-
 Vue.config.productionTip = false
 
 new Vue({
