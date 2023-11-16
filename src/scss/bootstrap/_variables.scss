@@ -400,8 +400,8 @@ $dark-bg-subtle:          $gray-400;
 
 // Prefix for :root CSS variables
 
-$variable-prefix:             cy-; // Deprecated in v5.2.0 for the shorter `$prefix`
-$prefix:                      $variable-prefix !default;
+// $variable-prefix:             bs-; // Deprecated in v5.2.0 for the shorter `$prefix`
+// $prefix:                      $variable-prefix;
 
 // Gradient
 //

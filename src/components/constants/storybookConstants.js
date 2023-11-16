@@ -55,11 +55,13 @@ export const STORYBOOK_CONSTANTS = Object.freeze({
     EMITS: {
       INPUT_VALUE: {
         NAME: 'inputValue',
-        DESCRIPTION: '輸入框發生改變時觸發，此方法可接收輸入框的值',
+        DESCRIPTION:
+          '輸入框發生改變時觸發，此方法可接收輸入框的值(有需要獲取才使用)',
       },
       INPUT_EVENT: {
         NAME: 'inputEvent',
-        DESCRIPTION: '輸入框發生改變時觸發，此方法可接收輸入框的事件',
+        DESCRIPTION:
+          '輸入框發生改變時觸發，此方法可接收輸入框的事件(有需要獲取才使用)',
       },
     },
     PREFORMATTED_CODE: `
