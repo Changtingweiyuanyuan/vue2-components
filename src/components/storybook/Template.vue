@@ -37,9 +37,10 @@
         >
           <div class="name px-2 py-1 text-break">{{ property['NAME'] }}</div>
           <div class="type px-2 py-1 text-break">{{ property['TYPE'] }}</div>
-          <div class="description flex-fill px-2 py-1 text-break">
-            {{ property['DESCRIPTION'] }}
-          </div>
+          <div
+            class="description flex-fill px-2 py-1 text-break"
+            v-html="property['DESCRIPTION']"
+          />
           <div class="default px-2 py-1 text-break">
             {{ property['DEFAULT'] }}
           </div>

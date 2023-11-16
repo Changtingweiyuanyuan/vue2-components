@@ -91,6 +91,7 @@
         :select-options="singleDropdownOptions"
         :placeholder="'單選測試'"
         :multi-value="singleDropdownValue"
+        :color="'danger'"
         @change="singleDropdownChange"
       />
       <FormDropdown
@@ -333,7 +334,7 @@ export default {
         inputValueReadonly: 'readonly input value',
         inputValueInvalid: 'invalid input value',
       },
-      singleDropdownValue: [{ text: 'text1', value: 'value1' }],
+      singleDropdownValue: [],
       singleDropdownOptions: [
         { text: 'text1', value: 'value1' },
         { text: 'text2', value: 'value2' },

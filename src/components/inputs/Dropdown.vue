@@ -1,14 +1,14 @@
 <template>
   <div
     ref="dropdown"
-    class="form-dropdown w-100 position-relative rounded my-2"
+    class="form-dropdown w-100 position-relative rounded my-2 t5 text-black"
     :class="{ 'form-dropdown--menu-open my-1': isMenuOpen }"
     @click="onDropdownClick"
   >
     <!-- @keydown="onKeyup" 搜尋功能 -->
     <div
       ref="input"
-      class="form-dropdown__control border rounded"
+      class="form-dropdown__control border rounded cursor-pointer text-black"
       :class="[
         {
           'bg-white': !disabled,
@@ -25,7 +25,7 @@
             v-for="(option, i) in multiValue"
             :key="i"
             :value="option"
-            :color="color"
+            :color="color || 'white'"
             :delete-btn="deleteBtn"
             :disabled="disabled"
             @delete="
@@ -37,15 +37,16 @@
             {{ option.text }}
           </Tag>
         </div>
-        <div v-else>{{ placeholder }}</div>
+        <div v-else class="text-gray-dark t6 px-1 py-2">{{ placeholder }}</div>
       </div>
 
       <span
         v-else
-        class="t5"
+        class="t6 px-1 py-2"
         :class="{
-          'text-danger': selectType === 'single' && !disabled,
           'text-gray-darker': disabled,
+          'text-gray-dark': multiValue.length == 0,
+          [`text-${color}`]: multiValue.length > 0 && !!color,
         }"
       >
         {{ controlFieldText }}
@@ -121,7 +122,7 @@ export default {
     ).def([]),
     disabled: bool().def(false),
     deleteBtn: bool().def(true),
-    color: string().def('white'),
+    color: string().def(''),
     menuMaxHeight: oneOfType([number(), string()]).def(200),
   },
   data() {

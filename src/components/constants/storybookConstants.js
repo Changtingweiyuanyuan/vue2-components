@@ -220,19 +220,19 @@ export const STORYBOOK_CONSTANTS = Object.freeze({
       SELECT_OPTIONS: {
         NAME: 'selectOptions',
         TYPE: 'array',
-        DESCRIPTION: '下拉選單的選項，組成為[{value: "", text: ""}]',
+        DESCRIPTION: '下拉選單的選項<br>組成為[{value: "", text: ""}]',
         DEFAULT: '[]',
       },
       MULTI_VALUE: {
         NAME: 'multiValue',
         TYPE: 'array',
-        DESCRIPTION: '下拉選單中 已被選取的值，組成為[{value: "", text: ""}]',
+        DESCRIPTION: '下拉選單中 已被選取的值<br>組成為[{value: "", text: ""}]',
         DEFAULT: '[]',
       },
       SELECT_TYPE: {
         NAME: 'selectType',
         TYPE: 'string',
-        DESCRIPTION: '下拉選單的類型，可選擇single、multiple',
+        DESCRIPTION: '下拉選單的類型<br>可選擇single、multiple',
         DEFAULT: '"single"',
       },
       PLACEHOLDER: {
@@ -257,7 +257,7 @@ export const STORYBOOK_CONSTANTS = Object.freeze({
         NAME: 'color',
         TYPE: 'string',
         DESCRIPTION:
-          '標籤顏色，可選擇primary、secondary、success、info、warning、danger、light、dark、gray-dark',
+          '單選為被選取文字顏色 多選為標籤顏色<br>可選擇primary、secondary、success、info、warning、danger、light、dark、gray-dark',
         DEFAULT: '"white"',
       },
       MENU_MAX_HEIGHT: {
