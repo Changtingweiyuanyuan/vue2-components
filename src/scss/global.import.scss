@@ -1,10 +1,10 @@
 // include variables
-@import "./global.variables";
+// @import "./global.variables";
 
 // include bootstrap
 @import "./bootstrap/bootstrap";
 
-// include bootstrap覆蓋檔案 - type
+// include bootstrap覆蓋檔案 - 引入順序參照@/scss/bootstrap/bootstrap
 @import "./bootstrap/type";
 @import "./bootstrap/buttons";
 @import "./bootstrap/forms/form-check";

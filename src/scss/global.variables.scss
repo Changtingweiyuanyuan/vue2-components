@@ -4,3 +4,8 @@
 // custom bootstrap variables
 @import './bootstrap/variables';
 @import './utility/variables';
+// custom include bootstrap
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import "~bootstrap/scss/maps";
+@import "~bootstrap/scss/mixins";
