@@ -1,61 +1,23 @@
 <template>
   <div class="storybook p-3">
-    <div>
+    <div class="d-flex flex-wrap align-items-center gap-2">
       <router-link
+        v-for="(component, i) in components"
+        :key="i"
         :to="{
           name: 'StorybookComponents',
           params: {
-            componentsCategory: 'form',
-            components: 'input',
+            componentsCategory: component.category,
+            components: component.name,
           },
         }"
-        :class="{ 'storybook--active': changeFocusComponent('input') }"
-        >Form-Input</router-link
-      >｜
-      <router-link
-        :to="{
-          name: 'StorybookComponents',
-          params: {
-            componentsCategory: 'form',
-            components: 'radio',
-          },
+        class="btn btn-success"
+        :class="{
+          'storybook--active': changeFocusComponent(component.name),
         }"
-        :class="{ 'storybook--active': changeFocusComponent('radio') }"
-        >Form-Radio</router-link
-      >｜
-      <router-link
-        :to="{
-          name: 'StorybookComponents',
-          params: {
-            componentsCategory: 'form',
-            components: 'checkbox',
-          },
-        }"
-        :class="{ 'storybook--active': changeFocusComponent('checkbox') }"
-        >Form-Checkbox</router-link
-      >｜
-      <router-link
-        :to="{
-          name: 'StorybookComponents',
-          params: {
-            componentsCategory: 'form',
-            components: 'dropdown',
-          },
-        }"
-        :class="{ 'storybook--active': changeFocusComponent('dropdown') }"
-        >Form-Dropdown</router-link
-      >｜
-      <router-link
-        :to="{
-          name: 'StorybookComponents',
-          params: {
-            componentsCategory: 'utility',
-            components: 'tag',
-          },
-        }"
-        :class="{ 'storybook--active': changeFocusComponent('tag') }"
-        >Utility-Tag</router-link
       >
+        {{ component.category }}-{{ component.name }}
+      </router-link>
     </div>
     <br />
     <router-view />
@@ -67,6 +29,28 @@ export default {
   name: 'StorybookName',
   data() {
     return {
+      components: [
+        {
+          category: 'form',
+          name: 'input',
+        },
+        {
+          category: 'form',
+          name: 'radio',
+        },
+        {
+          category: 'form',
+          name: 'checkbox',
+        },
+        {
+          category: 'form',
+          name: 'dropdown',
+        },
+        {
+          category: 'utility',
+          name: 'tag',
+        },
+      ],
       focusComponent: 'input',
     }
   },
@@ -81,7 +65,7 @@ export default {
 <style lang="scss" scoped>
 .storybook {
   &--active {
-    color: $primary;
+    filter: drop-shadow(2px 2px 1px black);
   }
 }
 </style>

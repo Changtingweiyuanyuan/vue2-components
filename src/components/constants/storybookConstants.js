@@ -65,20 +65,22 @@ export const STORYBOOK_CONSTANTS = Object.freeze({
       },
     },
     PREFORMATTED_CODE: `
-            import FormInput from "@/components/inputs/Input.vue";
-            <FormInput
-                v-model="input"
-                type="text"
-                placeholder=""
-                :readonly="false"
-                :disabled="false"
-                :clearable="false" 
-                :invalid="false"
-                :invalid-text="'string'"
-                :background-transparent="false"
-                @inputValue="inputChange" 
-                @inputEvent="inputEventHandler" 
-            />`,
+import FormInput from "@/components/inputs/Input.vue";
+
+<FormInput
+  v-model="input"
+  type="text"
+  placeholder=""
+  :readonly="false"
+  :disabled="false"
+  :clearable="false" 
+  :invalid="false"
+  :invalid-text="'string'"
+  :background-transparent="false"
+  @inputValue="inputChange" 
+  @inputEvent="inputEventHandler" 
+/>
+    `,
   },
   FORM_RADIO: {
     PROPERTIES: {
@@ -115,17 +117,17 @@ export const STORYBOOK_CONSTANTS = Object.freeze({
       },
     },
     PREFORMATTED_CODE: `
-            import FormRadio from '@/components/inputs/Radio.vue'
+import FormRadio from '@/components/inputs/Radio.
 
-            <FormRadio 
-                v-model="radio"
-                value="1"
-                :checked="false"
-                :disabled="false"
-                @change="radioChange"
-            >
-                1 
-            </FormRadio>
+<FormRadio 
+  v-model="radio"
+  value="1"
+  :checked="false"
+  :disabled="false"
+  @change="radioChange"
+>
+  1 
+</FormRadio>
     `,
   },
   FORM_CHECKBOX: {
@@ -172,47 +174,47 @@ export const STORYBOOK_CONSTANTS = Object.freeze({
       },
     },
     PREFORMATTED_CODE: `
-            import FormCheckbox from '@/components/inputs/Checkbox.vue';
-            
-        ➊
-            <FormCheckbox
-                v-model="checkboxList"
-                value="1"
-                :disabled="false"
-                @changeValue="checkboxChange"
-                @changeEvent="checkboxChangeEvent"
-            >
-                1
-            </FormCheckbox>
+import FormCheckbox from '@/components/inputs/Checkbox.vue';
 
-            data() {
-                return {
-                    checkboxList: [],
-                }
-            }
+範例 ⑴
+<FormCheckbox
+  v-model="checkboxList"
+  value="1"
+  :disabled="false"
+  @changeValue="checkboxChange"
+  @changeEvent="checkboxChangeEvent"
+>
+  1
+</FormCheckbox>
 
-        ➋
-            <FormCheckbox
-                v-for="(card, index) in checkboxCardList"
-                v-model="checkboxValueList"
-                :key="index"
-                :value="card"
-                @changeValue="checkboxChange"
-                @changeEvent="checkboxChangeEvent"
-            >
-                {{ card.name }}
-            </FormCheckbox>
+data() {
+  return {
+    checkboxList: [],
+  }
+}
 
-            data() {
-                return {
-                    checkboxValueList: [],
-                    checkboxCardList: [
-                        { name: "credit card", value: "50" },
-                        { name: "easy card", value: "100" },
-                        { name: "traffic card", value: "200" },
-                    ],
-                }
-            }
+範例 ⑵
+<FormCheckbox
+  v-for="(card, index) in checkboxCardList"
+  v-model="checkboxValueList"
+  :key="index"
+  :value="card"
+  @changeValue="checkboxChange"
+  @changeEvent="checkboxChangeEvent"
+>
+  {{ card.name }}
+</FormCheckbox>
+
+data() {
+  return {
+    checkboxValueList: [],
+    checkboxCardList: [
+      { name: "credit card", value: "50" },
+      { name: "easy card", value: "100" },
+      { name: "traffic card", value: "200" },
+    ],
+  }
+}
     `,
   },
   FORM_DROPDOWN: {
@@ -274,62 +276,58 @@ export const STORYBOOK_CONSTANTS = Object.freeze({
       },
     },
     PREFORMATTED_CODE: `
-            import FormDropdown from '@/components/inputs/Dropdown.vue';
-            
-        ➊
-            <FormDropdown
-                :select-options="singleDropdownOptions"
-                :placeholder="'單選'"
-                :multi-value="singleDropdownValue"
-                disabled
-                @change="singleDropdownChange"
-            />
+import FormDropdown from '@/components/inputs/Dropdown.vue';
 
-            data() {
-                return {
-                    singleDropdownValue: [],
-                    singleDropdownOptions: [
-                        { text: 'text1', value: 'value1' },
-                        { text: 'text2', value: 'value2' },
-                        { text: 'text3', value: 'value3' },
-                    ]
-                }
-            }
-            methods: {
-                singleDropdownChange(value) {
-                    this.singleDropdownValue = value;
-                }
-            }
+範例 ⑴
+<FormDropdown
+  :select-options="singleDropdownOptions"
+  :placeholder="'單選'"
+  :multi-value="singleDropdownValue"
+  disabled
+  @change="singleDropdownChange"
+/>
 
-        ➋
-            <FormDropdown
-                :select-options="multipleDropdownOptions"
-                :placeholder="'多選'"
-                :select-type="'multiple'"
-                disabled
-                :multi-value="multipleDropdownValues"
-                @change="multipleDropdownChange"
-            />
+data() {
+  return {
+    singleDropdownValue: [],
+    singleDropdownOptions: [
+      { text: 'text1', value: 'value1' },
+      { text: 'text2', value: 'value2' },
+      { text: 'text3', value: 'value3' },
+    ]
+  }
+}
+methods: {
+  singleDropdownChange(value) {
+    this.singleDropdownValue = value;
+  }
+}
 
-            data() {
-                return {
-                    multipleDropdownValues: [],
-                    multipleDropdownOptions: [
-                        { text: 'text1', value: 'value1' },
-                        { text: 'text2', value: 'value2' },
-                        { text: 'text3', value: 'value3' },
-                        { text: 'text4', value: 'value4' },
-                        { text: 'text5', value: 'value5' },
-                        { text: 'text6', value: 'value6' },
-                        { text: 'text7', value: 'value7' },
-                    ],
-                }
-            }
-            methods: {
-                multipleDropdownChange(value) {
-                    this.multipleDropdownValues = value;
-                }
-            }
+範例 ⑵
+<FormDropdown
+  :select-options="multipleDropdownOptions"
+  :placeholder="'多選'"
+  :select-type="'multiple'"
+  disabled
+  :multi-value="multipleDropdownValues"
+  @change="multipleDropdownChange"
+/>
+
+data() {
+  return {
+    multipleDropdownValues: [],
+    multipleDropdownOptions: [
+      { text: 'text1', value: 'value1' },
+      { text: 'text2', value: 'value2' },
+      { text: 'text3', value: 'value3' },
+    ],
+  }
+}
+methods: {
+  multipleDropdownChange(value) {
+    this.multipleDropdownValues = value;
+  }
+}
     `,
   },
   UTILITY_TAG: {
@@ -389,17 +387,17 @@ export const STORYBOOK_CONSTANTS = Object.freeze({
       },
     },
     PREFORMATTED_CODE: `
-            import Tag from '@/components/utility/Tag.vue';
-            
-            <Tag 
-                value="1"
-                :theme="success" 
-                @click="oClick" 
-                @deleteTag="onClickDeleteBtn" 
-                :delete-btn="true"
-            >
-                tag
-            </Tag>
+import Tag from '@/components/utility/Tag.vue';
+
+<Tag 
+  value="1"
+  :theme="success" 
+  @click="oClick" 
+  @deleteTag="onClickDeleteBtn" 
+  :delete-btn="true"
+>
+  tag
+</Tag>
     `,
   },
 })

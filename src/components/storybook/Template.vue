@@ -1,11 +1,8 @@
 <template>
   <div class="storybook-template container">
     <div class="storybook-template__mounting-method">
-      <h2>
-        mounting method
-        <i class="bi bi-emoji-smile"></i>
-      </h2>
-      <pre v-if="preformattedCode" class="bg-secondary-subtle rounded">
+      <h3>mounting method</h3>
+      <pre v-if="preformattedCode" class="bg-success-subtle rounded px-4 t5">
         {{ preformattedCode }}
       </pre>
     </div>
@@ -13,13 +10,10 @@
     <br />
 
     <div class="storybook-template__properties">
-      <h2>
-        properties
-        <i class="bi bi-emoji-smile"></i>
-      </h2>
+      <h3>properties</h3>
 
-      <div v-if="Object.entries(properties).length > 0">
-        <div class="storybook-template__properties__th d-flex t3">
+      <div v-if="Object.entries(properties).length > 0" class="t5">
+        <div class="storybook-template__properties__th d-flex t4">
           <div class="name px-2 py-1">Name</div>
           <div class="type px-2 py-1">Type</div>
           <div class="description flex-fill px-2 py-1">Description</div>
@@ -31,8 +25,8 @@
           :key="`${indexValue}-${index}`"
           class="storybook-template__properties__td d-flex rounded mb-1"
           :class="{
-            'bg-primary-subtle': index % 2 === 0,
-            'bg-secondary-subtle': index % 2 === 1,
+            'bg-info-subtle': index % 2 === 0,
+            'bg-success-subtle': index % 2 === 1,
           }"
         >
           <div class="name px-2 py-1 text-break">{{ property['NAME'] }}</div>
@@ -51,13 +45,10 @@
     <br />
 
     <div class="storybook-template__emits">
-      <h2>
-        emits
-        <i class="bi bi-emoji-smile"></i>
-      </h2>
+      <h3>emits</h3>
 
-      <div v-if="Object.entries(emits).length > 0">
-        <div class="storybook-template__emits__th d-flex t3">
+      <div v-if="Object.entries(emits).length > 0" class="t5">
+        <div class="storybook-template__emits__th d-flex t4">
           <div class="name px-2 py-1">Name</div>
           <div class="description flex-fill px-2 py-1">Description</div>
         </div>
@@ -67,8 +58,8 @@
           :key="`${indexValue}-${index}`"
           class="storybook-template__emits__td d-flex rounded mb-1"
           :class="{
-            'bg-primary-subtle': index % 2 === 0,
-            'bg-secondary-subtle': index % 2 === 1,
+            'bg-info-subtle': index % 2 === 0,
+            'bg-success-subtle': index % 2 === 1,
           }"
         >
           <div class="name px-2 py-1">{{ property['NAME'] }}</div>
@@ -114,18 +105,22 @@ export default {
 
 <style lang="scss" scoped>
 .storybook-template {
+  h3 {
+    text-decoration: underline;
+  }
+
   &__properties,
   &__emits {
     &__th,
     &__td {
       .name {
-        width: 20%;
+        width: 15%;
       }
       .type {
-        width: 20%;
+        width: 30%;
       }
       .default {
-        width: 20%;
+        width: 15%;
       }
       .description {
         width: 40%;
