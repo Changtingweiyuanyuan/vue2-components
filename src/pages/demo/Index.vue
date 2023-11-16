@@ -393,6 +393,4 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/scss/bootstrap/type';
-.demo {
-}
 </style>
