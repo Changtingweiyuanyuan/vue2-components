@@ -12,7 +12,7 @@ export const STORYBOOK_CONSTANTS = Object.freeze({
       PLACEHOLDER: {
         NAME: 'placeholder',
         TYPE: 'string',
-        DESCRIPTION: '預設值欄位說明',
+        DESCRIPTION: 'input預設文字<br>若有填寫 input高度為48px，若無填寫 高度為34px',
         DEFAULT: '""',
       },
       CLEARABLE: {
@@ -36,7 +36,7 @@ export const STORYBOOK_CONSTANTS = Object.freeze({
       INVALID: {
         NAME: 'invalid',
         TYPE: 'boolean',
-        DESCRIPTION: '是否出現錯誤提示',
+        DESCRIPTION: '是否出現錯誤提示<br>INVALID_TEXT若未填，預設文字為"Validation has errors."',
         DEFAULT: '""',
       },
       INVALID_TEXT: {

@@ -2,6 +2,7 @@
   <div
     class="form-input mb-8 px-2 position-relative w-100"
     :class="{
+      'form-input--without-placeholder': !placeholder,
       'form-input--has-been-input': hasBeenInput || value !== '',
       'form-input--invalid': invalid,
       'form-input--readonly': readonly,
@@ -16,7 +17,7 @@
     @click.stop="handleFocus"
     @mousedown.prevent
   >
-    <div class="form-input__placeholder">
+    <div v-if="placeholder" class="form-input__placeholder">
       {{ placeholder }}
     </div>
 
@@ -25,7 +26,7 @@
         <input
           ref="input"
           type="text"
-          class="w-100 p-0 border-0 t4"
+          class="w-100 p-0 border-0 t5"
           v-bind="$attrs"
           :value="value"
           @blur="hasBeenInput = false"
@@ -54,8 +55,11 @@
       <template v-else>
         <slot :value="value">
           <div
-            class="t4 text-truncate"
-            :class="{ 'cursor-not-allowed': readonly || disabled }"
+            class="t5 text-truncate"
+            :class="{
+              'cursor-not-allowed': disabled,
+              'cursor-default': readonly,
+            }"
           >
             {{ value }}
           </div>
@@ -65,9 +69,9 @@
     <div
       v-if="invalid"
       class="form-input__invalid t6 text-danger w-100 text-truncate pe-3"
+      :style="{ top: placeholder ? '54px' : '38px' }"
     >
-      <i class="bi bi-exclamation-triangle-fill me-1"></i>
-      {{ invalidText }}
+      <i class="bi bi-exclamation-triangle-fill me-1"></i>{{ invalidText }}
     </div>
   </div>
 </template>
@@ -98,7 +102,7 @@ export default {
   },
   methods: {
     handleFocus() {
-      if (this.readonly) return
+      if (this.readonly || this.disabled) return
 
       this.hasBeenInput = true
       this.$nextTick(() => {
@@ -111,10 +115,9 @@ export default {
 
 <style lang="scss" scoped>
 .form-input {
-  height: 52px;
-  padding-top: 14px;
-  padding-right: 12px;
-  padding-bottom: 14px;
+  height: 48px;
+  padding-top: 12px;
+  padding-bottom: 12px;
   color: $black;
   border-color: $black;
   border-radius: 2px;
@@ -137,36 +140,49 @@ export default {
     bottom: -4px;
   }
 
+  &--without-placeholder {
+    height: 34px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    line-height: 1;
+  }
+
   &--has-been-input {
     background: var(--input-background-transparent, $white);
     padding-top: 5px;
     padding-bottom: 5px;
 
     .form-input__input {
+      line-height: 1;
       background: var(--input-background-transparent, $white);
       opacity: 1;
       transition: opacity 0.1s;
       transition-delay: 0.2s;
+
+      & input,
+      & .icons {
+        line-height: 1;
+      }
     }
     .form-input__placeholder {
       font-size: 12px;
       line-height: 18px;
       width: fit-content;
-      color: $red;
+      color: $danger;
     }
   }
 
   &--invalid {
     &::before,
     &::after {
-      background: $red;
+      background: $danger;
     }
 
     .form-input__input {
       display: block;
     }
     .form-input__placeholder {
-      color: $red;
+      color: $danger;
     }
     .form-input__invalid {
       display: block;
@@ -175,10 +191,23 @@ export default {
 
   &--disabled,
   &--readonly {
+    .form-input__placeholder {
+      color: $gray-800;
+    }
+  }
+
+  &--disabled {
+    &::before,
+    &::after {
+      background: $gray-600;
+    }
     .form-input__input {
       color: $gray-600;
     }
-    .form-input__placeholder {
+  }
+
+  &--readonly {
+    .form-input__input {
       color: $gray-800;
     }
   }
@@ -197,8 +226,9 @@ export default {
 
   &__placeholder {
     font-size: 16px;
+    font-weight: $font-weight-normal;
     line-height: 24px;
-    color: $red;
+    color: $danger;
     transition: 0.2s;
   }
 
@@ -213,7 +243,6 @@ export default {
   &__invalid {
     display: none;
     position: absolute;
-    top: 60px;
     left: 8px;
   }
 }

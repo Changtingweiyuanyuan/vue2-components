@@ -212,15 +212,21 @@
         @inputEvent="inputEventHandler"
       />
       <FormInput
-        v-model="inputs.inputValueReadonly"
-        :placeholder="'readonly input'"
+        v-model="inputs.inputValueDisabled"
         disabled
+        :background-transparent="true"
+      />
+      <FormInput
+        v-model="inputs.inputValueReadonly"
+        :readonly="true"
+        :placeholder="'readonly input'"
+        :background-transparent="true"
       />
       <FormInput
         v-model="inputs.inputValueInvalid"
         :placeholder="'invalid input'"
-        :invalid="true"
-        :invalid-text="text"
+        :invalid="!!inputs.inputValueInvalid"
+        :clearable="true"
         :background-transparent="true"
       >
       </FormInput>
@@ -357,9 +363,13 @@ export default {
           { name: 'easy card', value: '100' },
           { name: 'traffic card', value: '200' },
         ],
-        inputValue: 'default input value',
-        inputValueReadonly: 'readonly input value',
-        inputValueInvalid: 'invalid input value',
+        inputValue:
+          'default input & with placeholder & background white & clearable button',
+        inputValueDisabled:
+          'disabled input & without placeholder & background transparent',
+        inputValueReadonly:
+          'readonly input & with placeholder & background transparent',
+        inputValueInvalid: '',
       },
       singleDropdownValue: [],
       singleDropdownOptions: [
