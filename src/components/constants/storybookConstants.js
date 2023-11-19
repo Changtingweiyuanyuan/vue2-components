@@ -108,6 +108,13 @@ import FormInput from "@/components/inputs/Input.vue";
         DESCRIPTION: '是否disabled',
         DEFAULT: 'false',
       },
+      COLOR: {
+        NAME: 'color',
+        TYPE: 'string',
+        DESCRIPTION:
+          'checked icon顏色<br>可選擇primary、secondary、success、info、warning、danger、light、dark、gray-dark',
+        DEFAULT: '"primary"',
+      },
     },
     EMITS: {
       CHANGE: {
@@ -124,6 +131,7 @@ import FormRadio from '@/components/inputs/Radio.
   value="1"
   :checked="false"
   :disabled="false"
+  :color="'success'"
   @change="radioChange"
 >
   1 
@@ -162,6 +170,13 @@ import FormRadio from '@/components/inputs/Radio.
         DESCRIPTION: '是否disabled',
         DEFAULT: 'false',
       },
+      COLOR: {
+        NAME: 'color',
+        TYPE: 'string',
+        DESCRIPTION:
+          'checked icon顏色<br>可選擇primary、secondary、success、info、warning、danger、light、dark、gray-dark',
+        DEFAULT: '"primary"',
+      },
     },
     EMITS: {
       CHANGE_VALUE: {
@@ -199,6 +214,7 @@ data() {
   v-model="checkboxValueList"
   :key="index"
   :value="card"
+  :color="'info'"
   @changeValue="checkboxChange"
   @changeEvent="checkboxChangeEvent"
 >

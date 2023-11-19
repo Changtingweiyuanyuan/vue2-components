@@ -1,9 +1,13 @@
 <template>
   <div
     class="form-radio inline-block"
-    :class="{ 'form-radio--disabled': disabled }"
+    :class="{
+      'form-radio--disabled': disabled,
+    }"
   >
-    <label class="d-flex align-items-center cursor-pointer position-relative">
+    <label
+      class="d-flex align-items-center cursor-pointer position-relative t4"
+    >
       <input
         type="radio"
         class="form-radio__input position-absolute"
@@ -12,7 +16,10 @@
         v-bind="$attrs"
         @change="handleChange"
       />
-      <div :class="{ 'me-2': $slots.default }"></div>
+      <div
+        class="t4"
+        :class="{ 'me-2': $slots.default, [`check-${color}`]: color }"
+      />
       <slot />
     </label>
   </div>
@@ -30,6 +37,7 @@ export default {
     value: VueTypes.oneOfType([VueTypes.number, VueTypes.string]).def(''),
     checked: VueTypes.bool.def(false),
     disabled: VueTypes.bool.def(false),
+    color: VueTypes.string.def('primary'),
   },
   methods: {
     handleChange(event) {
@@ -49,6 +57,7 @@ export default {
       cursor: not-allowed;
     }
   }
+
   input[type='radio'] {
     width: 16px;
     height: 16px;
@@ -68,7 +77,7 @@ export default {
           right: 4px;
           width: 4px;
           height: 4px;
-          color: $primary;
+          font-family: Avenir, Helvetica, Arial, sans-serif;
         }
       }
     }
@@ -126,6 +135,7 @@ export default {
             right: 2px;
             color: $gray-800;
             transform: none;
+            font-family: Avenir, Helvetica, Arial, sans-serif;
           }
         }
       }

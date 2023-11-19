@@ -3,7 +3,9 @@
     class="form-checkbox inline-block"
     :class="{ 'form-checkbox--disabled': disabled }"
   >
-    <label class="d-flex align-items-center cursor-pointer position-relative">
+    <label
+      class="d-flex align-items-center cursor-pointer position-relative t4"
+    >
       <input
         type="checkbox"
         class="form-checkbox__input position-absolute"
@@ -14,7 +16,10 @@
         :disabled="disabled"
         @change="handleChange"
       />
-      <div :class="{ 'me-2': $slots.default }"></div>
+      <div
+        class="t4"
+        :class="{ 'me-2': $slots.default, [`check-${color}`]: color }"
+      ></div>
       <slot />
     </label>
   </div>
@@ -26,7 +31,7 @@ export default {
   name: 'FormCheckbox',
   model: {
     prop: 'localValue',
-    event: 'change',
+    event: 'changeValue',
   },
   props: {
     // localValue: oneOfType([bool(), number(), string(), array()]).def(false),
@@ -35,6 +40,7 @@ export default {
     trueValue: oneOfType([number(), string()]).def(''),
     falseValue: oneOfType([number(), string()]).def(''),
     disabled: bool().def(false),
+    color: string().def('primary'),
   },
   computed: {
     checked() {
@@ -43,9 +49,16 @@ export default {
       if (this.localValue instanceof Array && this.value) {
         // localValue:[{text:'text', value: value}], value:{text:'text', value: value}
         if (this.value?.value) {
-          return this.localValue.map(e => e.value).includes(this.value.value)
+          return !!this.localValue
+            .map(e => e.value)
+            .find(
+              value =>
+                JSON.stringify(value) === JSON.stringify(this.value.value)
+            )
         }
-        return this.localValue.includes(this.value)
+        return !!this.localValue.find(
+          value => String(value) === String(this.value)
+        )
       } else {
         return this.localValue === this.trueValue
       }
@@ -56,8 +69,9 @@ export default {
       const value = checked
         ? [...this.localValue, this.value]
         : this.value?.value
-        ? this.localValue.filter(item => item.value !== this.value.value)
-        : this.localValue.filter(item => item !== this.value)
+        ? this.localValue.filter(item => item.value != this.value.value)
+        : this.localValue.filter(item => item != this.value)
+
       this.$emit('changeValue', value)
     },
     defaultHandler(checked) {
@@ -109,7 +123,7 @@ export default {
           right: 4px;
           width: 4px;
           height: 4px;
-          color: $primary;
+          font-family: Avenir, Helvetica, Arial, sans-serif;
         }
       }
     }
@@ -155,6 +169,7 @@ export default {
       }
 
       &:checked {
+        color: red !important;
         + div {
           &::before {
             display: none;
@@ -167,6 +182,7 @@ export default {
             right: 2px;
             color: $gray-800;
             transform: none;
+            font-family: Avenir, Helvetica, Arial, sans-serif;
           }
         }
       }
