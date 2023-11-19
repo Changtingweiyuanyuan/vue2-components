@@ -1,8 +1,10 @@
 <template>
   <div
     ref="dropdown"
-    class="form-dropdown w-100 position-relative rounded my-2 t5 text-black"
-    :class="{ 'form-dropdown--menu-open my-1': isMenuOpen }"
+    class="form-dropdown w-100 position-relative rounded mt-2 mb-7 t5 text-black"
+    :class="{
+      'form-dropdown--menu-open my-1': isMenuOpen,
+    }"
     @click="onDropdownClick"
   >
     <!-- @keydown="onKeyup" 搜尋功能 -->
@@ -15,6 +17,7 @@
           'form-dropdown__control--disabled cursor-not-allowed': disabled,
           'px-2 py-1': selectType === 'single',
           'px-1': selectType === 'multiple',
+          'border-danger': invalid,
         },
       ]"
       @mousedown.prevent
@@ -46,11 +49,19 @@
         :class="{
           'text-gray-darker': disabled,
           'text-gray-dark': multiValue.length == 0,
+          'text-primary': !color,
           [`text-${color}`]: multiValue.length > 0 && !!color,
         }"
       >
         {{ controlFieldText }}
       </span>
+    </div>
+
+    <div
+      v-if="invalid"
+      class="form-dropdown__invalid t6 text-danger w-100 position-absolute text-truncate pe-3"
+    >
+      <i class="bi bi-exclamation-triangle-fill me-1"></i>{{ invalidText }}
     </div>
 
     <transition name="fade" :duration="100">
@@ -104,6 +115,7 @@ import {
 } from 'vue-types'
 import FormCheckbox from './Checkbox.vue'
 import Tag from '../utility/Tag.vue'
+import { INPUT_DEFAULT_TEXT } from '../constants/inputsConstants'
 export default {
   name: 'UtilityTag',
   components: {
@@ -121,9 +133,11 @@ export default {
       })
     ).def([]),
     disabled: bool().def(false),
+    invalid: bool().def(false),
     deleteBtn: bool().def(true),
     color: string().def(''),
     menuMaxHeight: oneOfType([number(), string()]).def(200),
+    invalidText: string().def(INPUT_DEFAULT_TEXT.INVALID),
   },
   data() {
     return {
@@ -156,7 +170,6 @@ export default {
       }
     },
     selectOptions() {
-      console.log(this.selectOptions)
       this.hoveredOptionIndex = -1
     },
   },
@@ -181,13 +194,11 @@ export default {
       this.$emit('change', option)
     },
     onFocus() {
-      console.log('on focus')
       if (!this.disabled) {
         this.isMenuOpen = !this.isMenuOpen
       }
     },
     onBlur() {
-      console.log('on blur')
       this.isMenuOpen = false
     },
     // onKeyup(e) {
@@ -250,7 +261,13 @@ export default {
     }
   }
 
+  &__invalid {
+    left: 8px;
+  }
+
   &__control {
+    min-height: 36px;
+
     &--disabled {
       background: $gray-200;
     }

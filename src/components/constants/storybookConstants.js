@@ -42,7 +42,7 @@ export const STORYBOOK_CONSTANTS = Object.freeze({
       INVALID_TEXT: {
         NAME: 'invalidText',
         TYPE: 'string',
-        DESCRIPTION: '錯誤提示文字，數字超過100字 以 ... 替代',
+        DESCRIPTION: '錯誤提示文字，字數超過100字 以 ... 替代',
         DEFAULT: INPUT_DEFAULT_TEXT.INVALID,
       },
       BACKGROUND_TRANSPARENT: {
@@ -277,6 +277,18 @@ data() {
         DESCRIPTION:
           '單選為被選取文字顏色 多選為標籤顏色<br>可選擇primary、secondary、success、info、warning、danger、light、dark、gray-dark',
         DEFAULT: '"white"',
+      },
+      INVALID: {
+        NAME: 'invalid',
+        TYPE: 'boolean',
+        DESCRIPTION: '是否出現錯誤提示<br>INVALID_TEXT若未填，預設文字為"Validation has errors."',
+        DEFAULT: '""',
+      },
+      INVALID_TEXT: {
+        NAME: 'invalidText',
+        TYPE: 'string',
+        DESCRIPTION: '錯誤提示文字，字數若超過一行 以 ... 替代',
+        DEFAULT: INPUT_DEFAULT_TEXT.INVALID,
       },
       MENU_MAX_HEIGHT: {
         NAME: 'menuMaxHeight',

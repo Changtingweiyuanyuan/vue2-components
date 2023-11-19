@@ -90,8 +90,9 @@
       <FormDropdown
         :select-options="singleDropdownOptions"
         :placeholder="'單選測試'"
+        :color="'success'"
         :multi-value="singleDropdownValue"
-        :color="'danger'"
+        :invalid="singleDropdownValue.length == 0"
         @change="singleDropdownChange"
       />
       <FormDropdown
@@ -99,6 +100,8 @@
         :placeholder="'多選測試'"
         :select-type="'multiple'"
         :multi-value="multipleDropdownValues"
+        :invalid="multipleDropdownValues.length == 0"
+        :invalid-text="'此選項不得為空'"
         @change="multipleDropdownChange"
       />
     </div>

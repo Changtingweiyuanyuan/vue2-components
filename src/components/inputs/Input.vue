@@ -1,6 +1,6 @@
 <template>
   <div
-    class="form-input mb-8 px-2 position-relative w-100"
+    class="form-input mb-7 px-2 position-relative w-100"
     :class="{
       'form-input--without-placeholder': !placeholder,
       'form-input--has-been-input': hasBeenInput || value !== '',
