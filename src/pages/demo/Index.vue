@@ -1,301 +1,317 @@
 <template>
-  <div class="demo p-3 bg-success-subtle">
-    <div class="p-2">
-      <h2>bootstrap button</h2>
-      <div class="d-flex flex-wrap gap-2">
-        <button class="btn btn-primary">button</button>
-        <button class="btn btn-secondary">button</button>
-        <button class="btn btn-success">button</button>
-        <button class="btn btn-info">button</button>
-        <button class="btn btn-warning">button</button>
-        <button class="btn btn-danger">button</button>
-        <button class="btn btn-dark">button</button>
-        <button class="btn btn-link">button</button>
+  <div class="demo p-3">
+    <div class="d-flex justify-content-end me-3 text-secondary t6">已釋出</div>
+    <div class="bg-success-subtle rounded">
+      <div class="p-2">
+        <h3>bootstrap button</h3>
+        <div class="d-flex flex-wrap gap-2">
+          <button class="btn btn-primary">button</button>
+          <button class="btn btn-secondary">button</button>
+          <button class="btn btn-success">button</button>
+          <button class="btn btn-info">button</button>
+          <button class="btn btn-warning">button</button>
+          <button class="btn btn-danger">button</button>
+          <button class="btn btn-dark">button</button>
+          <button class="btn btn-link">button</button>
+        </div>
       </div>
-    </div>
-    <br />
+      <br />
 
-    <div class="p-2">
-      <h2>bootstrap radio/checkbox</h2>
-      <div class="d-flex gap-2">
-        <input class="form-check-input" type="checkbox" value="1" />
-        <input
-          class="form-check-input check-success"
-          type="checkbox"
-          value="2"
-          checked
-        />
-        <input
-          class="form-check-input check-info"
-          type="checkbox"
-          value="2"
-          checked
-        />
-        <input
-          class="form-check-input check-danger"
-          type="checkbox"
-          value="2"
-          checked
-        />
-        <input
-          class="form-check-input check-danger"
-          type="checkbox"
-          value="2"
-          disabled
-          checked
-        />
-        <input
-          class="form-check-input"
-          name="radioDefault"
-          type="radio"
-          value="1"
-          disabled
-        />
-        <input
-          class="form-check-input"
-          name="radioDefault"
-          type="radio"
-          value="2"
-          disabled
-          checked
-        />
+      <div class="p-2">
+        <h3>bootstrap radio/checkbox</h3>
+        <div class="d-flex gap-2">
+          <input class="form-check-input" type="checkbox" value="1" />
+          <input
+            class="form-check-input check-success"
+            type="checkbox"
+            value="2"
+            checked
+          />
+          <input
+            class="form-check-input check-info"
+            type="checkbox"
+            value="2"
+            checked
+          />
+          <input
+            class="form-check-input check-danger"
+            type="checkbox"
+            value="2"
+            checked
+          />
+          <input
+            class="form-check-input check-danger"
+            type="checkbox"
+            value="2"
+            disabled
+            checked
+          />
+          <input
+            class="form-check-input"
+            name="radioDefault"
+            type="radio"
+            value="1"
+            disabled
+          />
+          <input
+            class="form-check-input"
+            name="radioDefault"
+            type="radio"
+            value="2"
+            disabled
+            checked
+          />
+        </div>
       </div>
+      <br />
     </div>
-    <br />
 
     <hr />
 
-    <div class="p-2">
-      <h2>tag</h2>
-      <Tag value="1" @click="tagOnClick" @delete="deleteTag" :delete-btn="true">
-        tag
-      </Tag>
-      <Tag value="1" :color="'primary'" :delete-btn="true"> tag </Tag>
-      <Tag value="1" :color="'secondary'" :delete-btn="true"> tag </Tag>
-      <Tag value="1" :color="'success'" :delete-btn="true"> tag </Tag>
-      <Tag value="1" :color="'info'" :delete-btn="true"> tag </Tag>
-      <Tag value="1" :color="'danger'" :delete-btn="true"> tag </Tag>
-      <Tag value="1" :color="'white'" :delete-btn="true"> tag </Tag>
-      <Tag value="1" :color="'dark'" :delete-btn="true"> tag </Tag>
-      <Tag value="1" :color="'gray-dark'" :delete-btn="true"> tag </Tag>
-      <br />
-      <Tag value="2" @click="tagOnClick" disabled> disabled tag </Tag>
-      <Tag value="3" @click="tagOnClick" clicked> default tag </Tag>
-    </div>
-    <br />
-
-    <div class="p-2">
-      <h2>dropdown</h2>
-
-      <FormDropdown
-        :select-options="singleDropdownOptions"
-        :placeholder="'單選測試'"
-        :color="'success'"
-        :multi-value="singleDropdownValue"
-        :invalid="singleDropdownValue.length == 0"
-        @change="singleDropdownChange"
-      />
-      <FormDropdown
-        :select-options="multipleDropdownOptions"
-        :placeholder="'多選測試'"
-        :select-type="'multiple'"
-        :multi-value="multipleDropdownValues"
-        :invalid="multipleDropdownValues.length == 0"
-        :invalid-text="'此選項不得為空'"
-        @change="multipleDropdownChange"
-      />
-    </div>
-    <br />
-
-    <div class="p-2">
-      <h2>radio</h2>
-      <div class="d-flex gap-3 align-items-center">
-        <FormRadio
-          v-model="inputs.radioValue"
+    <div class="d-flex justify-content-end me-3 text-secondary t6">已釋出</div>
+    <div class="bg-success-subtle rounded">
+      <div class="p-2">
+        <h3>tag</h3>
+        <Tag
           value="1"
-          :color="'danger'"
-          @change="radioChange"
+          @click="tagOnClick"
+          @delete="deleteTag"
+          :delete-btn="true"
         >
-          1
-        </FormRadio>
-        <FormRadio
-          v-model="inputs.radioValue"
-          value="2"
+          tag
+        </Tag>
+        <Tag value="1" :color="'primary'" :delete-btn="true"> tag </Tag>
+        <Tag value="1" :color="'secondary'" :delete-btn="true"> tag </Tag>
+        <Tag value="1" :color="'success'" :delete-btn="true"> tag </Tag>
+        <Tag value="1" :color="'info'" :delete-btn="true"> tag </Tag>
+        <Tag value="1" :color="'danger'" :delete-btn="true"> tag </Tag>
+        <Tag value="1" :color="'white'" :delete-btn="true"> tag </Tag>
+        <Tag value="1" :color="'dark'" :delete-btn="true"> tag </Tag>
+        <Tag value="1" :color="'gray-dark'" :delete-btn="true"> tag </Tag>
+        <br />
+        <Tag value="2" @click="tagOnClick" disabled> disabled tag </Tag>
+        <Tag value="3" @click="tagOnClick" clicked> default tag </Tag>
+      </div>
+      <br />
+
+      <div class="p-2">
+        <h3>dropdown</h3>
+
+        <FormDropdown
+          :select-options="singleDropdownOptions"
+          :placeholder="'單選測試'"
           :color="'success'"
-          @change="radioChange"
-        >
-          2
-        </FormRadio>
-        <FormRadio
-          v-model="inputs.radioValue"
-          :value="3"
-          :checked="true"
-          @change="radioChange"
-        >
-          3
-        </FormRadio>
-        <FormRadio
-          v-model="inputs.radioValue"
-          :value="4"
-          :disabled="true"
-          @change="radioChange"
-        >
-          4
-        </FormRadio>
+          :multi-value="singleDropdownValue"
+          :invalid="singleDropdownValue.length == 0"
+          @change="singleDropdownChange"
+        />
+        <FormDropdown
+          :select-options="multipleDropdownOptions"
+          :placeholder="'多選測試'"
+          :select-type="'multiple'"
+          :multi-value="multipleDropdownValues"
+          :invalid="multipleDropdownValues.length == 0"
+          :invalid-text="'此選項不得為空'"
+          @change="multipleDropdownChange"
+        />
       </div>
-    </div>
-    <br />
+      <br />
 
-    <div class="p-2">
-      <h2>checkbox</h2>
-      <div class="d-flex gap-3 align-items-center">
-        <FormCheckbox
-          v-model="inputs.checkboxValueList"
-          value="1"
-          :true-value="'correct 1'"
-          :false-value="'incorrect 1'"
-          :color="'info'"
-          @changeValue="checkboxChange"
-        >
-          1
-        </FormCheckbox>
-        <FormCheckbox
-          v-model="inputs.checkboxValueList"
-          value="2"
-          :true-value="'correct 2'"
-          :false-value="'incorrect 2'"
-          :color="'warning'"
-          @changeValue="checkboxChange"
-        >
-          2
-        </FormCheckbox>
-        <FormCheckbox
-          v-model="inputs.checkboxValueList"
-          value="3"
-          :true-value="'correct 3'"
-          :false-value="'incorrect 3'"
-          :disabled="true"
-          @changeValue="checkboxChange"
-        >
-          3
-        </FormCheckbox>
-        <FormCheckbox
-          v-model="inputs.checkboxValueList"
-          value="4"
-          :true-value="'correct 4'"
-          :false-value="'incorrect 4'"
-          @changeValue="checkboxChange"
-        >
-          <!-- :disabled="true" -->
-          4
-        </FormCheckbox>
+      <div class="p-2">
+        <h3>radio</h3>
+        <div class="d-flex gap-3 align-items-center">
+          <FormRadio
+            v-model="inputs.radioValue"
+            value="1"
+            :color="'danger'"
+            @change="radioChange"
+          >
+            1
+          </FormRadio>
+          <FormRadio
+            v-model="inputs.radioValue"
+            value="2"
+            :color="'success'"
+            @change="radioChange"
+          >
+            2
+          </FormRadio>
+          <FormRadio
+            v-model="inputs.radioValue"
+            :value="3"
+            :checked="true"
+            @change="radioChange"
+          >
+            3
+          </FormRadio>
+          <FormRadio
+            v-model="inputs.radioValue"
+            :value="4"
+            :disabled="true"
+            @change="radioChange"
+          >
+            4
+          </FormRadio>
+        </div>
       </div>
-      <div class="d-flex gap-3 align-items-center">
-        <FormCheckbox
-          v-for="(card, index) in inputs.checkboxCardList"
-          v-model="inputs.checkboxCardValueList"
-          :key="index"
-          :value="card"
-          @changeValue="checkboxCardChange"
-          @changeEvent="checkboxChangeEvent"
-        >
-          {{ card.name }}
-        </FormCheckbox>
-      </div>
-    </div>
-    <br />
+      <br />
 
-    <div class="w-100 p-2">
-      <h2>input</h2>
-      <FormInput
-        v-model="inputs.inputValue"
-        :placeholder="'default input'"
-        :clearable="true"
-        @inputValue="inputChange"
-        @inputEvent="inputEventHandler"
-      />
-      <FormInput
-        v-model="inputs.inputValueDisabled"
-        disabled
-        :background-transparent="true"
-      />
-      <FormInput
-        v-model="inputs.inputValueReadonly"
-        :readonly="true"
-        :placeholder="'readonly input'"
-        :background-transparent="true"
-      />
-      <FormInput
-        v-model="inputs.inputValueInvalid"
-        :placeholder="'invalid input'"
-        :invalid="!!inputs.inputValueInvalid"
-        :clearable="true"
-        :background-transparent="true"
-      >
-      </FormInput>
+      <div class="p-2">
+        <h3>checkbox</h3>
+        <div class="d-flex gap-3 align-items-center">
+          <FormCheckbox
+            v-model="inputs.checkboxValueList"
+            value="1"
+            :true-value="'correct 1'"
+            :false-value="'incorrect 1'"
+            :color="'info'"
+            @changeValue="checkboxChange"
+          >
+            1
+          </FormCheckbox>
+          <FormCheckbox
+            v-model="inputs.checkboxValueList"
+            value="2"
+            :true-value="'correct 2'"
+            :false-value="'incorrect 2'"
+            :color="'warning'"
+            @changeValue="checkboxChange"
+          >
+            2
+          </FormCheckbox>
+          <FormCheckbox
+            v-model="inputs.checkboxValueList"
+            value="3"
+            :true-value="'correct 3'"
+            :false-value="'incorrect 3'"
+            :disabled="true"
+            @changeValue="checkboxChange"
+          >
+            3
+          </FormCheckbox>
+          <FormCheckbox
+            v-model="inputs.checkboxValueList"
+            value="4"
+            :true-value="'correct 4'"
+            :false-value="'incorrect 4'"
+            @changeValue="checkboxChange"
+          >
+            <!-- :disabled="true" -->
+            4
+          </FormCheckbox>
+        </div>
+        <div class="d-flex gap-3 align-items-center">
+          <FormCheckbox
+            v-for="(card, index) in inputs.checkboxCardList"
+            v-model="inputs.checkboxCardValueList"
+            :key="index"
+            :value="card"
+            @changeValue="checkboxCardChange"
+            @changeEvent="checkboxChangeEvent"
+          >
+            {{ card.name }}
+          </FormCheckbox>
+        </div>
+      </div>
+      <br />
+
+      <div class="w-100 p-2">
+        <h3>input</h3>
+        <FormInput
+          v-model="inputs.inputValue"
+          :placeholder="'default input'"
+          :clearable="true"
+          @inputValue="inputChange"
+          @inputEvent="inputEventHandler"
+        />
+        <FormInput
+          v-model="inputs.inputValueDisabled"
+          disabled
+          :background-transparent="true"
+        />
+        <FormInput
+          v-model="inputs.inputValueReadonly"
+          :readonly="true"
+          :placeholder="'readonly input'"
+          :background-transparent="true"
+        />
+        <FormInput
+          v-model="inputs.inputValueInvalid"
+          :placeholder="'invalid input'"
+          :invalid="!!inputs.inputValueInvalid"
+          :clearable="true"
+          :background-transparent="true"
+        >
+        </FormInput>
+      </div>
+      <br />
     </div>
-    <br />
 
     <hr />
 
-    <div class="w-100 p-2">
-      <h2>headline</h2>
-      <headline
-        :text="'Gaza Ministry of Health report describes crumbling health system'"
-        :superscript="'headline'"
-        :superscript-background-color="'bg-primary'"
-      />
+    <div class="d-flex justify-content-end me-3 text-secondary t6">
+      尚未釋出
+    </div>
+    <div class="bg-success-subtle rounded">
+      <div class="w-100 p-2">
+        <h3>headline</h3>
+        <headline
+          :text="'Gaza Ministry of Health report describes crumbling health system'"
+          :superscript="'headline'"
+          :superscript-background-color="'bg-primary'"
+        />
+        <br />
+        <headline
+          :text="'Gaza Ministry of Health report describes crumbling health system'"
+          :superscript="'headline'"
+        />
+      </div>
       <br />
-      <headline
-        :text="'Gaza Ministry of Health report describes crumbling health system'"
-        :superscript="'headline'"
-      />
-    </div>
-    <br />
 
-    <div class="w-100 p-2">
-      <h2>paragraph</h2>
-      <paragraph :text="text" />
-      <paragraph :text="text" :first-letter-shadow-color="'#91AD70'" />
-    </div>
-    <br />
+      <div class="w-100 p-2">
+        <h3>paragraph</h3>
+        <paragraph :text="text" />
+        <paragraph :text="text" :first-letter-shadow-color="'#91AD70'" />
+      </div>
+      <br />
 
-    <div class="p-2">
-      <h2>affix bar</h2>
-      affix bar status:
-      <button
-        type="button"
-        focus
-        class="btn btn-secondary"
-        @click="uiState.affixBarDisplay = !uiState.affixBarDisplay"
-      >
-        {{ uiState.affixBarDisplay }}
-      </button>
-      <affix-bar
-        :affix-bar-display="uiState.affixBarDisplay"
-        :offset-top="100"
-        :padding-x="28"
-        :transition="false"
-        :container-class-name="'container'"
-      >
-        <div>affix bar slot</div>
-      </affix-bar>
-    </div>
-    <br /><br />
+      <div class="p-2">
+        <h3>affix bar</h3>
+        affix bar status:
+        <button
+          type="button"
+          focus
+          class="btn btn-secondary"
+          @click="uiState.affixBarDisplay = !uiState.affixBarDisplay"
+        >
+          {{ uiState.affixBarDisplay }}
+        </button>
+        <affix-bar
+          :affix-bar-display="uiState.affixBarDisplay"
+          :offset-top="100"
+          :padding-x="28"
+          :transition="false"
+          :container-class-name="'container'"
+        >
+          <div>affix bar slot</div>
+        </affix-bar>
+      </div>
+      <br /><br />
 
-    <div class="p-2">
-      <h2>ordered list</h2>
-      <ordered-list :contents="options" />
-    </div>
-    <br />
+      <div class="p-2">
+        <h3>ordered list</h3>
+        <ordered-list :contents="options" />
+      </div>
+      <br />
 
-    <div class="w-100 p-2">
-      <h2>container</h2>
-      <container :title="'container'" :background-color="'#d7ddd8'">
-        <template #content>{{ text }}</template>
-      </container>
+      <div class="w-100 p-2">
+        <h3>container</h3>
+        <container :title="'container'" :background-color="'#d7ddd8'">
+          <template #content>{{ text }}</template>
+        </container>
+      </div>
+      <br />
     </div>
-    <br />
   </div>
 </template>
 

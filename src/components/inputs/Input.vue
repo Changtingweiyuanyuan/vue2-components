@@ -26,7 +26,7 @@
         <input
           ref="input"
           type="text"
-          class="w-100 p-0 border-0 t5"
+          class="w-100 p-0 border-0 t5 pe-5"
           v-bind="$attrs"
           :value="value"
           @blur="hasBeenInput = false"
@@ -116,8 +116,8 @@ export default {
 <style lang="scss" scoped>
 .form-input {
   height: 48px;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding-top: 20px;
+  padding-bottom: 4px;
   color: $black;
   border-color: $black;
   border-radius: 2px;
