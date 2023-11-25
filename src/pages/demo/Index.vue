@@ -112,6 +112,7 @@
           :multi-value="multipleDropdownValues"
           :invalid="multipleDropdownValues.length == 0"
           :invalid-text="'此選項不得為空'"
+          :max="3"
           @change="multipleDropdownChange"
         />
       </div>

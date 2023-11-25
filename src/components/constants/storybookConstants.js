@@ -266,6 +266,18 @@ data() {
         DESCRIPTION: '下拉選單尚未被勾選的預設文字',
         DEFAULT: '""',
       },
+      MAX: {
+        NAME: 'max',
+        TYPE: 'number',
+        DESCRIPTION: '多選下拉選單勾選數量上限',
+        DEFAULT: '100',
+      },
+      MAX_TIP_TEXT: {
+        NAME: 'maxTipText',
+        TYPE: 'string',
+        DESCRIPTION: '多選下拉選單 超過勾選數量提示文字',
+        DEFAULT: '`選擇數量限為${MAX}`'
+      },
       DISABLED: {
         NAME: 'disabled',
         TYPE: 'boolean',
@@ -284,6 +296,13 @@ data() {
         DESCRIPTION:
           '單選為被選取文字顏色 多選為標籤顏色<br>可選擇primary、secondary、success、info、warning、danger、light、dark、gray-dark',
         DEFAULT: '"white"',
+      },
+      CHECKED_ICON_COLOR: {
+        NAME: 'checkedIconColor',
+        TYPE: 'string',
+        DESCRIPTION:
+        '多選checkbox 打勾顏色<br>可選擇primary、secondary、success、info、warning、danger、light、dark、gray-dark',
+        DEFAULT: '"primary"',
       },
       INVALID: {
         NAME: 'invalid',
@@ -324,6 +343,8 @@ import FormDropdown from '@/components/inputs/Dropdown.vue';
   :select-options="singleDropdownOptions"
   :placeholder="'單選'"
   :multi-value="singleDropdownValue"
+  :checked-icon-color="'danger'"
+  :max="3"
   disabled
   @change="singleDropdownChange"
 />

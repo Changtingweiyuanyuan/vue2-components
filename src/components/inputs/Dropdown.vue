@@ -75,6 +75,13 @@
         :style="{ maxHeight: menuHeight }"
       >
         <div
+          v-if="multiValue.length >= max"
+          class="px-3 py-1 cursor-not-allowed text-gray-dark"
+        >
+          {{ maxTipText.length > 0 ? maxTipText : `選擇數量上限為${max}` }}
+        </div>
+        <div
+          v-else
           v-for="(option, i) in selectOptions"
           :key="i"
           class="form-dropdown__option px-3 py-1 cursor-pointer"
@@ -89,6 +96,7 @@
             v-if="selectType === 'multiple'"
             :local-value="multiValue"
             :value="option"
+            :color="checkedIconColor"
             @changeValue="onOptionClick"
           >
             {{ option.text }}
@@ -136,11 +144,14 @@ export default {
         value: any().def(0),
       })
     ).def([]),
+    max: number().def(100),
+    maxTipText: string().def(''),
     disabled: bool().def(false),
     invalid: bool().def(false),
     invalidAnimation: bool().def(false),
     deleteBtn: bool().def(true),
     color: string().def(''),
+    checkedIconColor: string().def('primary'),
     menuMaxHeight: oneOfType([number(), string()]).def(200),
     invalidText: string().def(INPUT_DEFAULT_TEXT.INVALID),
   },
