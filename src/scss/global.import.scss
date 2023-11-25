@@ -2,19 +2,20 @@
 // @import "./global.variables";
 
 // include bootstrap
-@import "./bootstrap/bootstrap";
+@import './bootstrap/bootstrap';
 
 // include bootstrap覆蓋檔案 - 引入順序參照@/scss/bootstrap/bootstrap
-@import "./bootstrap/type";
-@import "./bootstrap/buttons";
-@import "./bootstrap/forms/form-check";
+@import './bootstrap/type';
+@import './bootstrap/buttons';
+@import './bootstrap/forms/form-check';
 
 // include customize scss file
-@import "./utility/cursor";
-@import "./utility/buttons";
-@import "./utility/forms/form-check";
-@import "./utility/zindex";
+@import './utility/type';
+@import './utility/cursor';
+@import './utility/buttons';
+@import './utility/forms/form-check';
+@import './utility/zindex';
+@import './utility/animation';
 
 // include bootstrap-icons
-@import "./bootstrapIcons/icons";
-
+@import './bootstrapIcons/icons';

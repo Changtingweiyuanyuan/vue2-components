@@ -1,14 +1,11 @@
 <template>
-  <div
-    class="form-checkbox inline-block"
-    :class="{ 'form-checkbox--disabled': disabled }"
-  >
+  <div class="form-checkbox" :class="{ 'form-checkbox--disabled': disabled }">
     <label
-      class="d-flex align-items-center cursor-pointer position-relative t4"
+      class="form-checkbox__label d-flex align-items-center cursor-pointer position-relative t4"
     >
       <input
         type="checkbox"
-        class="form-checkbox__input position-absolute"
+        class="form-checkbox__label__input position-absolute"
         :true-value="trueValue"
         :false-value="falseValue"
         :value="value"
@@ -97,6 +94,7 @@ export default {
 <style lang="scss" scoped>
 .form-checkbox {
   user-select: none;
+  word-break: keep-all;
 
   &--disabled {
     label {

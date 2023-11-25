@@ -1,7 +1,7 @@
 <template>
   <div
     ref="dropdown"
-    class="form-dropdown w-100 position-relative rounded mt-2 mb-7 t5 text-black"
+    class="form-dropdown w-100 position-relative rounded mb-7 t5 text-black"
     :class="{
       'form-dropdown--menu-open my-1': isMenuOpen,
     }"
@@ -59,9 +59,13 @@
 
     <div
       v-if="invalid"
-      class="form-dropdown__invalid t6 text-danger w-100 position-absolute text-truncate pe-3"
+      class="form-dropdown__invalid t7 text-danger w-100 position-absolute text-truncate pe-3"
     >
-      <i class="bi bi-exclamation-triangle-fill me-1"></i>{{ invalidText }}
+      <i
+        class="bi bi-exclamation-triangle-fill me-1 t6"
+        :class="{ 'animation-blink': invalidAnimation }"
+      ></i
+      >{{ invalidText }}
     </div>
 
     <transition name="fade" :duration="100">
@@ -134,6 +138,7 @@ export default {
     ).def([]),
     disabled: bool().def(false),
     invalid: bool().def(false),
+    invalidAnimation: bool().def(false),
     deleteBtn: bool().def(true),
     color: string().def(''),
     menuMaxHeight: oneOfType([number(), string()]).def(200),

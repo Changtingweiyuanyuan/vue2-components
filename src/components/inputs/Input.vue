@@ -40,7 +40,7 @@
           }"
         />
         <div
-          v-if="clearable && value.length > 0"
+          v-if="clearable && !!value"
           class="icons position-absolute cursor-pointer text-danger t3"
           @click="
             () => {
@@ -68,10 +68,14 @@
     </div>
     <div
       v-if="invalid"
-      class="form-input__invalid t6 text-danger w-100 text-truncate pe-3"
+      class="form-input__invalid t7 text-danger w-100 text-truncate pe-3"
       :style="{ top: placeholder ? '54px' : '38px' }"
     >
-      <i class="bi bi-exclamation-triangle-fill me-1"></i>{{ invalidText }}
+      <i
+        class="bi bi-exclamation-triangle-fill me-1 t6"
+        :class="{ 'animation-blink': invalidAnimation }"
+      ></i
+      >{{ invalidText }}
     </div>
   </div>
 </template>
@@ -92,6 +96,7 @@ export default {
     disabled: VueTypes.bool.def(false),
     readonly: VueTypes.bool.def(false),
     invalid: VueTypes.bool.def(false),
+    invalidAnimation: VueTypes.bool.def(false),
     invalidText: VueTypes.string.def(INPUT_DEFAULT_TEXT.INVALID),
     backgroundTransparent: VueTypes.bool.def(false),
   },
@@ -141,7 +146,7 @@ export default {
   }
 
   &--without-placeholder {
-    height: 34px;
+    height: 30px;
     padding-top: 5px;
     padding-bottom: 5px;
     line-height: 1;

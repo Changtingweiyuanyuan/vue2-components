@@ -37,7 +37,13 @@ export const STORYBOOK_CONSTANTS = Object.freeze({
         NAME: 'invalid',
         TYPE: 'boolean',
         DESCRIPTION: '是否出現錯誤提示<br>INVALID_TEXT若未填，預設文字為"Validation has errors."',
-        DEFAULT: '""',
+        DEFAULT: 'false',
+      },
+      INVALID_ANIMATION: {
+        NAME: 'invalidAnimation',
+        TYPE: 'boolean',
+        DESCRIPTION: '錯誤提示icon 閃爍效果',
+        DEFAULT: 'false',
       },
       INVALID_TEXT: {
         NAME: 'invalidText',
@@ -75,6 +81,7 @@ import FormInput from "@/components/inputs/Input.vue";
   :disabled="false"
   :clearable="false" 
   :invalid="false"
+  :invalid-animation="true"
   :invalid-text="'string'"
   :background-transparent="false"
   @inputValue="inputChange" 
@@ -282,7 +289,13 @@ data() {
         NAME: 'invalid',
         TYPE: 'boolean',
         DESCRIPTION: '是否出現錯誤提示<br>INVALID_TEXT若未填，預設文字為"Validation has errors."',
-        DEFAULT: '""',
+        DEFAULT: 'false',
+      },
+      INVALID_ANIMATION: {
+        NAME: 'invalidAnimation',
+        TYPE: 'boolean',
+        DESCRIPTION: '錯誤提示icon 閃爍效果',
+        DEFAULT: 'false',
       },
       INVALID_TEXT: {
         NAME: 'invalidText',

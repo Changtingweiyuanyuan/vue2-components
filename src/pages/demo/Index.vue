@@ -239,6 +239,7 @@
           v-model="inputs.inputValueInvalid"
           :placeholder="'invalid input'"
           :invalid="!!inputs.inputValueInvalid"
+          :invalid-animation="true"
           :clearable="true"
           :background-transparent="true"
         >
