@@ -1,7 +1,7 @@
 <template>
   <div class="demo p-3">
-    <div class="d-flex justify-content-end me-3 text-secondary t6">已釋出</div>
-    <div class="bg-success-subtle rounded">
+    <div class="d-flex justify-content-end me-3 text-danger t6">已釋出</div>
+    <div class="bg-success-subtle rounded shadow">
       <div class="p-2">
         <h3>bootstrap button</h3>
         <div class="d-flex flex-wrap gap-2">
@@ -68,8 +68,8 @@
 
     <hr />
 
-    <div class="d-flex justify-content-end me-3 text-secondary t6">已釋出</div>
-    <div class="bg-success-subtle rounded">
+    <div class="d-flex justify-content-end me-3 text-danger t6">已釋出</div>
+    <div class="bg-success-subtle rounded shadow">
       <div class="p-2">
         <h3>tag</h3>
         <Tag
@@ -251,10 +251,8 @@
 
     <hr />
 
-    <div class="d-flex justify-content-end me-3 text-secondary t6">
-      尚未釋出
-    </div>
-    <div class="bg-success-subtle rounded">
+    <div class="d-flex justify-content-end me-3 text-success t6">測試中</div>
+    <div class="bg-success-subtle rounded shadow">
       <div class="w-100 p-2">
         <h3>headline</h3>
         <headline
@@ -278,6 +276,25 @@
       <br />
 
       <div class="p-2">
+        <h3>ordered list</h3>
+        <ordered-list :contents="options" />
+      </div>
+      <br />
+
+      <div class="w-100 p-2">
+        <h3>container</h3>
+        <container :title="'container'" :background-color="'#d7ddd8'">
+          <template #content>{{ text }}</template>
+        </container>
+      </div>
+      <br />
+    </div>
+
+    <hr />
+
+    <div class="d-flex justify-content-end me-3 t6">尚未釋出</div>
+    <div class="border rounded shadow">
+      <div class="p-2">
         <h3>affix bar</h3>
         affix bar status:
         <button
@@ -299,20 +316,6 @@
         </affix-bar>
       </div>
       <br /><br />
-
-      <div class="p-2">
-        <h3>ordered list</h3>
-        <ordered-list :contents="options" />
-      </div>
-      <br />
-
-      <div class="w-100 p-2">
-        <h3>container</h3>
-        <container :title="'container'" :background-color="'#d7ddd8'">
-          <template #content>{{ text }}</template>
-        </container>
-      </div>
-      <br />
     </div>
   </div>
 </template>
