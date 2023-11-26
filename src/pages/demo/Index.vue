@@ -256,22 +256,30 @@
       <div class="w-100 p-2">
         <h3>headline</h3>
         <headline
-          :text="'Gaza Ministry of Health report describes crumbling health system'"
-          :superscript="'headline'"
-          :superscript-background-color="'bg-primary'"
+          :title-text="'Gaza Ministry of Health report describes crumbling health system'"
+          :title-position="'end'"
+          :superscript-text="'headline'"
+          :superscript-background-color="'danger'"
+          :superscript-position="'end'"
         />
         <br />
         <headline
-          :text="'Gaza Ministry of Health report describes crumbling health system'"
-          :superscript="'headline'"
+          :title-text="'Gaza Ministry of Health report describes crumbling health system'"
+          :superscript-text="'headline'"
         />
       </div>
       <br />
 
       <div class="w-100 p-2">
         <h3>paragraph</h3>
-        <paragraph :text="text" />
-        <paragraph :text="text" :first-letter-shadow-color="'#91AD70'" />
+        <paragraph :text="text" :text-size="'xs'" />
+        <paragraph :text="text" :text-size="'sm'" />
+        <paragraph :text="text" :text-size="'md'" />
+        <paragraph
+          :text="text"
+          :text-size="'lg'"
+          :first-letter-shadow-color="'#91AD70'"
+        />
       </div>
       <br />
 

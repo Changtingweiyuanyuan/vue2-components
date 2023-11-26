@@ -1,32 +1,44 @@
 <template>
   <div class="headline d-flex flex-wrap position-relative">
     <div
-      v-if="superscript"
-      class="headline__superscript d-flex align-items-center justify-content-center flex-1 text-white w-100 mt-1 p-2"
-      :class="backgroundColor"
+      v-if="superscriptText"
+      class="headline__superscript d-flex align-items-center flex-1 text-white w-100 mt-1 p-2 t4 rounded"
+      :class="superscriptClassName"
     >
-      {{ superscript }}
+      {{ superscriptText }}
     </div>
-    <p class="m-2 h1 text-uppercase">{{ text }}</p>
+    <div
+      class="headline__title m-2 h1 w-100 text-uppercase text-black"
+      :class="titleClassName"
+    >
+      {{ titleText }}
+    </div>
   </div>
 </template>
 
 <script>
-import VueTypes from "vue-types";
+import VueTypes from 'vue-types'
 export default {
-  name: "UtilityHeadline",
+  name: 'UtilityHeadline',
   props: {
-    text: VueTypes.string.def(""),
-    superscript: VueTypes.string.def(""),
-    superscriptBackgroundColor: VueTypes.string.def("bg-black"),
+    titleText: VueTypes.string.def(''),
+    titlePosition: VueTypes.string.def('start'),
+    superscriptText: VueTypes.string.def(''),
+    superscriptBackgroundColor: VueTypes.string.def('black'),
+    superscriptPosition: VueTypes.string.def('center'),
   },
   computed: {
-    backgroundColor() {
-      const className = this.superscriptBackgroundColor.substr(0, 2) === "bg" ? this.superscriptBackgroundColor : `bg-${this.superscriptBackgroundColor}`;
-      return !!this.superscript && !!this.superscriptBackgroundColor ? className : "";
-    }
-  }
-};
+    titleClassName() {
+      const position = `text-${this.titlePosition}`
+      return position
+    },
+    superscriptClassName() {
+      const backgroundColor = `bg-${this.superscriptBackgroundColor}`
+      const position = `justify-content-${this.superscriptPosition}`
+      return `${backgroundColor} ${position}`
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>
@@ -36,7 +48,7 @@ export default {
 
   &::before,
   &::after {
-    content: "";
+    content: '';
     height: 1px;
     width: 100%;
     background: $black;
@@ -46,6 +58,10 @@ export default {
     position: absolute;
     align-self: flex-end;
     margin-bottom: 2px;
+  }
+
+  &__superscript {
+    background: $black;
   }
 }
 </style>
