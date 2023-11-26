@@ -1,5 +1,5 @@
 <template>
-  <div class="ordered-list d-flex gap-2 flex-wrap m-3">
+  <div class="ordered-list d-flex gap-2 flex-wrap ms-3">
     <div
       v-for="(content, index) in contents"
       :key="index"
