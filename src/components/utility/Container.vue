@@ -31,7 +31,7 @@ export default {
   &::after {
     position: absolute;
     content: '';
-    width: 2px;
+    width: 1px;
     height: 100%;
     background: linear-gradient(
       to bottom,

@@ -20,7 +20,7 @@
         v-if="content.url"
         class="ordered-list__container__url d-flex justify-content-end"
       >
-        <a :href="content.url" class="t6">see more</a>
+        <a :href="content.url" class="t6 text-decoration-underline">see more</a>
       </div>
     </div>
   </div>
@@ -54,6 +54,9 @@ export default {
       font-family: 'Times New Roman';
       font-weight: $font-weight-bold;
       text-transform: capitalize;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
     }
 
     &__content {
