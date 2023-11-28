@@ -1,7 +1,7 @@
 <template>
   <div class="container position-relative my-4 p-4">
     <div
-      class="container__title h2 position-absolute px-2"
+      class="container__title h2 position-absolute px-2 overflow-hidden"
       :style="{ '--background-color': backgroundColor }"
     >
       {{ title }}
@@ -51,7 +51,9 @@ export default {
   &__title {
     top: -20px;
     left: 36px;
+    max-width: 75%;
     white-space: nowrap;
+    text-overflow: ellipsis;
 
     &::after {
       content: '';
