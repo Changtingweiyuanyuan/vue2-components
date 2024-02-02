@@ -22,7 +22,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { oneOfType, bool, number, string, array, object } from 'vue-types'
 export default {
   name: 'FormCheckbox',
@@ -31,8 +31,9 @@ export default {
     event: 'changeValue',
   },
   props: {
-    // localValue: oneOfType([bool(), number(), string(), array()]).def(false),
-    localValue: array().def([]),
+    localValue: oneOfType([bool(), number(), string(), array(), object()]).def(
+      []
+    ),
     value: oneOfType([bool(), number(), string(), array(), object()]).def(''),
     trueValue: oneOfType([number(), string()]).def(''),
     falseValue: oneOfType([number(), string()]).def(''),
@@ -45,9 +46,15 @@ export default {
       // localValue不是陣列型態 將trueValue賦值給localValue
       if (this.localValue instanceof Array && this.value) {
         // localValue:[{text:'text', value: value}], value:{text:'text', value: value}
-        if (this.value?.value) {
+        if (
+          this.value &&
+          typeof this.value === 'object' &&
+          'value' in this.value
+        ) {
           return !!this.localValue
-            .map(e => e.value)
+            .map(
+              (e: any) => (e as { text: string; value: number | string }).value
+            )
             .find(
               value =>
                 JSON.stringify(value) === JSON.stringify(this.value.value)
