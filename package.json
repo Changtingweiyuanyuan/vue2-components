@@ -1,11 +1,13 @@
 {
   "name": "vue2-components",
   "version": "0.1.0",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "yarn build && node ./ghpages.js"
   },
   "main": "./src/index.js",
   "dependencies": {
@@ -29,6 +31,7 @@
     "@vue/cli-service": "~5.0.0",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
+    "gh-pages": "^6.1.1",
     "vue-template-compiler": "^2.7.15"
   },
   "eslintConfig": {
