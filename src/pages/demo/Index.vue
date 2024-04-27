@@ -285,7 +285,7 @@
 
       <div class="p-2">
         <h3>ordered list</h3>
-        <ordered-list :contents="options" />
+        <ordered-list :contents="options" :background-color="'danger'" />
       </div>
       <br />
 
@@ -365,15 +365,16 @@ export default {
           title: 'title1',
           content: 'content1content1content1content1content1content1',
           url: 'demo',
+          urlText: '看更多',
         },
         {
           title: 'title2',
           content: 'content2content2content2content2content2content2',
+          url: 'demo',
         },
         {
           title: 'title3',
           content: 'content3content3content3content3content3content3',
-          url: 'demo',
         },
         {
           title: 'title4',
@@ -382,7 +383,6 @@ export default {
         {
           title: 'title5',
           content: 'content5content5content5content5content5content5',
-          url: 'demo',
         },
       ],
       inputs: {
