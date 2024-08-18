@@ -1,0 +1,32 @@
+@mixin concert-font($text-size: 'md') {
+  position: relative;
+
+  &--text {
+    font-family: 'Concert One', sans-serif;
+    color: $custom-yellow;
+    position: relative;
+    z-index: 1;
+
+    @if $text-size == 'sm' {
+      font-size: clamp(20px, calc(100cqw / 33), 40px);
+    } @else {
+      font-size: clamp(40px, calc(100cqw / 20), 80px);
+    }
+  }
+
+  &::before {
+    content: attr(data-storke);
+    font-family: 'Concert One', sans-serif;
+    color: $custom-yellow;
+    position: absolute;
+    z-index: 0;
+
+    @if $text-size == 'sm' {
+      font-size: clamp(20px, calc(100cqw / 33), 40px);
+      -webkit-text-stroke: 4px $custom-black;
+    } @else {
+      font-size: clamp(40px, calc(100cqw / 20), 80px);
+      -webkit-text-stroke: 6px $custom-black;
+    }
+  }
+}

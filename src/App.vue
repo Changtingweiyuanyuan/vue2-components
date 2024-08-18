@@ -1,8 +1,14 @@
 <template>
   <div id="app">
-    <router-link class="router-link" to="/">Intro</router-link>
-    <router-link class="router-link" to="/demo">Demo</router-link>
-    <router-link class="router-link" to="/storybook">Storybook</router-link>
+    <div class="header p-5">
+      <div>
+        <router-link class="router-link text-white" to="/">Intro</router-link>
+        <router-link class="router-link text-white" to="/demo">Demo</router-link>
+        <router-link class="router-link text-white" to="/storybook">Storybook</router-link>
+      </div>
+      <div>
+      </div>
+    </div>
     <router-view />
   </div>
 </template>
@@ -22,6 +28,10 @@ export default {
   font-size: 18px;
   .router-link {
     margin: 0 10px;
+  }
+  background: $custom-tiffany-green;
+  .header {
+    background: $custom-blue;
   }
 }
 </style>
