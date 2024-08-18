@@ -1,7 +1,7 @@
 <template>
   <div class="intro pb-12">
-    <div class="intro__main-visual p-3" data-storke="Vue2 components">
-      <span class="intro__main-visual--text"> Vue2 components </span>
+    <div class="intro__main-visual p-3" data-storke="VUE2 COMPONENTS">
+      <span class="intro__main-visual--text"> VUE2 COMPONENTS </span>
     </div>
     <div>
       <div class="intro__readme container" data-storke="README">
