@@ -1,5 +1,5 @@
 <template>
-  <div class="intro pb-5">
+  <div class="intro pb-12">
     <div class="intro__main-visual p-3" data-storke="Vue2 components">
       <span class="intro__main-visual--text"> Vue2 components </span>
     </div>

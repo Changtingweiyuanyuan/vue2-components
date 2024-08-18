@@ -1,329 +1,417 @@
 <template>
-  <div class="demo p-3">
-    <div class="d-flex justify-content-end me-3 text-danger t6">已釋出</div>
-    <div class="bg-success-subtle rounded shadow">
-      <div class="p-2">
-        <h3>bootstrap button</h3>
-        <div class="d-flex flex-wrap gap-2">
-          <button class="btn btn-primary">button</button>
-          <button class="btn btn-secondary">button</button>
-          <button class="btn btn-success">button</button>
-          <button class="btn btn-info">button</button>
-          <button class="btn btn-warning">button</button>
-          <button class="btn btn-danger">button</button>
-          <button class="btn btn-dark">button</button>
-          <button class="btn btn-link">button</button>
+  <div class="demo">
+    <div class="demo__bootstrap-components position-relative">
+      <div class="container d-flex align-items-center position-relative">
+        <img
+          src="@/assets/moon.png"
+          class="demo__bootstrap-components__image img-fluid"
+        />
+        <div>
+          <div
+            class="demo__bootstrap-components__title"
+            data-storke="Overrides"
+          >
+            <span class="demo__bootstrap-components__title--text"
+              >Overrides</span
+            >
+          </div>
+          <div
+            class="demo__bootstrap-components__title"
+            data-storke="Bootstrap"
+          >
+            <span class="demo__bootstrap-components__title--text"
+              >Bootstrap</span
+            >
+          </div>
+          <div
+            class="demo__bootstrap-components__title"
+            data-storke="components"
+          >
+            <span class="demo__bootstrap-components__title--text"
+              >components</span
+            >
+          </div>
         </div>
       </div>
-      <br />
+      <div
+        class="demo__bootstrap-components__block position-relative pb-2 mb-4"
+      >
+        <div class="container">
+          <div class="p-2">
+            <h3 class="component-title text-white">bootstrap button</h3>
+            <div class="d-flex flex-wrap gap-2">
+              <button class="btn btn-primary">button</button>
+              <button class="btn btn-secondary">button</button>
+              <button class="btn btn-success">button</button>
+              <button class="btn btn-info">button</button>
+              <button class="btn btn-warning">button</button>
+              <button class="btn btn-danger">button</button>
+              <button class="btn btn-dark">button</button>
+              <button class="btn btn-link">button</button>
+            </div>
+          </div>
+          <br />
 
-      <div class="p-2">
-        <h3>bootstrap radio/checkbox</h3>
-        <div class="d-flex gap-2">
-          <input class="form-check-input" type="checkbox" value="1" />
-          <input
-            class="form-check-input check-success"
-            type="checkbox"
-            value="2"
-            checked
-          />
-          <input
-            class="form-check-input check-info"
-            type="checkbox"
-            value="2"
-            checked
-          />
-          <input
-            class="form-check-input check-danger"
-            type="checkbox"
-            value="2"
-            checked
-          />
-          <input
-            class="form-check-input check-danger"
-            type="checkbox"
-            value="2"
-            disabled
-            checked
-          />
-          <input
-            class="form-check-input"
-            name="radioDefault"
-            type="radio"
-            value="1"
-            disabled
-          />
-          <input
-            class="form-check-input"
-            name="radioDefault"
-            type="radio"
-            value="2"
-            disabled
-            checked
-          />
+          <div class="p-2">
+            <h3 class="component-title text-white mb-4">
+              bootstrap radio/checkbox
+            </h3>
+            <div class="d-flex gap-2">
+              <input class="form-check-input" type="checkbox" value="1" />
+              <input
+                class="form-check-input check-success"
+                type="checkbox"
+                value="2"
+                checked
+              />
+              <input
+                class="form-check-input check-info"
+                type="checkbox"
+                value="2"
+                checked
+              />
+              <input
+                class="form-check-input check-danger"
+                type="checkbox"
+                value="2"
+                checked
+              />
+              <input
+                class="form-check-input check-danger"
+                type="checkbox"
+                value="2"
+                disabled
+                checked
+              />
+              <input
+                class="form-check-input"
+                name="radioDefault"
+                type="radio"
+                value="1"
+                disabled
+              />
+              <input
+                class="form-check-input"
+                name="radioDefault"
+                type="radio"
+                value="2"
+                disabled
+                checked
+              />
+            </div>
+          </div>
+          <br />
         </div>
       </div>
-      <br />
     </div>
 
-    <hr />
-
-    <div class="d-flex justify-content-end me-3 text-danger t6">已釋出</div>
-    <div class="bg-success-subtle rounded shadow">
-      <div class="p-2">
-        <h3>tag</h3>
-        <Tag
-          value="1"
-          @click="tagOnClick"
-          @delete="deleteTag"
-          :delete-btn="true"
-        >
-          tag
-        </Tag>
-        <Tag value="1" :color="'primary'" :delete-btn="true"> tag </Tag>
-        <Tag value="1" :color="'secondary'" :delete-btn="true"> tag </Tag>
-        <Tag value="1" :color="'success'" :delete-btn="true"> tag </Tag>
-        <Tag value="1" :color="'info'" :delete-btn="true"> tag </Tag>
-        <Tag value="1" :color="'danger'" :delete-btn="true"> tag </Tag>
-        <Tag value="1" :color="'white'" :delete-btn="true"> tag </Tag>
-        <Tag value="1" :color="'dark'" :delete-btn="true"> tag </Tag>
-        <Tag value="1" :color="'gray-dark'" :delete-btn="true"> tag </Tag>
-        <br />
-        <Tag value="2" @click="tagOnClick" disabled> disabled tag </Tag>
-        <Tag value="3" @click="tagOnClick" clicked> default tag </Tag>
-      </div>
-      <br />
-
-      <div class="p-2">
-        <h3>dropdown</h3>
-
-        <FormDropdown
-          :select-options="singleDropdownOptions"
-          :placeholder="'單選測試'"
-          :color="'success'"
-          :multi-value="singleDropdownValue"
-          :invalid="singleDropdownValue.length == 0"
-          @change="singleDropdownChange"
+    <div class="demo__released-component position-relative">
+      <div
+        class="container d-flex align-items-center flex-row-reverse position-relative"
+      >
+        <img
+          src="@/assets/painter-alien-.png"
+          class="demo__released-component__image img-fluid"
         />
-        <FormDropdown
-          :select-options="multipleDropdownOptions"
-          :placeholder="'多選測試'"
-          :select-type="'multiple'"
-          :multi-value="multipleDropdownValues"
-          :invalid="multipleDropdownValues.length == 0"
-          :invalid-text="'此選項不得為空'"
-          :max="3"
-          @change="multipleDropdownChange"
-        />
-      </div>
-      <br />
-
-      <div class="p-2">
-        <h3>radio</h3>
-        <div class="d-flex gap-3 align-items-center">
-          <FormRadio
-            v-model="inputs.radioValue"
-            value="1"
-            :color="'danger'"
-            @change="radioChange"
-          >
-            1
-          </FormRadio>
-          <FormRadio
-            v-model="inputs.radioValue"
-            value="2"
-            :color="'success'"
-            @change="radioChange"
-          >
-            2
-          </FormRadio>
-          <FormRadio
-            v-model="inputs.radioValue"
-            :value="3"
-            :checked="true"
-            @change="radioChange"
-          >
-            3
-          </FormRadio>
-          <FormRadio
-            v-model="inputs.radioValue"
-            :value="4"
-            :disabled="true"
-            @change="radioChange"
-          >
-            4
-          </FormRadio>
+        <div>
+          <div class="demo__released-component__title" data-storke="Released">
+            <span class="demo__released-component__title--text">Released</span>
+          </div>
+          <div class="demo__released-component__title" data-storke="components">
+            <span class="demo__released-component__title--text"
+              >components</span
+            >
+          </div>
         </div>
       </div>
-      <br />
+      <div class="demo__released-component__block position-relative pb-2 mb-4">
+        <div class="container">
+          <div class="p-2">
+            <h3 class="component-title text-black">tag</h3>
+            <Tag
+              value="1"
+              @click="tagOnClick"
+              @delete="deleteTag"
+              :delete-btn="true"
+            >
+              tag
+            </Tag>
+            <Tag value="1" :color="'primary'" :delete-btn="true"> tag </Tag>
+            <Tag value="1" :color="'secondary'" :delete-btn="true"> tag </Tag>
+            <Tag value="1" :color="'success'" :delete-btn="true"> tag </Tag>
+            <Tag value="1" :color="'info'" :delete-btn="true"> tag </Tag>
+            <Tag value="1" :color="'danger'" :delete-btn="true"> tag </Tag>
+            <Tag value="1" :color="'white'" :delete-btn="true"> tag </Tag>
+            <Tag value="1" :color="'dark'" :delete-btn="true"> tag </Tag>
+            <Tag value="1" :color="'gray-dark'" :delete-btn="true"> tag </Tag>
+            <br />
+            <Tag value="2" @click="tagOnClick" disabled> disabled tag </Tag>
+            <Tag value="3" @click="tagOnClick" clicked> default tag </Tag>
+          </div>
+          <br />
 
-      <div class="p-2">
-        <h3>checkbox</h3>
-        <div class="d-flex gap-3 align-items-center">
-          <FormCheckbox
-            v-model="inputs.checkboxValueList"
-            value="1"
-            :true-value="'correct 1'"
-            :false-value="'incorrect 1'"
-            :color="'info'"
-            @changeValue="checkboxChange"
-          >
-            1
-          </FormCheckbox>
-          <FormCheckbox
-            v-model="inputs.checkboxValueList"
-            value="2"
-            :true-value="'correct 2'"
-            :false-value="'incorrect 2'"
-            :color="'warning'"
-            @changeValue="checkboxChange"
-          >
-            2
-          </FormCheckbox>
-          <FormCheckbox
-            v-model="inputs.checkboxValueList"
-            value="3"
-            :true-value="'correct 3'"
-            :false-value="'incorrect 3'"
-            :disabled="true"
-            @changeValue="checkboxChange"
-          >
-            3
-          </FormCheckbox>
-          <FormCheckbox
-            v-model="inputs.checkboxValueList"
-            value="4"
-            :true-value="'correct 4'"
-            :false-value="'incorrect 4'"
-            @changeValue="checkboxChange"
-          >
-            <!-- :disabled="true" -->
-            4
-          </FormCheckbox>
-        </div>
-        <div class="d-flex gap-3 align-items-center">
-          <FormCheckbox
-            v-for="(card, index) in inputs.checkboxCardList"
-            v-model="inputs.checkboxCardValueList"
-            :key="index"
-            :value="card"
-            @changeValue="checkboxCardChange"
-            @changeEvent="checkboxChangeEvent"
-          >
-            {{ card.name }}
-          </FormCheckbox>
+          <div class="p-2">
+            <h3 class="component-title text-black">dropdown</h3>
+
+            <FormDropdown
+              :select-options="singleDropdownOptions"
+              :placeholder="'單選測試'"
+              :color="'success'"
+              :multi-value="singleDropdownValue"
+              :invalid="singleDropdownValue.length == 0"
+              @change="singleDropdownChange"
+            />
+            <FormDropdown
+              :select-options="multipleDropdownOptions"
+              :placeholder="'多選測試'"
+              :select-type="'multiple'"
+              :multi-value="multipleDropdownValues"
+              :invalid="multipleDropdownValues.length == 0"
+              :invalid-text="'此選項不得為空'"
+              :max="3"
+              @change="multipleDropdownChange"
+            />
+          </div>
+          <br />
+
+          <div class="p-2">
+            <h3 class="component-title text-black">radio</h3>
+            <div class="d-flex gap-3 align-items-center">
+              <FormRadio
+                v-model="inputs.radioValue"
+                value="1"
+                :color="'danger'"
+                @change="radioChange"
+              >
+                1
+              </FormRadio>
+              <FormRadio
+                v-model="inputs.radioValue"
+                value="2"
+                :color="'success'"
+                @change="radioChange"
+              >
+                2
+              </FormRadio>
+              <FormRadio
+                v-model="inputs.radioValue"
+                :value="3"
+                :checked="true"
+                @change="radioChange"
+              >
+                3
+              </FormRadio>
+              <FormRadio
+                v-model="inputs.radioValue"
+                :value="4"
+                :disabled="true"
+                @change="radioChange"
+              >
+                4
+              </FormRadio>
+            </div>
+          </div>
+          <br />
+
+          <div class="p-2">
+            <h3 class="component-title text-black">checkbox</h3>
+            <div class="d-flex gap-3 align-items-center">
+              <FormCheckbox
+                v-model="inputs.checkboxValueList"
+                value="1"
+                :true-value="'correct 1'"
+                :false-value="'incorrect 1'"
+                :color="'info'"
+                @changeValue="checkboxChange"
+              >
+                1
+              </FormCheckbox>
+              <FormCheckbox
+                v-model="inputs.checkboxValueList"
+                value="2"
+                :true-value="'correct 2'"
+                :false-value="'incorrect 2'"
+                :color="'warning'"
+                @changeValue="checkboxChange"
+              >
+                2
+              </FormCheckbox>
+              <FormCheckbox
+                v-model="inputs.checkboxValueList"
+                value="3"
+                :true-value="'correct 3'"
+                :false-value="'incorrect 3'"
+                :disabled="true"
+                @changeValue="checkboxChange"
+              >
+                3
+              </FormCheckbox>
+              <FormCheckbox
+                v-model="inputs.checkboxValueList"
+                value="4"
+                :true-value="'correct 4'"
+                :false-value="'incorrect 4'"
+                @changeValue="checkboxChange"
+              >
+                <!-- :disabled="true" -->
+                4
+              </FormCheckbox>
+            </div>
+            <div class="d-flex gap-3 align-items-center">
+              <FormCheckbox
+                v-for="(card, index) in inputs.checkboxCardList"
+                v-model="inputs.checkboxCardValueList"
+                :key="index"
+                :value="card"
+                @changeValue="checkboxCardChange"
+                @changeEvent="checkboxChangeEvent"
+              >
+                {{ card.name }}
+              </FormCheckbox>
+            </div>
+          </div>
+          <br />
+
+          <div class="w-100 p-2">
+            <h3 class="component-title text-black">input</h3>
+            <FormInput
+              v-model="inputs.inputValue"
+              :placeholder="'default input'"
+              :clearable="true"
+              @inputValue="inputChange"
+              @inputEvent="inputEventHandler"
+            />
+            <FormInput
+              v-model="inputs.inputValueDisabled"
+              disabled
+              :background-transparent="true"
+            />
+            <FormInput
+              v-model="inputs.inputValueReadonly"
+              :readonly="true"
+              :placeholder="'readonly input'"
+              :background-transparent="true"
+            />
+            <FormInput
+              v-model="inputs.inputValueInvalid"
+              :placeholder="'invalid input'"
+              :invalid="!!inputs.inputValueInvalid"
+              :invalid-animation="true"
+              :clearable="true"
+              :background-transparent="true"
+            >
+            </FormInput>
+          </div>
+          <br />
         </div>
       </div>
-      <br />
-
-      <div class="w-100 p-2">
-        <h3>input</h3>
-        <FormInput
-          v-model="inputs.inputValue"
-          :placeholder="'default input'"
-          :clearable="true"
-          @inputValue="inputChange"
-          @inputEvent="inputEventHandler"
-        />
-        <FormInput
-          v-model="inputs.inputValueDisabled"
-          disabled
-          :background-transparent="true"
-        />
-        <FormInput
-          v-model="inputs.inputValueReadonly"
-          :readonly="true"
-          :placeholder="'readonly input'"
-          :background-transparent="true"
-        />
-        <FormInput
-          v-model="inputs.inputValueInvalid"
-          :placeholder="'invalid input'"
-          :invalid="!!inputs.inputValueInvalid"
-          :invalid-animation="true"
-          :clearable="true"
-          :background-transparent="true"
-        >
-        </FormInput>
-      </div>
-      <br />
     </div>
 
-    <hr />
-
-    <div class="d-flex justify-content-end me-3 text-success t6">測試中</div>
-    <div class="bg-success-subtle rounded shadow">
-      <div class="w-100 p-2">
-        <h3>headline</h3>
-        <headline
-          :title-text="'Gaza Ministry of Health report describes crumbling health system'"
-          :title-position="'end'"
-          :superscript-text="'headline'"
-          :superscript-background-color="'danger'"
-          :superscript-position="'end'"
+    <div class="demo__not-yet-released-component position-relative">
+      <div class="container d-flex align-items-center position-relative">
+        <img
+          src="@/assets/lay-down-alien-.png"
+          class="demo__not-yet-released-component__image img-fluid"
         />
-        <br />
-        <headline
-          :title-text="'Gaza Ministry of Health report describes crumbling health system'"
-          :superscript-text="'headline'"
-        />
+        <div>
+          <div
+            class="demo__not-yet-released-component__title"
+            data-storke="Not yet"
+          >
+            <span class="demo__not-yet-released-component__title--text"
+              >Not yet</span
+            >
+          </div>
+          <div
+            class="demo__not-yet-released-component__title"
+            data-storke="released"
+          >
+            <span class="demo__not-yet-released-component__title--text"
+              >released</span
+            >
+          </div>
+          <div
+            class="demo__not-yet-released-component__title"
+            data-storke="components"
+          >
+            <span class="demo__not-yet-released-component__title--text"
+              >components</span
+            >
+          </div>
+        </div>
       </div>
-      <br />
+      <div
+        class="demo__not-yet-released-component__block position-relative pb-2"
+      >
+        <div class="container">
+          <div class="w-100 p-2">
+            <h3 class="component-title text-white">headline</h3>
+            <headline
+              :title-text="'Gaza Ministry of Health report describes crumbling health system'"
+              :title-position="'end'"
+              :superscript-text="'headline'"
+              :superscript-background-color="'success'"
+              :superscript-position="'end'"
+            />
+            <br />
+            <headline
+              :title-text="'Gaza Ministry of Health report describes crumbling health system'"
+              :superscript-text="'headline'"
+            />
+          </div>
+          <br />
 
-      <div class="w-100 p-2">
-        <h3>paragraph</h3>
-        <paragraph :text="text" :text-size="'xs'" />
-        <paragraph :text="text" :text-size="'sm'" />
-        <paragraph :text="text" :text-size="'md'" />
-        <paragraph
-          :text="text"
-          :text-size="'lg'"
-          :first-letter-shadow-color="'#91AD70'"
-        />
+          <div class="w-100 p-2">
+            <h3 class="component-title text-white">paragraph</h3>
+            <paragraph :text="text" :text-size="'xs'" />
+            <paragraph :text="text" :text-size="'sm'" />
+            <paragraph :text="text" :text-size="'md'" />
+            <paragraph
+              :text="text"
+              :text-size="'lg'"
+              :first-letter-shadow-color="'#91AD70'"
+            />
+          </div>
+          <br />
+
+          <div class="p-2">
+            <h3 class="component-title text-white">ordered list</h3>
+            <ordered-list :contents="options" />
+          </div>
+          <br />
+
+          <div class="w-100 p-2">
+            <h3 class="component-title text-white">container</h3>
+            <container :title="'container'" :background-color="'#7e9fba'">
+              <template #content>{{ text }}</template>
+            </container>
+          </div>
+          <br />
+
+          <div class="p-2">
+            <h3 class="component-title text-white">affix bar</h3>
+            affix bar status:
+            <button
+              type="button"
+              focus
+              class="btn btn-info"
+              @click="uiState.affixBarDisplay = !uiState.affixBarDisplay"
+            >
+              {{ uiState.affixBarDisplay }}
+            </button>
+            <affix-bar
+              :affix-bar-display="uiState.affixBarDisplay"
+              :offset-top="100"
+              :padding-x="28"
+              :transition="false"
+              :container-class-name="'container'"
+            >
+              <div>affix bar slot</div>
+            </affix-bar>
+          </div>
+          <br />
+        </div>
       </div>
-      <br />
-
-      <div class="p-2">
-        <h3>ordered list</h3>
-        <ordered-list :contents="options" :background-color="'danger'" />
-      </div>
-      <br />
-
-      <div class="w-100 p-2">
-        <h3>container</h3>
-        <container :title="'container'" :background-color="'#d7ddd8'">
-          <template #content>{{ text }}</template>
-        </container>
-      </div>
-      <br />
-    </div>
-
-    <hr />
-
-    <div class="d-flex justify-content-end me-3 t6">尚未釋出</div>
-    <div class="border rounded shadow">
-      <div class="p-2">
-        <h3>affix bar</h3>
-        affix bar status:
-        <button
-          type="button"
-          focus
-          class="btn btn-secondary"
-          @click="uiState.affixBarDisplay = !uiState.affixBarDisplay"
-        >
-          {{ uiState.affixBarDisplay }}
-        </button>
-        <affix-bar
-          :affix-bar-display="uiState.affixBarDisplay"
-          :offset-top="100"
-          :padding-x="28"
-          :transition="false"
-          :container-class-name="'container'"
-        >
-          <div>affix bar slot</div>
-        </affix-bar>
-      </div>
-      <br /><br />
     </div>
   </div>
 </template>
@@ -462,5 +550,50 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/scss/bootstrap/type';
+@import '@/scss/global.import.scss';
+$image-dimensions: clamp(120px, calc(100vw / 5), 280px);
+$image-cross-height: 66px;
+
+
+.demo {
+  background: $custom-blue;
+  &__bootstrap-components,
+  &__released-component,
+  &__not-yet-released-component {
+    .container {
+      z-index: 1;
+    }
+    &__image {
+      width: $image-dimensions;
+      height: $image-dimensions;
+    }
+    &__title {
+      @include concert-font('sm');
+    }
+    &__block {
+      z-index: 0;
+      padding-top: $image-cross-height;
+      transform: translate(0, -$image-cross-height);
+      background-image: url('assets/grid.png');
+      background-color: $custom-red;
+      border-bottom: 2px solid $custom-black;
+      .component-title {
+        text-shadow: 2px 2px 0 $custom-black;
+      }
+    }
+  }
+  &__released-component {
+    &__block {
+      background-color: $custom-light-yellow;
+      .component-title {
+        text-shadow: none;
+      }
+    }
+  }
+  &__not-yet-released-component {
+    &__block {
+      background-color: $custom-gray;
+    }
+  }
+}
 </style>
