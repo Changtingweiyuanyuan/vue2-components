@@ -1,73 +1,75 @@
-import { INPUT_DEFAULT_TEXT } from '../constants/inputsConstants'
+import { INPUT_DEFAULT_TEXT } from "../constants/inputsConstants";
 
 export const STORYBOOK_CONSTANTS = Object.freeze({
   FORM_INPUT: {
     PROPERTIES: {
       VALUE: {
-        NAME: 'value',
-        TYPE: 'string',
-        DESCRIPTION: '預設值',
+        NAME: "value",
+        TYPE: "string",
+        DESCRIPTION: "預設值",
         DEFAULT: '""',
       },
       PLACEHOLDER: {
-        NAME: 'placeholder',
-        TYPE: 'string',
-        DESCRIPTION: 'input預設文字<br>若有填寫 input高度為48px，若無填寫 高度為34px',
+        NAME: "placeholder",
+        TYPE: "string",
+        DESCRIPTION:
+          "input預設文字<br>若有填寫 input高度為48px，若無填寫 高度為34px",
         DEFAULT: '""',
       },
       CLEARABLE: {
-        NAME: 'clearable',
-        TYPE: 'boolean',
-        DESCRIPTION: '是否出現清除按鈕',
-        DEFAULT: 'false',
+        NAME: "clearable",
+        TYPE: "boolean",
+        DESCRIPTION: "是否出現清除按鈕",
+        DEFAULT: "false",
       },
       DISABLED: {
-        NAME: 'disabled',
-        TYPE: 'boolean',
-        DESCRIPTION: '是否disabled',
-        DEFAULT: 'false',
+        NAME: "disabled",
+        TYPE: "boolean",
+        DESCRIPTION: "是否disabled",
+        DEFAULT: "false",
       },
       READONLY: {
-        NAME: 'readonly',
-        TYPE: 'boolean',
-        DESCRIPTION: '是否readonly',
-        DEFAULT: 'false',
+        NAME: "readonly",
+        TYPE: "boolean",
+        DESCRIPTION: "是否readonly",
+        DEFAULT: "false",
       },
       INVALID: {
-        NAME: 'invalid',
-        TYPE: 'boolean',
-        DESCRIPTION: '是否出現錯誤提示<br>INVALID_TEXT若未填，預設文字為"Validation has errors."',
-        DEFAULT: 'false',
+        NAME: "invalid",
+        TYPE: "boolean",
+        DESCRIPTION:
+          '是否出現錯誤提示<br>INVALID_TEXT若未填，預設文字為"Validation has errors."',
+        DEFAULT: "false",
       },
       INVALID_ANIMATION: {
-        NAME: 'invalidAnimation',
-        TYPE: 'boolean',
-        DESCRIPTION: '錯誤提示icon 閃爍效果',
-        DEFAULT: 'false',
+        NAME: "invalidAnimation",
+        TYPE: "boolean",
+        DESCRIPTION: "錯誤提示icon 閃爍效果",
+        DEFAULT: "false",
       },
       INVALID_TEXT: {
-        NAME: 'invalidText',
-        TYPE: 'string',
-        DESCRIPTION: '錯誤提示文字，字數超過100字 以 ... 替代',
+        NAME: "invalidText",
+        TYPE: "string",
+        DESCRIPTION: "錯誤提示文字，字數超過100字 以 ... 替代",
         DEFAULT: INPUT_DEFAULT_TEXT.INVALID,
       },
       BACKGROUND_TRANSPARENT: {
-        NAME: 'backgroundTransparent',
-        TYPE: 'boolean',
-        DESCRIPTION: '背景是否調整為透明色',
-        DEFAULT: 'false',
+        NAME: "backgroundTransparent",
+        TYPE: "boolean",
+        DESCRIPTION: "背景是否調整為透明色",
+        DEFAULT: "false",
       },
     },
     EMITS: {
       INPUT_VALUE: {
-        NAME: 'inputValue',
+        NAME: "inputValue",
         DESCRIPTION:
-          '輸入框發生改變時觸發，此方法可接收輸入框的值(有需要獲取才使用)',
+          "輸入框發生改變時觸發，此方法可接收輸入框的值(有需要獲取才使用)",
       },
       INPUT_EVENT: {
-        NAME: 'inputEvent',
+        NAME: "inputEvent",
         DESCRIPTION:
-          '輸入框發生改變時觸發，此方法可接收輸入框的事件(有需要獲取才使用)',
+          "輸入框發生改變時觸發，此方法可接收輸入框的事件(有需要獲取才使用)",
       },
     },
     PREFORMATTED_CODE: `
@@ -92,9 +94,9 @@ import FormInput from "@/components/inputs/Input.vue";
   FORM_RADIO: {
     PROPERTIES: {
       VALUE: {
-        NAME: 'value',
-        TYPE: 'number/string',
-        DESCRIPTION: '預設值',
+        NAME: "value",
+        TYPE: "number/string",
+        DESCRIPTION: "預設值",
         DEFAULT: '""',
       },
       //   LOCAL_VALUE: {
@@ -104,30 +106,30 @@ import FormInput from "@/components/inputs/Input.vue";
       //     DEFAULT: 'false',
       //   },
       CHECKED: {
-        NAME: 'checked',
-        TYPE: 'boolean',
-        DESCRIPTION: '是否checked',
-        DEFAULT: 'false',
+        NAME: "checked",
+        TYPE: "boolean",
+        DESCRIPTION: "是否checked",
+        DEFAULT: "false",
       },
       DISABLED: {
-        NAME: 'disabled',
-        TYPE: 'boolean',
-        DESCRIPTION: '是否disabled',
-        DEFAULT: 'false',
+        NAME: "disabled",
+        TYPE: "boolean",
+        DESCRIPTION: "是否disabled",
+        DEFAULT: "false",
       },
       COLOR: {
-        NAME: 'color',
-        TYPE: 'string',
+        NAME: "color",
+        TYPE: "string",
         DESCRIPTION:
-          'checked icon顏色<br>可選擇primary、secondary、success、info、warning、danger、light、dark、gray-dark',
+          "checked icon顏色<br>可選擇primary、secondary、success、info、warning、danger、light、dark、gray-dark",
         DEFAULT: '"primary"',
       },
     },
     EMITS: {
       CHANGE: {
-        NAME: 'change',
+        NAME: "change",
         DESCRIPTION:
-          'radio發生改變時觸發，此方法可接收radio的值(回傳值型態依照傳入value的型態)',
+          "radio發生改變時觸發，此方法可接收radio的值(回傳值型態依照傳入value的型態)",
       },
     },
     PREFORMATTED_CODE: `
@@ -148,51 +150,51 @@ import FormRadio from '@/components/inputs/Radio.
   FORM_CHECKBOX: {
     PROPERTIES: {
       VALUE: {
-        NAME: 'value',
-        TYPE: 'boolean/number/string/array/object',
-        DESCRIPTION: '預設值，若帶object 需指定「value」key',
+        NAME: "value",
+        TYPE: "boolean/number/string/array/object",
+        DESCRIPTION: "預設值，若帶object 需指定「value」key",
         DEFAULT: '""',
       },
       LOCAL_VALUE: {
-        NAME: 'localValue',
-        TYPE: 'array',
-        DESCRIPTION: 'v-model的值，若帶object 需指定「value」key',
-        DEFAULT: 'false',
+        NAME: "localValue",
+        TYPE: "array",
+        DESCRIPTION: "v-model的值，若帶object 需指定「value」key",
+        DEFAULT: "false",
       },
       TRUE_VALUE: {
-        NAME: 'trueValue',
-        TYPE: 'number/string',
-        DESCRIPTION: '自定義回傳的true值',
+        NAME: "trueValue",
+        TYPE: "number/string",
+        DESCRIPTION: "自定義回傳的true值",
         DEFAULT: '""',
       },
       FALSE_VALUE: {
-        NAME: 'falseValue',
-        TYPE: 'number/string',
-        DESCRIPTION: '自定義回傳的false值',
+        NAME: "falseValue",
+        TYPE: "number/string",
+        DESCRIPTION: "自定義回傳的false值",
         DEFAULT: '""',
       },
       DISABLED: {
-        NAME: 'disabled',
-        TYPE: 'boolean',
-        DESCRIPTION: '是否disabled',
-        DEFAULT: 'false',
+        NAME: "disabled",
+        TYPE: "boolean",
+        DESCRIPTION: "是否disabled",
+        DEFAULT: "false",
       },
       COLOR: {
-        NAME: 'color',
-        TYPE: 'string',
+        NAME: "color",
+        TYPE: "string",
         DESCRIPTION:
-          'checked icon顏色<br>可選擇primary、secondary、success、info、warning、danger、light、dark、gray-dark',
+          "checked icon顏色<br>可選擇primary、secondary、success、info、warning、danger、light、dark、gray-dark",
         DEFAULT: '"primary"',
       },
     },
     EMITS: {
       CHANGE_VALUE: {
-        NAME: 'changeValue',
-        DESCRIPTION: 'checkbox發生改變時觸發，此方法可接收checkbox的值',
+        NAME: "changeValue",
+        DESCRIPTION: "checkbox發生改變時觸發，此方法可接收checkbox的值",
       },
       CHANGE_EVENT: {
-        NAME: 'changeEvent',
-        DESCRIPTION: 'checkbox發生改變時觸發，此方法可接收checkbox的事件',
+        NAME: "changeEvent",
+        DESCRIPTION: "checkbox發生改變時觸發，此方法可接收checkbox的事件",
       },
     },
     PREFORMATTED_CODE: `
@@ -243,96 +245,97 @@ data() {
   FORM_DROPDOWN: {
     PROPERTIES: {
       SELECT_OPTIONS: {
-        NAME: 'selectOptions',
-        TYPE: 'array',
+        NAME: "selectOptions",
+        TYPE: "array",
         DESCRIPTION: '下拉選單的選項<br>組成為[{value: "", text: ""}]',
-        DEFAULT: '[]',
+        DEFAULT: "[]",
       },
       MULTI_VALUE: {
-        NAME: 'multiValue',
-        TYPE: 'array',
+        NAME: "multiValue",
+        TYPE: "array",
         DESCRIPTION: '下拉選單中 已被選取的值<br>組成為[{value: "", text: ""}]',
-        DEFAULT: '[]',
+        DEFAULT: "[]",
       },
       SELECT_TYPE: {
-        NAME: 'selectType',
-        TYPE: 'string',
-        DESCRIPTION: '下拉選單的類型<br>可選擇single、multiple',
+        NAME: "selectType",
+        TYPE: "string",
+        DESCRIPTION: "下拉選單的類型<br>可選擇single、multiple",
         DEFAULT: '"single"',
       },
       PLACEHOLDER: {
-        NAME: 'placeholder',
-        TYPE: 'string',
-        DESCRIPTION: '下拉選單尚未被勾選的預設文字',
+        NAME: "placeholder",
+        TYPE: "string",
+        DESCRIPTION: "下拉選單尚未被勾選的預設文字",
         DEFAULT: '""',
       },
       MAX: {
-        NAME: 'max',
-        TYPE: 'number',
-        DESCRIPTION: '多選下拉選單勾選數量上限',
-        DEFAULT: '100',
+        NAME: "max",
+        TYPE: "number",
+        DESCRIPTION: "多選下拉選單勾選數量上限",
+        DEFAULT: "100",
       },
       MAX_TIP_TEXT: {
-        NAME: 'maxTipText',
-        TYPE: 'string',
-        DESCRIPTION: '多選下拉選單 超過勾選數量提示文字',
-        DEFAULT: '`選擇數量限為${MAX}`'
+        NAME: "maxTipText",
+        TYPE: "string",
+        DESCRIPTION: "多選下拉選單 超過勾選數量提示文字",
+        DEFAULT: "`選擇數量限為${MAX}`",
       },
       DISABLED: {
-        NAME: 'disabled',
-        TYPE: 'boolean',
-        DESCRIPTION: '是否disabled',
-        DEFAULT: 'false',
+        NAME: "disabled",
+        TYPE: "boolean",
+        DESCRIPTION: "是否disabled",
+        DEFAULT: "false",
       },
       DELETE_BTN: {
-        NAME: 'deleteBtn',
-        TYPE: 'boolean',
-        DESCRIPTION: 'selectType為multiple時，標籤是否出現刪除按鈕',
-        DEFAULT: 'true',
+        NAME: "deleteBtn",
+        TYPE: "boolean",
+        DESCRIPTION: "selectType為multiple時，標籤是否出現刪除按鈕",
+        DEFAULT: "true",
       },
       COLOR: {
-        NAME: 'color',
-        TYPE: 'string',
+        NAME: "color",
+        TYPE: "string",
         DESCRIPTION:
-          '單選為被選取文字顏色 多選為標籤顏色<br>可選擇primary、secondary、success、info、warning、danger、light、dark、gray-dark',
+          "單選為被選取文字顏色 多選為標籤顏色<br>可選擇primary、secondary、success、info、warning、danger、light、dark、gray-dark",
         DEFAULT: '"white"',
       },
       CHECKED_ICON_COLOR: {
-        NAME: 'checkedIconColor',
-        TYPE: 'string',
+        NAME: "checkedIconColor",
+        TYPE: "string",
         DESCRIPTION:
-        '多選checkbox 打勾顏色<br>可選擇primary、secondary、success、info、warning、danger、light、dark、gray-dark',
+          "多選checkbox 打勾顏色<br>可選擇primary、secondary、success、info、warning、danger、light、dark、gray-dark",
         DEFAULT: '"primary"',
       },
       INVALID: {
-        NAME: 'invalid',
-        TYPE: 'boolean',
-        DESCRIPTION: '是否出現錯誤提示<br>INVALID_TEXT若未填，預設文字為"Validation has errors."',
-        DEFAULT: 'false',
+        NAME: "invalid",
+        TYPE: "boolean",
+        DESCRIPTION:
+          '是否出現錯誤提示<br>INVALID_TEXT若未填，預設文字為"Validation has errors."',
+        DEFAULT: "false",
       },
       INVALID_ANIMATION: {
-        NAME: 'invalidAnimation',
-        TYPE: 'boolean',
-        DESCRIPTION: '錯誤提示icon 閃爍效果',
-        DEFAULT: 'false',
+        NAME: "invalidAnimation",
+        TYPE: "boolean",
+        DESCRIPTION: "錯誤提示icon 閃爍效果",
+        DEFAULT: "false",
       },
       INVALID_TEXT: {
-        NAME: 'invalidText',
-        TYPE: 'string',
-        DESCRIPTION: '錯誤提示文字，字數若超過一行 以 ... 替代',
+        NAME: "invalidText",
+        TYPE: "string",
+        DESCRIPTION: "錯誤提示文字，字數若超過一行 以 ... 替代",
         DEFAULT: INPUT_DEFAULT_TEXT.INVALID,
       },
       MENU_MAX_HEIGHT: {
-        NAME: 'menuMaxHeight',
-        TYPE: 'number/string',
-        DESCRIPTION: '下拉選單menu高度',
+        NAME: "menuMaxHeight",
+        TYPE: "number/string",
+        DESCRIPTION: "下拉選單menu高度",
         DEFAULT: '"200"',
       },
     },
     EMITS: {
       CHANGE_VALUE: {
-        NAME: 'change',
-        DESCRIPTION: '下拉選單發生改變時，此方法可接收下拉選單被選取的值',
+        NAME: "change",
+        DESCRIPTION: "下拉選單發生改變時，此方法可接收下拉選單被選取的值",
       },
     },
     PREFORMATTED_CODE: `
@@ -395,34 +398,34 @@ methods: {
   UTILITY_TAG: {
     PROPERTIES: {
       VALUE: {
-        NAME: 'value',
-        TYPE: 'bool/number/string/array/object',
-        DESCRIPTION: 'tag資料，若帶object 需指定「value」key',
+        NAME: "value",
+        TYPE: "bool/number/string/array/object",
+        DESCRIPTION: "tag資料，若帶object 需指定「value」key",
         DEFAULT: '""',
       },
       CLICKED: {
-        NAME: 'clicked',
-        TYPE: 'bool',
-        DESCRIPTION: '是否要傳送點擊事件',
-        DEFAULT: 'false',
+        NAME: "clicked",
+        TYPE: "bool",
+        DESCRIPTION: "是否要傳送點擊事件",
+        DEFAULT: "false",
       },
       DISABLED: {
-        NAME: 'disabled',
-        TYPE: 'bool',
-        DESCRIPTION: '是否disabled',
-        DEFAULT: 'false',
+        NAME: "disabled",
+        TYPE: "bool",
+        DESCRIPTION: "是否disabled",
+        DEFAULT: "false",
       },
       DELETE_TN: {
-        NAME: 'deleteBtn',
-        TYPE: 'bool',
-        DESCRIPTION: '是否出現刪除按鈕(點擊傳送事件)',
-        DEFAULT: 'false',
+        NAME: "deleteBtn",
+        TYPE: "bool",
+        DESCRIPTION: "是否出現刪除按鈕(點擊傳送事件)",
+        DEFAULT: "false",
       },
       COLOR: {
-        NAME: 'color',
-        TYPE: 'string',
+        NAME: "color",
+        TYPE: "string",
         DESCRIPTION:
-          '標籤顏色，可選擇primary、secondary、success、info、warning、danger、light、dark、gray-dark',
+          "標籤顏色，可選擇primary、secondary、success、info、warning、danger、light、dark、gray-dark",
         DEFAULT: '"warning"',
       },
       //   TYPE: {
@@ -440,12 +443,12 @@ methods: {
     },
     EMITS: {
       CLICK: {
-        NAME: 'click',
-        DESCRIPTION: '點擊tag時觸發，此方法可接收tag的值',
+        NAME: "click",
+        DESCRIPTION: "點擊tag時觸發，此方法可接收tag的值",
       },
       DELETE_TAG: {
-        NAME: 'deleteTag',
-        DESCRIPTION: '點擊刪除按鈕時觸發，此方法可接收tag的值',
+        NAME: "deleteTag",
+        DESCRIPTION: "點擊刪除按鈕時觸發，此方法可接收tag的值",
       },
     },
     PREFORMATTED_CODE: `
@@ -462,4 +465,17 @@ import Tag from '@/components/utility/Tag.vue';
 </Tag>
     `,
   },
-})
+});
+
+export const STORYBOOK_CATEGORY = Object.freeze({
+  FORM: "form",
+  UTILITY: "utility",
+});
+
+export const STORYBOOK_COMPONENTS = Object.freeze({
+  INPUT: "input",
+  RADIO: "radio",
+  CHECKBOX: "checkbox",
+  DROPDOWN: "dropdown",
+  TAG: "tag",
+});

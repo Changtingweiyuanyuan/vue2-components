@@ -1,8 +1,20 @@
 <template>
   <div class="storybook-template container">
+    <div class="d-flex justify-content-between">
+      <div class="storybook-template__title" :data-storke="components">
+        <span class="storybook-template__title--text">{{ components }}</span>
+      </div>
+      <div
+        class="storybook-template__close-icon cursor-pointer"
+        data-storke="X"
+        @click="$emit('closeStorybook')"
+      >
+        <span class="storybook-template__close-icon--text">X</span>
+      </div>
+    </div>
     <div class="storybook-template__mounting-method">
       <h3>mounting method</h3>
-      <pre v-if="preformattedCode" class="bg-success-subtle rounded px-4 t5">
+      <pre v-if="preformattedCode" class="bg-white rounded px-4 t5">
         {{ preformattedCode }}
       </pre>
     </div>
@@ -23,10 +35,9 @@
         <div
           v-for="(property, indexValue, index) in properties"
           :key="`${indexValue}-${index}`"
-          class="storybook-template__properties__td d-flex rounded mb-1"
+          class="storybook-template__properties__td bg-white d-flex rounded mb-1"
           :class="{
-            'bg-info-subtle': index % 2 === 0,
-            'bg-success-subtle': index % 2 === 1,
+            border: index % 2 === 0,
           }"
         >
           <div class="name px-2 py-1 text-break">{{ property['NAME'] }}</div>
@@ -56,10 +67,9 @@
         <div
           v-for="(property, indexValue, index) in emits"
           :key="`${indexValue}-${index}`"
-          class="storybook-template__emits__td d-flex rounded mb-1"
+          class="storybook-template__emits__td bg-white d-flex rounded mb-1"
           :class="{
-            'bg-info-subtle': index % 2 === 0,
-            'bg-success-subtle': index % 2 === 1,
+            border: index % 2 === 0,
           }"
         >
           <div class="name px-2 py-1">{{ property['NAME'] }}</div>
@@ -75,9 +85,14 @@
 </template>
 
 <script>
+import VueTypes from 'vue-types'
 import { STORYBOOK_CONSTANTS } from '@/components/constants/storybookConstants'
 export default {
   name: 'StorybookTemplate',
+  props: {
+    components: VueTypes.string.def(''),
+    componentsCategory: VueTypes.string.def(''),
+  },
   data() {
     return {
       properties: {},
@@ -85,28 +100,30 @@ export default {
       preformattedCode: '',
     }
   },
-  watch: {
-    $route: {
-      handler(to) {
-        const { PROPERTIES, EMITS, PREFORMATTED_CODE } =
-          STORYBOOK_CONSTANTS[
-            `${to.params.componentsCategory.toUpperCase()}_${to.params.components.toUpperCase()}`
-          ] || {}
-        this.properties = PROPERTIES || {}
-        this.emits = EMITS || {}
-        this.preformattedCode = PREFORMATTED_CODE || ''
-      },
-      immediate: true,
-      deep: true,
-    },
+  mounted() {
+    const { PROPERTIES, EMITS, PREFORMATTED_CODE } =
+      STORYBOOK_CONSTANTS[
+        `${this.componentsCategory.toUpperCase()}_${this.components.toUpperCase()}`
+      ] || {}
+    this.properties = PROPERTIES || {}
+    this.emits = EMITS || {}
+    this.preformattedCode = PREFORMATTED_CODE || ''
   },
 }
 </script>
 
 <style lang="scss" scoped>
+@import '@/scss/global.import.scss';
+
 .storybook-template {
+  &__title,
+  &__close-icon {
+    @include concert-font('sm');
+  }
+
   h3 {
     text-decoration: underline;
+    font-family: 'Concert One', sans-serif;
   }
 
   &__properties,

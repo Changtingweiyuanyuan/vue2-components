@@ -127,7 +127,18 @@
       <div class="demo__released-component__block position-relative pb-2 mb-4">
         <div class="container">
           <div class="p-2">
-            <h3 class="component-title text-black">tag</h3>
+            <h3 class="component-title text-black">
+              <span
+                class="border rounded-pill text-white shadow-sm cursor-pointer py-1 px-2"
+                @click="
+                  toggleStorybookDisplay({
+                    componentsCategory: STORYBOOK_CATEGORY.UTILITY,
+                    components: STORYBOOK_COMPONENTS.TAG,
+                  })
+                "
+                >tag</span
+              >
+            </h3>
             <Tag
               value="1"
               @click="tagOnClick"
@@ -151,7 +162,18 @@
           <br />
 
           <div class="p-2">
-            <h3 class="component-title text-black">dropdown</h3>
+            <h3 class="component-title text -black">
+              <span
+                class="border rounded-pill text-white shadow-sm cursor-pointer py-1 px-2"
+                @click="
+                  toggleStorybookDisplay({
+                    componentsCategory: STORYBOOK_CATEGORY.FORM,
+                    components: STORYBOOK_COMPONENTS.DROPDOWN,
+                  })
+                "
+                >dropdown</span
+              >
+            </h3>
 
             <FormDropdown
               :select-options="singleDropdownOptions"
@@ -175,7 +197,18 @@
           <br />
 
           <div class="p-2">
-            <h3 class="component-title text-black">radio</h3>
+            <h3 class="component-title text-black">
+              <span
+                class="border rounded-pill text-white shadow-sm cursor-pointer py-1 px-2"
+                @click="
+                  toggleStorybookDisplay({
+                    componentsCategory: STORYBOOK_CATEGORY.FORM,
+                    components: STORYBOOK_COMPONENTS.RADIO,
+                  })
+                "
+                >radio</span
+              >
+            </h3>
             <div class="d-flex gap-3 align-items-center">
               <FormRadio
                 v-model="inputs.radioValue"
@@ -214,7 +247,18 @@
           <br />
 
           <div class="p-2">
-            <h3 class="component-title text-black">checkbox</h3>
+            <h3 class="component-title text-black">
+              <span
+                class="border rounded-pill text-white shadow-sm cursor-pointer py-1 px-2"
+                @click="
+                  toggleStorybookDisplay({
+                    componentsCategory: STORYBOOK_CATEGORY.FORM,
+                    components: STORYBOOK_COMPONENTS.CHECKBOX,
+                  })
+                "
+                >checkbox</span
+              >
+            </h3>
             <div class="d-flex gap-3 align-items-center">
               <FormCheckbox
                 v-model="inputs.checkboxValueList"
@@ -273,7 +317,18 @@
           <br />
 
           <div class="w-100 p-2">
-            <h3 class="component-title text-black">input</h3>
+            <h3 class="component-title text-black">
+              <span
+                class="border rounded-pill text-white shadow-sm cursor-pointer py-1 px-2"
+                @click="
+                  toggleStorybookDisplay({
+                    componentsCategory: STORYBOOK_CATEGORY.FORM,
+                    components: STORYBOOK_COMPONENTS.INPUT,
+                  })
+                "
+                >input</span
+              >
+            </h3>
             <FormInput
               v-model="inputs.inputValue"
               :placeholder="'default input'"
@@ -310,7 +365,7 @@
     <div class="demo__not-yet-released-component position-relative">
       <div class="container d-flex align-items-center position-relative">
         <img
-          src="@/assets/lay-down-alien-.png"
+          src="@/assets/lay-down-alien.png"
           class="demo__not-yet-released-component__image img-fluid"
         />
         <div>
@@ -395,8 +450,9 @@
               type="button"
               focus
               class="btn btn-info"
-              @click="uiState.affixBarDisplay = !uiState.affixBarDisplay"
+              @click="uiState.affixBarDisplay = true"
             >
+              <!-- @click="uiState.affixBarDisplay = !uiState.affixBarDisplay" -->
               {{ uiState.affixBarDisplay }}
             </button>
             <affix-bar
@@ -413,6 +469,17 @@
         </div>
       </div>
     </div>
+
+    <SlidingContainer
+      :show="uiState.storybookDisplay"
+      :backgroundColor="'#99eadb'"
+    >
+      <StorybookTemplate
+        :components="storybook.components"
+        :componentsCategory="storybook.componentsCategory"
+        @closeStorybook="uiState.storybookDisplay = false"
+      />
+    </SlidingContainer>
   </div>
 </template>
 
@@ -427,6 +494,12 @@ import FormCheckbox from '@/components/inputs/Checkbox.vue'
 import FormInput from '@/components/inputs/Input.vue'
 import Tag from '@/components/utility/Tag.vue'
 import FormDropdown from '@/components/inputs/Dropdown.vue'
+import SlidingContainer from '@/components/storybook/SlidingContainer.vue'
+import StorybookTemplate from '@/components/storybook/Template.vue'
+import {
+  STORYBOOK_CATEGORY,
+  STORYBOOK_COMPONENTS,
+} from '@/components/constants/storybookConstants'
 
 export default {
   name: 'DemoPage',
@@ -441,11 +514,14 @@ export default {
     FormInput,
     Tag,
     FormDropdown,
+    SlidingContainer,
+    StorybookTemplate,
   },
   data() {
     return {
       uiState: {
         affixBarDisplay: false,
+        storybookDisplay: false,
       },
       text: `A "daily emergency report" created by Gaza's Hamas-run Health Ministry described an emergency medicine system that's on the edge of failure. According to the figures in the document, which could not be independently verified, 57 medical workers in the system had been killed, 25 ambulances had been taken out of service, and 15,273 people had been injured in the conflict. The document, provided to NBC News by Dr. Medhat Abbas, a director at al-Shifa Hospital in Gaza City, included detailed charts and figures that describe overcrowded hospitals' struggling with dwindling resources.`,
       options: [
@@ -510,6 +586,12 @@ export default {
         { text: 'text6', value: 'value6' },
         { text: 'text7', value: 'value7' },
       ],
+      storybook: {
+        components: '',
+        componentsCategory: '',
+      },
+      STORYBOOK_CATEGORY,
+      STORYBOOK_COMPONENTS,
     }
   },
   methods: {
@@ -545,6 +627,12 @@ export default {
       if (!option) return
       this.multipleDropdownValues = option
     },
+    toggleStorybookDisplay({ componentsCategory, components }) {
+      if(this.uiState.storybookDisplay) return;
+      this.uiState.storybookDisplay = true
+      this.storybook.componentsCategory = componentsCategory
+      this.storybook.components = components
+    },
   },
 }
 </script>
@@ -553,7 +641,6 @@ export default {
 @import '@/scss/global.import.scss';
 $image-dimensions: clamp(120px, calc(100vw / 5), 280px);
 $image-cross-height: 66px;
-
 
 .demo {
   background: $custom-blue;
@@ -587,6 +674,9 @@ $image-cross-height: 66px;
       background-color: $custom-light-yellow;
       .component-title {
         text-shadow: none;
+        span {
+          background: #22479f;
+        }
       }
     }
   }
