@@ -4,7 +4,6 @@
       <div>
         <router-link class="router-link text-white" to="/">Intro</router-link>
         <router-link class="router-link text-white" to="/demo">Demo</router-link>
-        <router-link class="router-link text-white" to="/storybook">Storybook</router-link>
       </div>
       <div>
         <a :href="githubLink" target="_blank">
