@@ -639,7 +639,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/scss/global.import.scss';
-$image-dimensions: clamp(120px, calc(100vw / 5), 280px);
+$image-dimensions: clamp(120px, calc(100vw / 5), 250px);
 $image-cross-height: 66px;
 
 .demo {

@@ -55,6 +55,7 @@ css: {
           <pre class="text-danger border rounded p-1">yarn</pre>
           <pre class="text-danger border rounded p-1">yarn serve</pre>
           點選元件 title 可查看元件的使用方式
+          <img src="@/assets/storybookSample.png" class="intro__readme--storybook-sample" />
         </div>
       </div>
     </div>
@@ -72,6 +73,7 @@ export default {
 $background-height: 1024px;
 $title-margin-top: 34cqh;
 $title-margin-left: map-get($spacers, 8);
+$storybook-sample-width: 50px;
 
 .intro {
   container-type: inline-size;
@@ -102,6 +104,10 @@ $title-margin-left: map-get($spacers, 8);
       border-radius: $border-radius-xxl;
       border-color: $custom-black !important;
       background-image: url('assets/grid.png');
+    }
+
+    &--storybook-sample {
+      width: $storybook-sample-width;
     }
   }
 }</style>
