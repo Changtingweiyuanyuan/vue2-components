@@ -82,6 +82,7 @@ $storybook-sample-width: 50px;
     height: $background-height;
     background-image: url('assets/background.png');
     background-position: top;
+    background-size: cover;
     container: main-visual / size;
     @include concert-font;
 
